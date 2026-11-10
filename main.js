@@ -15,6 +15,19 @@
   setExternal('[data-line]', LINKS.line);
   setExternal('[data-social]', LINKS.social);
 
+  /* ---------- In-page links: smooth scroll without adding #section to the address ---------- */
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    const target = id === 'top' ? document.body : document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    if (id === 'top') scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    else target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  });
+
   /* ---------- Build dynamic content ---------- */
   // Character marquee
   const charTrack = $('#charTrack');
