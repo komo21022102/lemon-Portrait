@@ -55,7 +55,7 @@
   ];
   if (familyGrid) {
     familyGrid.innerHTML = familyData
-      .map(([f, alt, cls], i) => `<figure class="f-card ${cls} reveal" style="--d:${i % 3}"><img src="assets/family/${f}.webp" alt="${alt}" loading="lazy"></figure>`)
+      .map(([f, alt, cls], i) => `<figure class="f-card ${cls} reveal" style="--d:${i % 3}" data-full="assets/family/${f}.webp" role="button" tabindex="0" aria-label="放大：${alt}"><img src="assets/family/${f}.webp" alt="${alt}" loading="lazy"></figure>`)
       .join('');
   }
 
@@ -233,9 +233,18 @@
     setTimeout(() => { lb.hidden = true; lastFocus && lastFocus.focus(); }, 300);
   };
   document.addEventListener('click', (e) => {
-    const card = e.target.closest('.w-item');
-    if (!card) return;
-    openLB(works, works.indexOf(card.dataset.full));
+    const work = e.target.closest('.w-item');
+    if (work) { openLB(works, works.indexOf(work.dataset.full)); return; }
+    const fam = e.target.closest('.f-card[data-full]');
+    if (fam) {
+      const list = $$('.f-card[data-full]').map((c) => c.dataset.full);
+      openLB(list, list.indexOf(fam.dataset.full));
+    }
+  });
+  // keyboard: Enter / Space on a family card opens it too
+  document.addEventListener('keydown', (e) => {
+    const fam = e.target.closest && e.target.closest('.f-card[data-full]');
+    if (fam && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); fam.click(); }
   });
   $('.lb-close', lb).addEventListener('click', closeLB);
   $('.lb-prev', lb).addEventListener('click', () => show(idx - 1));
