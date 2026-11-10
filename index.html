@@ -10,10 +10,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preload" href="assets/fonts/GenJyuuGothic-Bold-titles.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=21" />
+  <link rel="stylesheet" href="styles.css?v=26" />
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -282,12 +283,12 @@
     </section>
 
     <!-- ============ Works wall ============ -->
-    <section class="works" id="works" aria-label="作品案例">
-      <div class="works-head container reveal">
-        <p class="eyebrow">WORKS</p>
-        <h2 class="h2">作品案例</h2>
-        <p class="works-tip">滑過暫停，點擊看大圖</p>
-      </div>
+    <section class="works" id="works" aria-labelledby="works-title">
+      <header class="works-head container reveal">
+        <p class="works-eyebrow" lang="en">MORE ARTS</p>
+        <h2 class="works-title" id="works-title">更多作品與風格</h2>
+        <p class="works-desc">適合數位收藏！其他插畫風格跟此方案<span class="nowrap">「Q版半身」</span>報價不同<span class="m-only">，</span><br />有興趣看可私訊詢價。</p>
+      </header>
       <div class="works-wall" id="worksWall"></div>
     </section>
 
@@ -386,6 +387,6 @@
     <p class="lb-count"></p>
   </div>
 
-  <script src="main.js?v=21" defer></script>
+  <script src="main.js?v=26" defer></script>
 </body>
 </html>

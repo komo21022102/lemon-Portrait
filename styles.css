@@ -3,6 +3,13 @@
    Desktop design base: 1440px  |  Mobile: 375px
    ========================================================= */
 
+/* Section titles: Gen Jyuu Gothic Bold (SIL OFL 1.1), subset to the title characters only */
+@font-face {
+  font-family: "Gen Jyuu Gothic Titles";
+  src: url("assets/fonts/GenJyuuGothic-Bold-titles.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
 :root {
   --navy: #2d4970;
   --navy-700: #233a5a;
@@ -22,6 +29,7 @@
 
   --font-tc: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --font-en: "Montserrat", "Noto Sans TC", system-ui, sans-serif;
+  --font-title: "Gen Jyuu Gothic Titles", "Gen Jyuu Gothic", "Noto Sans TC", sans-serif;
 
   --container: 1344px;
   --gutter: clamp(16px, 3.4vw, 48px);
@@ -62,7 +70,7 @@ ul, ol { list-style: none; }
 .num { font-family: var(--font-en); font-weight: 700; letter-spacing: 0; }
 
 .eyebrow { font-family: var(--font-en); font-weight: 700; font-size: 13px; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; }
-.h2 { font-size: clamp(24px, 2.6vw, 36px); font-weight: 900; color: var(--navy); line-height: 1.35; letter-spacing: .04em; text-wrap: balance; }
+.h2 { font-family: var(--font-title); font-size: 36px; font-weight: 700; color: var(--navy); line-height: 46px; letter-spacing: .04em; text-wrap: balance; }
 .lead { font-weight: 700; color: var(--ink); margin-top: 18px; }
 .section-head { text-align: center; margin-bottom: clamp(36px, 5vw, 64px); }
 
@@ -235,7 +243,7 @@ ul, ol { list-style: none; }
 /* ---------- Story / plan cards (Figma 1342:2201, 1443 × 795) ---------- */
 .story { padding: 81px 0 64px; }
 .story-head { text-align: center; }
-.story-title { font-size: 36px; line-height: 46px; font-weight: 900; color: var(--navy); letter-spacing: .04em; }
+.story-title { font-family: var(--font-title); font-size: 36px; line-height: 46px; font-weight: 700; color: var(--navy); letter-spacing: .04em; }
 .story-lead { font-size: 16px; line-height: 24px; font-weight: 700; color: var(--ink); margin-top: 31px; }
 .plan-cards { display: grid; grid-template-columns: repeat(2, 480px); justify-content: center; gap: 46px; margin-top: 40px; }
 .plan-card {
@@ -314,10 +322,12 @@ ul, ol { list-style: none; }
 .info p { font-size: 12.5px; color: var(--ink-2); margin-top: 12px; }
 
 /* ---------- Works wall ---------- */
-.works { padding-block: var(--section-y) 0; }
-.works-head { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; margin-bottom: 32px; }
-.works-head .eyebrow { width: 100%; margin-bottom: -10px; }
-.works-tip { font-size: 13px; color: var(--muted); margin-left: auto; }
+/* header per Figma 1348:2239: title top 46, desc 21 below, wall 39 below */
+.works { padding: 46px 0 0; margin-top: calc(var(--section-y) - 46px); }
+.works-head { text-align: center; margin-bottom: 39px; }
+.works-eyebrow { font-family: "Montserrat", sans-serif; font-size: 20px; line-height: 24px; font-weight: 700; letter-spacing: .08em; color: #BABABA; margin-bottom: 8px; }
+.works-title { font-family: var(--font-title); font-size: 36px; line-height: 46px; font-weight: 700; color: var(--navy); letter-spacing: .04em; }
+.works-desc { font-size: 18px; line-height: 27px; color: #6b6b6b; margin-top: 21px; }
 .works-wall { display: flex; flex-direction: column; gap: 0; }
 .works-row { overflow: hidden; }
 .works-row .marquee-track { gap: 0; }
@@ -333,7 +343,7 @@ ul, ol { list-style: none; }
 .faq-inner { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: clamp(24px, 3vw, 40px); align-items: start; }
 .faq-side { position: sticky; top: 110px; background: #f6f6f6; border-radius: 0 160px 0 0; padding: 72px 48px 120px; min-height: 560px; }
 .faq-side .eyebrow { font-size: 22px; color: #c5c5c5; }
-.faq-side .h2 { font-size: clamp(28px, 2.6vw, 36px); }
+.faq-side .h2 { font-size: 36px; }
 .faq-sub { font-size: 13px; margin-top: 18px; }
 .faq-filters { margin-top: 48px; display: grid; gap: 14px; }
 .faq-filters button { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-2); transition: color .25s, transform .3s var(--ease); }
@@ -488,7 +498,11 @@ ul, ol { list-style: none; }
   .amt { font-size: 17px; }
   .amt-lg { font-size: 22px; }
 
-  .works-tip { margin-left: 0; width: 100%; }
+  .works-title { font-size: 26px; line-height: 36px; }
+  .works-desc { font-size: 14.5px; line-height: 24px; margin-top: 14px; }
+  .works-head { margin-bottom: 28px; }
+  .works-desc { text-wrap: balance; }
+  .works-desc br { display: none; }
   .w-item { width: 104px; }
 
   .q-text { font-size: 15px; }
@@ -529,4 +543,12 @@ ul, ol { list-style: none; }
   .plan-card-art .art-merch { width: 210px; }
   .plan-card-art .art-girl { width: 164px; }
   .plan-card .btn { margin-top: 32px; min-height: 50px; }
+}
+
+.m-only { display: none; }
+@media (max-width: 560px) { .m-only { display: inline; } }
+
+/* Section titles: same size on every section (36px desktop/tablet, 26px phone) */
+@media (max-width: 760px) {
+  .h2, .faq-side .h2, .story-title, .works-title { font-size: 26px; line-height: 36px; }
 }
