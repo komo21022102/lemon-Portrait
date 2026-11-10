@@ -279,6 +279,7 @@ ul, ol { list-style: none; }
 .bubble-price { color: var(--navy); }
 .bubble-price .num { font-size: clamp(32px, 3vw, 42px); font-weight: 800; }
 .bubble-price small { font-size: 11px; margin-left: 2px; }
+.bubble-price .price-note { font-size: 14px; font-weight: 400; color: #8a8a8a; margin-left: 2px; white-space: nowrap; }
 .bubble h3 { font-size: 18px; font-weight: 700; margin-top: 6px; }
 .bubble p:last-child { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
 .squiggle { width: 130%; margin-left: -15%; height: auto; overflow: visible; }
