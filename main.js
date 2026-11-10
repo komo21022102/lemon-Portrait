@@ -235,4 +235,10 @@
   let lsx = null;
   lb.addEventListener('touchstart', (e) => { lsx = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener('touchend', (e) => { if (lsx == null) return; const dx = e.changedTouches[0].clientX - lsx; if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1)); lsx = null; });
+
+  /* ---------- Image protection: no right-click / drag on illustrations ---------- */
+  const isProtected = (t) => t instanceof Element && (t.tagName === 'IMG' || t.closest('.w-item, .f-card, .hero-stage, .lightbox figure'));
+  document.addEventListener('contextmenu', (e) => { if (isProtected(e.target)) e.preventDefault(); });
+  document.addEventListener('dragstart', (e) => { if (isProtected(e.target)) e.preventDefault(); });
+  $$('img').forEach((img) => img.setAttribute('draggable', 'false'));
 })();
