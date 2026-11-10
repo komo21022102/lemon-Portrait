@@ -40,16 +40,18 @@
 
   // Family grid
   const familyGrid = $('#familyGrid');
+  // Order follows the staggered grid in Figma (1352:2110):
+  // row 1 = illustrations, rows 2–3 = T-shirt mockups (full-bleed photos)
   const familyData = [
     ['f0', 'Happy Family 大家族合畫', ''],
     ['f1', 'Sweet Family 全家福', 'bg-beige'],
     ['f2', 'Happy Wedding 婚禮插畫', ''],
-    ['f3', "Happy Mother's Day 毛孩與家人", 'bg-mint'],
-    ['f4', '嘆善宮 家族紀念', 'bg-beige'],
-    ['f5', 'FuFu 一家人', 'bg-beige'],
-    ['f6', "Happy Mom's Day", 'bg-sun'],
-    ['f7', 'Happy Wedding 阿禮', 'bg-lilac'],
-    ['f8', '哈士奇毛孩', ''],
+    ['tee-navy-longsleeve', '深藍長袖紀念 T 恤：正面小圖＋背面 Cute Family 合畫', 'photo'],
+    ['tee-blue-back', '淺藍 T 恤背面 Happy Family 合畫', 'photo'],
+    ['tee-beige-back', '米色 T 恤背面 Sweet Family 合畫', 'photo'],
+    ['tee-navy-star-back', '深藍 T 恤背面 Cute Family 星星合畫', 'photo'],
+    ['tee-blue-pair', '淺藍紀念 T 恤：正面小圖＋背面 Happy Family 合畫', 'photo'],
+    ['tee-beige-pair', '米色紀念 T 恤：正面小圖＋背面 Sweet Family 合畫', 'photo'],
   ];
   if (familyGrid) {
     familyGrid.innerHTML = familyData
