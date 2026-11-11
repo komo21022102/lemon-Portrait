@@ -260,6 +260,44 @@
   lb.addEventListener('touchstart', (e) => { lsx = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener('touchend', (e) => { if (lsx == null) return; const dx = e.changedTouches[0].clientX - lsx; if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1)); lsx = null; });
 
+  /* ---------- T-shirt calculator ----------
+     價格改這裡：單件價寫在 index.html 的 data-price；套組折扣規則在 dealFor() */
+  const calc = $('#calc');
+  if (calc) {
+    const DOUBLE = 300, SHIP = 60;
+    const money = (n) => '$' + n.toLocaleString('en-US');
+    const rows = $$('.calc-row', calc);
+    const dealFor = (n) => {
+      if (n >= 8) return { name: '大家族價（每件 −$80＋免運）', off: 80 * n, freeShip: true };
+      if (n >= 5) return { name: '全家福價（每件 −$50）', off: 50 * n };
+      if (n === 4) return { name: '三人幸福價＋1 件', off: 202 };
+      if (n === 3) return { name: '小家庭三人幸福價', off: 202 };
+      if (n === 2) return { name: '情侶雙人套組', off: 126 };
+      return { name: '套組優惠', off: 0 };
+    };
+    const update = () => {
+      let n = 0, sub = 0;
+      rows.forEach((r) => { const q = +$('output', r).value; n += q; sub += q * +r.dataset.price; });
+      if ($('#calc-double').checked) sub += DOUBLE * n;
+      const deal = dealFor(n);
+      const ship = n === 0 || deal.freeShip ? 0 : SHIP;
+      $('#calc-sub').textContent = money(sub);
+      $('#calc-deal-name').textContent = deal.name;
+      $('#calc-deal').textContent = '−' + money(deal.off);
+      $('#calc-ship').textContent = n && deal.freeShip ? '免運' : money(ship);
+      $('#calc-total').textContent = money(sub - deal.off + ship);
+    };
+    calc.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-step]');
+      if (!b) return;
+      const out = $('output', b.parentElement);
+      out.value = Math.min(30, Math.max(0, +out.value + +b.dataset.step));
+      update();
+    });
+    $('#calc-double').addEventListener('change', update);
+    update();
+  }
+
   /* ---------- Image protection: no right-click / drag on illustrations ---------- */
   const isProtected = (t) => t instanceof Element && (t.tagName === 'IMG' || t.closest('.w-item, .f-card, .hero-stage, .lightbox figure'));
   document.addEventListener('contextmenu', (e) => { if (isProtected(e.target)) e.preventDefault(); });
