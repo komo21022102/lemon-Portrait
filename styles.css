@@ -638,3 +638,7 @@ ul, ol { list-style: none; }
 
 /* ---------- PLAN B card background ---------- */
 #price-b { background: #F3FAEA; }
+
+/* ---------- Calculator: design + T-shirt groups ---------- */
+.calc-group-title { font-size: 13px; font-weight: 900; color: var(--navy); letter-spacing: .04em; padding: 4px 0 6px; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+.calc-double + .calc-group-title { margin-top: 22px; }

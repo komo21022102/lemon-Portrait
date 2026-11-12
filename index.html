@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=46" />
+  <link rel="stylesheet" href="styles.css?v=47" />
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -348,9 +348,14 @@
 
 
           <details class="calc reveal" id="calc">
-            <summary><span class="calc-ico" aria-hidden="true">🧮</span>T 恤試算小工具<small>點開算算看，自動套用最划算的套組</small><i class="q-icon" aria-hidden="true"></i></summary>
+            <summary><span class="calc-ico" aria-hidden="true">🧮</span>設計＆T-Shirt 試算小工具<small>點開算算看，插畫設計＋T 恤一次算好</small><i class="q-icon" aria-hidden="true"></i></summary>
             <div class="calc-body">
               <div class="calc-items">
+                <p class="calc-group-title">PLAN A 插畫設計</p>
+                <div class="calc-row" id="calc-people"><span>人物 <small>1 人 $600・3 人 $1,500</small></span><div class="stepper"><button type="button" data-step="-1" aria-label="人物減一位">−</button><output>0</output><button type="button" data-step="1" aria-label="人物加一位">+</button></div></div>
+                <div class="calc-row" id="calc-pets"><span>毛孩 <small>+$500／隻</small></span><div class="stepper"><button type="button" data-step="-1" aria-label="毛孩減一隻">−</button><output>0</output><button type="button" data-step="1" aria-label="毛孩加一隻">+</button></div></div>
+                <label class="calc-double"><input type="checkbox" id="calc-bg" /> 特殊場景／背景 <small>+$600 起</small></label>
+                <p class="calc-group-title">PLAN B T-Shirt 印製</p>
                 <div class="calc-row" data-price="720"><span>成人短袖 <small>$720</small></span><div class="stepper"><button type="button" data-step="-1" aria-label="成人短袖減一件">−</button><output>0</output><button type="button" data-step="1" aria-label="成人短袖加一件">+</button></div></div>
                 <div class="calc-row" data-price="650"><span>兒童短袖 <small>$650</small></span><div class="stepper"><button type="button" data-step="-1" aria-label="兒童短袖減一件">−</button><output>0</output><button type="button" data-step="1" aria-label="兒童短袖加一件">+</button></div></div>
                 <div class="calc-row" data-price="830"><span>成人長袖 <small>$830</small></span><div class="stepper"><button type="button" data-step="-1" aria-label="成人長袖減一件">−</button><output>0</output><button type="button" data-step="1" aria-label="成人長袖加一件">+</button></div></div>
@@ -358,12 +363,13 @@
                 <label class="calc-double"><input type="checkbox" id="calc-double" /> 全部升級雙面印製 <small>+$150／件</small></label>
               </div>
               <dl class="calc-sum" aria-live="polite">
-                <div><dt>原價小計</dt><dd id="calc-sub">$0</dd></div>
+                <div><dt>插畫設計費</dt><dd id="calc-design">$0</dd></div>
+                <div><dt>T 恤原價小計</dt><dd id="calc-sub">$0</dd></div>
                 <div><dt id="calc-deal-name">套組優惠</dt><dd id="calc-deal">−$0</dd></div>
                 <div><dt>店到店運費</dt><dd id="calc-ship">$0</dd></div>
-                <div class="calc-total"><dt>T 恤合計</dt><dd id="calc-total">$0</dd></div>
+                <div class="calc-total"><dt>預估總計</dt><dd id="calc-total">$0</dd></div>
               </dl>
-              <p class="calc-note">＊試算僅含 T 恤印製與運費，插畫設計費依 PLAN A 另計；實際金額以私訊報價為準。</p>
+              <p class="calc-note">＊2 人以 2 位單人計（$1,200），第 4 人起每位 +$400；特殊場景依複雜度另行報價，實際金額以私訊報價為準。</p>
             </div>
           </details>
         </div>
@@ -476,6 +482,6 @@
     <p class="lb-count"></p>
   </div>
 
-  <script src="main.js?v=44" defer></script>
+  <script src="main.js?v=45" defer></script>
 </body>
 </html>
