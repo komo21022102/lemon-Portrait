@@ -304,6 +304,37 @@
     update();
   }
 
+  /* ---------- Swipe carousels on phones (plans + packages): dots indicator ---------- */
+  const swipeDots = (grid, cardSel, label) => {
+    if (!grid) return;
+    const cards = $$(cardSel, grid);
+    const dots = document.createElement('div');
+    dots.className = 'swipe-dots';
+    dots.setAttribute('aria-label', label + '切換');
+    const pad = () => parseFloat(getComputedStyle(grid).scrollPaddingLeft) || 0;
+    const posOf = (c) => c.offsetLeft - grid.offsetLeft - pad();
+    cards.forEach((c, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', '第 ' + (i + 1) + ' 個' + label);
+      b.addEventListener('click', () => grid.scrollTo({ left: posOf(c), behavior: 'smooth' }));
+      dots.appendChild(b);
+    });
+    grid.after(dots);
+    const sync = () => {
+      const x = grid.scrollLeft;
+      let best = 0, bestD = Infinity;
+      cards.forEach((c, i) => { const d = Math.abs(posOf(c) - x); if (d < bestD) { bestD = d; best = i; } });
+      if (x > 0 && x + grid.clientWidth >= grid.scrollWidth - 4) best = cards.length - 1;
+      $$('button', dots).forEach((b, i) => b.classList.toggle('is-active', i === best));
+    };
+    grid.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  };
+  swipeDots($('.plans'), '.plan', '方案');
+  swipeDots($('.pack-grid'), '.pack', '套組');
+
   /* ---------- Image protection: no right-click / drag on illustrations ---------- */
   const isProtected = (t) => t instanceof Element && (t.tagName === 'IMG' || t.closest('.w-item, .f-card, .hero-stage, .lightbox figure'));
   document.addEventListener('contextmenu', (e) => { if (isProtected(e.target)) e.preventDefault(); });

@@ -669,3 +669,26 @@ ul, ol { list-style: none; }
 /* 人氣！ speech-bubble outline (1px, tail pointing left) */
 .hero-price .hot-tag { position: relative; display: inline-block; margin-left: 8px; padding: 1px 8px; line-height: 18px; border: 1px solid var(--navy); border-radius: 10px; background: #fff; vertical-align: 2px; }
 .hero-price .hot-tag::before { content: ""; position: absolute; left: -4px; top: 50%; width: 6px; height: 6px; margin-top: -3px; background: #fff; border-left: 1px solid var(--navy); border-bottom: 1px solid var(--navy); transform: rotate(45deg); }
+
+/* ---------- Plans + packages: swipe carousel on phones ---------- */
+.swipe-dots { display: none; }
+@media (max-width: 560px) {
+  .plans, .pack-grid {
+    display: flex; gap: 14px; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+    margin-inline: calc(-1 * var(--gutter)); padding: 14px var(--gutter) 6px;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch; align-items: stretch;
+  }
+  .pack-grid { margin-top: 28px; }
+  .plans::-webkit-scrollbar, .pack-grid::-webkit-scrollbar { display: none; }
+  .plans .plan, .pack-grid .pack { flex: 0 0 82%; scroll-snap-align: start; }
+  .plans .plan:hover, .pack-grid .pack:hover { transform: none; box-shadow: none; }
+  .swipe-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+  .swipe-dots button { width: 8px; height: 8px; padding: 0; border-radius: 99px; background: #d6d1c8; transition: width .3s var(--ease), background-color .3s; }
+  .swipe-dots button.is-active { width: 22px; background: var(--navy); }
+}
+@media (max-width: 560px) {
+  .plans .plan { padding: 26px 20px; }
+  .plans .tag { white-space: nowrap; }
+  .plans .plan-list b { white-space: nowrap; }
+}
