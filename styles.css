@@ -692,3 +692,15 @@ ul, ol { list-style: none; }
   .plans .tag { white-space: nowrap; }
   .plans .plan-list b { white-space: nowrap; }
 }
+
+/* ---------- Phone-only line breaks ---------- */
+@media (max-width: 560px) { .m-line { display: block; } .d-only { display: none; } }
+
+/* ---------- Carousel smoothness fix (phones) ----------
+   Cards inside the swipe rows must not use the per-card reveal (it offsets them 36px,
+   making the row scroll vertically and hiding off-screen cards until swiped in). */
+@media (max-width: 560px) {
+  .plans, .pack-grid { overflow-y: hidden; touch-action: pan-x pan-y; }
+  .plans .plan, .pack-grid .pack { scroll-snap-stop: always; }
+  .plans .plan.reveal, .pack-grid .pack.reveal { opacity: 1; transform: none; transition: none; }
+}
