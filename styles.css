@@ -635,3 +635,6 @@ ul, ol { list-style: none; }
   .img-trio { width: 128px; }
   .img-tees { width: 170px; }
 }
+
+/* ---------- PLAN B card background ---------- */
+#price-b { background: #F3FAEA; }
