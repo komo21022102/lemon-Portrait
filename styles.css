@@ -666,3 +666,6 @@ ul, ol { list-style: none; }
 .hero-cta .hero-actions .btn { min-width: 0; }
 .hero-cta .hero-price { display: flex; justify-content: center; }
 @media (max-width: 960px) { .hero-cta { margin-inline: auto; } }
+/* 人氣！ speech-bubble outline (1px, tail pointing left) */
+.hero-price .hot-tag { position: relative; display: inline-block; margin-left: 8px; padding: 1px 8px; line-height: 18px; border: 1px solid var(--navy); border-radius: 10px; background: #fff; vertical-align: 2px; }
+.hero-price .hot-tag::before { content: ""; position: absolute; left: -4px; top: 50%; width: 6px; height: 6px; margin-top: -3px; background: #fff; border-left: 1px solid var(--navy); border-bottom: 1px solid var(--navy); transform: rotate(45deg); }
