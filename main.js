@@ -91,7 +91,6 @@
   /* ---------- Header: shrink, hide on scroll down, scrollspy ---------- */
   const header = $('.site-header');
   const toTop = $('.to-top');
-  const fab = $('.fab-line');
   let lastY = scrollY;
   let ticking = false;
   const onScroll = () => {
@@ -101,7 +100,6 @@
     header.classList.toggle('is-hidden', !menuOpen && y > 600 && y > lastY + 4);
     if (y < lastY - 4) header.classList.remove('is-hidden');
     toTop.classList.toggle('is-show', y > 900);
-    fab.classList.toggle('is-show', y > 500);
     lastY = y;
     ticking = false;
   };
@@ -264,7 +262,7 @@
      價格改這裡：單件價寫在 index.html 的 data-price；套組折扣規則在 dealFor() */
   const calc = $('#calc');
   if (calc) {
-    const DOUBLE = 300, SHIP = 60;
+    const DOUBLE = 150, SHIP = 60, FREE_SHIP_MIN = 3; // 雙面 +$150／件；3 件以上免運
     const money = (n) => '$' + n.toLocaleString('en-US');
     const rows = $$('.calc-row', calc);
     const dealFor = (n) => {
@@ -280,11 +278,12 @@
       rows.forEach((r) => { const q = +$('output', r).value; n += q; sub += q * +r.dataset.price; });
       if ($('#calc-double').checked) sub += DOUBLE * n;
       const deal = dealFor(n);
-      const ship = n === 0 || deal.freeShip ? 0 : SHIP;
+      const freeShip = n >= FREE_SHIP_MIN || deal.freeShip;
+      const ship = n === 0 || freeShip ? 0 : SHIP;
       $('#calc-sub').textContent = money(sub);
       $('#calc-deal-name').textContent = deal.name;
       $('#calc-deal').textContent = '−' + money(deal.off);
-      $('#calc-ship').textContent = n && deal.freeShip ? '免運' : money(ship);
+      $('#calc-ship').textContent = n && freeShip ? '免運' : money(ship);
       $('#calc-total').textContent = money(sub - deal.off + ship);
     };
     calc.addEventListener('click', (e) => {
