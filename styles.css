@@ -655,3 +655,14 @@ ul, ol { list-style: none; }
   .faq-filters { margin: 14px -22px 0; padding: 0 22px 2px; }
   .faq-filters button { height: 34px; padding: 0 14px; font-size: 13px; }
 }
+
+/* ---------- Hero price: 人氣 tag ---------- */
+.hero-price .hot-tag { font-style: normal; font-weight: 900; font-size: 13px; color: var(--navy); margin-left: 2px; }
+
+/* ---------- Hero CTA buttons match the price pill width ---------- */
+.hero-copy { min-width: 0; }
+.hero-cta { display: grid; width: max-content; max-width: 100%; }
+.hero-cta .hero-actions { display: grid; grid-template-columns: 1fr 1fr; width: auto; max-width: none; }
+.hero-cta .hero-actions .btn { min-width: 0; }
+.hero-cta .hero-price { display: flex; justify-content: center; }
+@media (max-width: 960px) { .hero-cta { margin-inline: auto; } }
