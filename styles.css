@@ -642,3 +642,16 @@ ul, ol { list-style: none; }
 /* ---------- Calculator: design + T-shirt groups ---------- */
 .calc-group-title { font-size: 13px; font-weight: 900; color: var(--navy); letter-spacing: .04em; padding: 4px 0 6px; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
 .calc-double + .calc-group-title { margin-top: 22px; }
+
+/* ---------- FAQ side card — shorter (≈2/3 height) ---------- */
+.faq-side { min-height: 0; padding: 36px 40px 40px; }
+.faq-sub { margin-top: 12px; }
+.faq-filters { margin-top: 24px; gap: 8px; }
+@media (max-width: 960px) {
+  .faq-side { padding: 18px 22px 18px; border-radius: 0 64px 0 0; }
+  .faq-side .eyebrow { font-size: 18px; line-height: 1.2; }
+  .faq-side .h2 { margin-top: 2px; }
+  .faq-sub { margin-top: 6px; }
+  .faq-filters { margin: 14px -22px 0; padding: 0 22px 2px; }
+  .faq-filters button { height: 34px; padding: 0 14px; font-size: 13px; }
+}
