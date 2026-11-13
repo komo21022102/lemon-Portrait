@@ -744,3 +744,23 @@ ul, ol { list-style: none; }
 #price-a .amt-group .amt-lg { line-height: 1.1; }
 #price-a .amt-group .amt-lg .amt-label { font-size: 13px; }
 #price-a .plan-list li > div:first-child { min-width: 0; }
+
+/* ---------- Plan titles with hand-drawn icons ---------- */
+.plan-name { display: flex; align-items: center; gap: 12px; font-size: clamp(26px, 2.2vw, 32px); }
+.plan-name-text { min-width: 0; white-space: nowrap; }
+.plan-icon { flex: 0 1 96px; min-width: 56px; width: 96px; height: auto; margin: -22px 0 -14px; }
+@media (max-width: 560px) {
+  .plan-name { gap: 6px; }
+  .plan-name-text { white-space: normal; }
+  .plan-icon { flex: none; width: 64px; min-width: 0; margin: -12px 0 -8px; }
+}
+
+/* ---------- Package cards: illustrations peeking over the top edge ---------- */
+.pack-grid { margin-top: 92px; }
+.pack-art { position: absolute; left: 50%; top: -62px; width: 120px; height: auto; transform: translateX(-50%); pointer-events: none; }
+.pack-name .pack-badge { position: static; transform: none; margin-left: 4px; vertical-align: 3px; font-size: 10.5px; padding: 3px 8px; }
+@media (max-width: 560px) {
+  .pack-grid { margin-top: 20px; padding-top: 64px; }
+  .pack-art { width: 104px; top: -54px; }
+}
+@media (min-width: 561px) and (max-width: 960px) { .pack-grid { row-gap: 84px; } }
