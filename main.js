@@ -146,6 +146,7 @@
   // swipe on touch
   const stage = $('.hero-stage');
   let sx = null;
+  if (stage) {
   stage.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
   stage.addEventListener('touchend', (e) => {
     if (sx == null) return;
@@ -155,10 +156,11 @@
   });
   document.addEventListener('visibilitychange', () => (document.hidden ? clearInterval(timer) : play()));
   play();
+  }
 
   /* ---------- Hero mouse parallax ---------- */
   const shell = $('.hero-shell');
-  if (!reduceMotion && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  if (shell && !reduceMotion && matchMedia('(hover: hover) and (pointer: fine)').matches) {
     let raf = 0, tx = 0, ty = 0;
     shell.addEventListener('pointermove', (e) => {
       const r = shell.getBoundingClientRect();
@@ -208,6 +210,7 @@
 
   /* ---------- Lightbox ---------- */
   const lb = $('#lightbox');
+  if (lb) {
   const lbImg = $('img', lb);
   const lbCount = $('.lb-count', lb);
   let group = [];
@@ -257,6 +260,7 @@
   let lsx = null;
   lb.addEventListener('touchstart', (e) => { lsx = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener('touchend', (e) => { if (lsx == null) return; const dx = e.changedTouches[0].clientX - lsx; if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1)); lsx = null; });
+  }
 
   /* ---------- T-shirt calculator ----------
      價格改這裡：單件價寫在 index.html 的 data-price；套組折扣規則在 dealFor() */
@@ -340,6 +344,17 @@
   };
   swipeDots($('.plans'), '.plan', '方案');
   swipeDots($('.pack-grid'), '.pack', '套組');
+
+  /* ---------- Goods page: gallery thumbnails swap the main image ---------- */
+  $$('.g-gallery').forEach((g) => {
+    const main = $('.g-main img', g);
+    const thumbs = $$('.g-thumbs button', g);
+    thumbs.forEach((t) => t.addEventListener('click', () => {
+      main.src = t.dataset.src;
+      main.alt = t.getAttribute('aria-label') || '';
+      thumbs.forEach((b) => b.classList.toggle('is-active', b === t));
+    }));
+  });
 
   /* ---------- Image protection: no right-click / drag on illustrations ---------- */
   const isProtected = (t) => t instanceof Element && (t.tagName === 'IMG' || t.closest('.w-item, .f-card, .hero-stage, .lightbox figure'));
