@@ -792,3 +792,20 @@ ul, ol { list-style: none; }
 @media (max-width: 560px) {
   .plans .plan-icon { width: 70px; top: -24px; right: 12px; }
 }
+
+/* ---------- Plan title second part in a 1px rounded outline ---------- */
+.plan-name-box { display: inline-block; border: 1px solid currentColor; border-radius: 12px; padding: .04em .32em .08em; line-height: 1.15; margin-left: .1em; }
+@media (max-width: 560px) { .plans .plan, .pack-grid .pack { min-width: 0; } }
+@media (max-width: 560px) { .plans .plan-name { font-size: min(22px, 5.5vw); } }
+/* phone: let long item names wrap instead of pushing into the price column */
+@media (max-width: 560px) {
+  .plans .plan-list li > div:first-child { flex: 1 1 auto; min-width: 0; }
+  .plans .plan-list li > .amt-group, .plans .plan-list li > .amt { flex: none; }
+  .plans .amt-label { font-size: 11.5px; margin-right: 5px; }
+  .plans .amt-lg { font-size: 20px; }
+  .plans .plan-list b.hot-title { display: block; white-space: normal; }
+  .plans .plan-list b.hot-title .tag { display: inline-flex; vertical-align: 2px; margin-left: 4px; white-space: nowrap; }
+  .plans .plan-list b.wrap-ok .nowrap { white-space: normal; }
+}
+.plan-list b.hot-title { display: block; }
+.plan-list b.hot-title .tag { display: inline-flex; vertical-align: 2px; margin-left: 6px; }
