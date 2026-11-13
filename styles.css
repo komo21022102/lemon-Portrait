@@ -704,3 +704,38 @@ ul, ol { list-style: none; }
   .plans .plan, .pack-grid .pack { scroll-snap-stop: always; }
   .plans .plan.reveal, .pack-grid .pack.reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ---------- PLAN A: collapsible drawing notice ---------- */
+.plan-notice { margin-top: 18px; border: 1.5px solid #f0b48a; border-radius: 18px; background: #fff; overflow: hidden; }
+.plan-notice summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px 14px 20px; }
+.plan-notice summary::-webkit-details-marker { display: none; }
+.notice-title { font-size: 16px; font-weight: 900; color: #e8742a; letter-spacing: .02em; }
+.plan-notice summary .q-icon { flex: none; background: #fdeee3; }
+.plan-notice summary .q-icon::before, .plan-notice summary .q-icon::after { background: #e8742a; }
+.plan-notice summary:hover .q-icon { background: #fbdcc6; }
+.plan-notice[open] .q-icon::after { transform: rotate(0deg); }
+.notice-body { padding: 4px 20px 20px; border-top: 1px dashed #f3c9aa; font-size: 15px; line-height: 1.8; color: var(--ink-2); }
+.notice-body h4 { font-size: 15px; font-weight: 900; color: var(--ink); margin-top: 16px; }
+.notice-body ul { margin-top: 6px; display: grid; gap: 4px; }
+.notice-body li.sub { padding-left: 1.6em; font-size: 14px; color: var(--muted); }
+@media (max-width: 560px) {
+  .plan-notice summary { padding: 12px 14px 12px 16px; }
+  .notice-body { padding: 2px 16px 18px; }
+}
+.plans:has(.plan-notice[open]) { align-items: start; }
+
+/* ---------- Plan cards: compact on phones (fit iPhone screen) ---------- */
+@media (max-width: 560px) {
+  .plans .plan { padding: 20px 18px 18px; }
+  .plans .plan-name { font-size: 24px; line-height: 1.2; }
+  .plans .plan-sub { font-size: 16px; margin-top: 4px; padding-bottom: 10px; gap: 4px 8px; }
+  .plans .plan-list li { padding: 10px 0; gap: 12px; }
+  .plans .plan-list b { font-size: 14.5px; line-height: 1.4; }
+  .plans .plan-list small { margin-top: 1px; line-height: 1.45; }
+  .plans .amt-group { gap: 2px; }
+  .plans .plan-note { margin-top: 10px; line-height: 1.6; }
+  .plans .plan-notice { margin-top: 12px; }
+  .plans .plan-notice summary { padding: 9px 12px 9px 14px; }
+  .plans .notice-title { font-size: 15px; }
+}
+.plans .plan-list b.wrap-ok { white-space: normal; flex-wrap: wrap; column-gap: 4px; }
