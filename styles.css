@@ -764,3 +764,12 @@ ul, ol { list-style: none; }
   .pack-art { width: 104px; top: -54px; }
 }
 @media (min-width: 561px) and (max-width: 960px) { .pack-grid { row-gap: 84px; } }
+
+/* ---------- PLAN A: keep 人氣 tag beside its title; a little more room on phones ---------- */
+.plan-list b.hot-title { white-space: nowrap; gap: 6px; }
+@media (max-width: 560px) {
+  .plans .plan-list b.hot-title .tag { height: 20px; padding: 0 7px; font-size: 10.5px; }
+  .plans .plan { padding-top: 23px; padding-bottom: 21px; }
+  .plans .plan-list li { padding: 12px 0; }
+  .plans .plan-sub { padding-bottom: 12px; }
+}
