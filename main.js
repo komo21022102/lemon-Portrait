@@ -275,10 +275,10 @@
     const designFor = (p, t) => (p <= 0 ? 0 : p === 1 ? t.one : p === 2 ? t.one * 2 : t.three + t.extra * (p - 3));
     const BG = 800;
     const dealFor = (n) => {
-      if (n >= 10) return { name: '大家族價（每件 −$80＋免運）', off: 80 * n, freeShip: true };
-      if (n >= 4) return { name: `三人幸福價＋${n - 3} 件`, off: 202 };
-      if (n === 3) return { name: '小家庭三人幸福價', off: 202 };
-      if (n === 2) return { name: '情侶雙人套組', off: 126 };
+      if (n >= 10) return { name: '大家族價（每件 −$40＋免運）', off: 40 * n, freeShip: true };
+      if (n >= 4) return { name: `三人幸福價＋${n - 3} 件`, off: 100 };
+      if (n === 3) return { name: '小家庭三人幸福價', off: 100 };
+      if (n === 2) return { name: '情侶雙人套組', off: 60 };
       return { name: '套組優惠', off: 0 };
     };
     const update = () => {
