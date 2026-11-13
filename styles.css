@@ -850,3 +850,7 @@ ul, ol { list-style: none; }
   .calc summary .q-icon { width: 34px; height: 34px; }
   .calc summary .q-icon::before, .calc summary .q-icon::after { left: 10px; right: 10px; top: 16px; }
 }
+
+/* ---------- Big-family tier row: keep the label on one line ---------- */
+.pack-tiers li { flex-wrap: wrap; row-gap: 2px; }
+.pack-tiers li > span { white-space: nowrap; }
