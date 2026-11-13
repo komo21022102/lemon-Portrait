@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=81" />
+  <link rel="stylesheet" href="styles.css?v=82" />
 </head>
 <body class="page-goods">
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -125,76 +125,75 @@
       </div>
     </section>
 
-    <!-- ============ Product details ============ -->
-    <section class="goods-detail" id="purse" aria-labelledby="purse-title">
-      <div class="container gd-inner">
-        <div class="g-gallery reveal">
-          <figure class="g-main"><img src="assets/goods/purse.svg" alt="零錢包示意圖" width="160" height="160" /></figure>
-          <p class="g-ph">商品實拍圖準備中・此為示意</p>
-        </div>
-        <div class="gd-info reveal" style="--d:1">
-          <p class="pack-label">STARTER・01</p>
-          <h2 class="gd-title" id="purse-title">零錢包</h2>
-          <p class="gd-lead">小巧好帶的插畫零錢包，送給家人或朋友都很剛好。</p>
-          <ul class="plan-list gd-specs">
-            <li><div><b>價格</b><small>單件價・含插畫印製</small></div><span class="amt">$— <small>起</small></span></li>
-            <li><div><b>尺寸</b><small>約 — × — cm（待確認）</small></div></li>
-            <li><div><b>材質</b><small>待確認</small></div></li>
-            <li><div><b>印製</b><small>單面全彩印製</small></div></li>
-            <li><div><b>顏色</b><small>待確認</small></div></li>
-          </ul>
-          <p class="gd-gift"><b>適合送給</b><span class="tag tag-lime">好朋友</span><span class="tag tag-lime">畢業紀念</span><span class="tag tag-lime">小禮物</span></p>
-          <a class="btn btn-lime" href="#" data-line>LINE 詢問零錢包 <i class="arrow"></i></a>
-        </div>
-      </div>
-    </section>
+    <!-- ============ Product details: three compact square cards ============ -->
+    <section class="goods-detail" aria-label="商品細節">
+      <div class="container">
+        <div class="gd-grid">
+          <article class="gd-card reveal" id="purse" style="--d:0">
+            <div class="g-gallery">
+              <figure class="g-main"><img src="assets/goods/purse.svg" alt="零錢包示意圖" width="160" height="160" /></figure>
+            </div>
+            <p class="pack-label">STARTER・01</p>
+            <h2 class="gd-title">零錢包</h2>
+            <p class="gd-price"><span class="num">$—</span> 起 <small>示意・價格確認中</small></p>
+            <details class="gd-more">
+              <summary>規格與說明<i class="q-icon" aria-hidden="true"></i></summary>
+              <ul class="gd-specs">
+                <li><b>尺寸</b><span>約 — × — cm（待確認）</span></li>
+                <li><b>材質</b><span>待確認</span></li>
+                <li><b>印製</b><span>單面全彩印製</span></li>
+                <li><b>顏色</b><span>待確認</span></li>
+                <li><b>適合</b><span>好朋友・畢業紀念・小禮物</span></li>
+              </ul>
+            </details>
+            <a class="btn btn-lime btn-sm" href="#" data-line>LINE 詢問 <i class="arrow"></i></a>
+          </article>
 
-    <section class="goods-detail is-alt" id="tote" aria-labelledby="tote-title">
-      <div class="container gd-inner">
-        <div class="g-gallery reveal">
-          <figure class="g-main"><img src="assets/goods/tote.svg" alt="側背帆布包示意圖" width="160" height="160" /></figure>
-          <p class="g-ph">商品實拍圖準備中・此為示意</p>
-        </div>
-        <div class="gd-info reveal" style="--d:1">
-          <p class="pack-label">DAILY・02</p>
-          <h2 class="gd-title" id="tote-title">側背帆布包</h2>
-          <p class="gd-lead">把家人的樣子背在身上，耐用又好搭的日常帆布包。</p>
-          <ul class="plan-list gd-specs">
-            <li><div><b>價格</b><small>單件價・含插畫印製</small></div><span class="amt">$— <small>起</small></span></li>
-            <li><div><b>尺寸</b><small>約 — × — cm（待確認）</small></div></li>
-            <li><div><b>材質</b><small>帆布（厚度待確認）</small></div></li>
-            <li><div><b>印製</b><small>單面全彩印製</small></div></li>
-            <li><div><b>顏色</b><small>待確認</small></div></li>
-          </ul>
-          <p class="gd-gift"><b>適合送給</b><span class="tag tag-lime">媽媽</span><span class="tag tag-lime">情侶</span><span class="tag tag-lime">自己</span></p>
-          <a class="btn btn-lime" href="#" data-line>LINE 詢問帆布包 <i class="arrow"></i></a>
-        </div>
-      </div>
-    </section>
+          <article class="gd-card reveal" id="tote" style="--d:1">
+            <div class="g-gallery">
+              <figure class="g-main"><img src="assets/goods/tote.svg" alt="側背帆布包示意圖" width="160" height="160" /></figure>
+            </div>
+            <p class="pack-label">DAILY・02</p>
+            <h2 class="gd-title">側背帆布包</h2>
+            <p class="gd-price"><span class="num">$—</span> 起 <small>示意・價格確認中</small></p>
+            <details class="gd-more">
+              <summary>規格與說明<i class="q-icon" aria-hidden="true"></i></summary>
+              <ul class="gd-specs">
+                <li><b>尺寸</b><span>約 — × — cm（待確認）</span></li>
+                <li><b>材質</b><span>帆布（厚度待確認）</span></li>
+                <li><b>印製</b><span>單面全彩印製</span></li>
+                <li><b>顏色</b><span>待確認</span></li>
+                <li><b>適合</b><span>媽媽・情侶・自己</span></li>
+              </ul>
+            </details>
+            <a class="btn btn-lime btn-sm" href="#" data-line>LINE 詢問 <i class="arrow"></i></a>
+          </article>
 
-    <section class="goods-detail" id="tee" aria-labelledby="tee-title">
-      <div class="container gd-inner">
-        <div class="g-gallery reveal">
-          <figure class="g-main is-photo"><img src="assets/family/tee-blue-pair.webp" alt="淺藍紀念 T 恤：正面小圖＋背面合畫" /></figure>
-          <div class="g-thumbs" role="group" aria-label="切換 T 恤照片">
-            <button class="is-active" type="button" data-src="assets/family/tee-blue-pair.webp" aria-label="淺藍紀念 T 恤：正面小圖＋背面合畫"><img src="assets/family/tee-blue-pair.webp" alt="" loading="lazy" /></button>
-            <button type="button" data-src="assets/family/tee-beige-pair.webp" aria-label="米色紀念 T 恤：正面小圖＋背面合畫"><img src="assets/family/tee-beige-pair.webp" alt="" loading="lazy" /></button>
-            <button type="button" data-src="assets/family/tee-navy-longsleeve.webp" aria-label="深藍長袖紀念 T 恤"><img src="assets/family/tee-navy-longsleeve.webp" alt="" loading="lazy" /></button>
-            <button type="button" data-src="assets/family/tee-navy-star-back.webp" aria-label="深藍 T 恤背面星星合畫"><img src="assets/family/tee-navy-star-back.webp" alt="" loading="lazy" /></button>
-          </div>
-        </div>
-        <div class="gd-info reveal" style="--d:1">
-          <p class="pack-label">SIGNATURE・03</p>
-          <h2 class="gd-title" id="tee-title">紀念 T 恤 <span class="tag tag-navy">人氣推薦</span></h2>
-          <p class="gd-lead">全家一起穿出門，就是最可愛的全家福。</p>
-          <ul class="plan-list gd-specs">
-            <li><div><b>成人</b><small>含素 T、單面印刷</small></div><div class="amt-group"><span class="amt"><i class="amt-label">短袖</i>$720 <small>/件</small></span><span class="amt"><i class="amt-label">長袖</i>$830 <small>/件</small></span></div></li>
-            <li><div><b>兒童</b><small>含素 T、單面印刷</small></div><div class="amt-group"><span class="amt"><i class="amt-label">短袖</i>$650 <small>/件</small></span><span class="amt"><i class="amt-label">長袖</i>$800 <small>/件</small></span></div></li>
-            <li><div><b>升級雙面印製</b><small>正面小圖＋背面家庭合畫</small></div><span class="amt">+$150 <small>/件</small></span></li>
-            <li><div><b>套組優惠</b><small>2 件以上自動套用，<span class="hl">3 件以上免運費！</span></small></div><a class="goods-more" href="index.html?go=packages">看套組 <i class="arrow"></i></a></li>
-          </ul>
-          <p class="gd-gift"><b>適合送給</b><span class="tag tag-lime">全家出遊</span><span class="tag tag-lime">家族聚會</span><span class="tag tag-lime">長輩生日</span></p>
-          <a class="btn btn-lime" href="#" data-line>LINE 詢問 T 恤 <i class="arrow"></i></a>
+          <article class="gd-card is-hot reveal" id="tee" style="--d:2">
+            <div class="g-gallery">
+              <figure class="g-main is-photo"><img src="assets/family/tee-blue-pair.webp" alt="淺藍紀念 T 恤：正面小圖＋背面合畫" /></figure>
+              <div class="g-thumbs" role="group" aria-label="切換 T 恤照片">
+                <button class="is-active" type="button" data-src="assets/family/tee-blue-pair.webp" aria-label="淺藍紀念 T 恤：正面小圖＋背面合畫"><img src="assets/family/tee-blue-pair.webp" alt="" loading="lazy" /></button>
+                <button type="button" data-src="assets/family/tee-beige-pair.webp" aria-label="米色紀念 T 恤：正面小圖＋背面合畫"><img src="assets/family/tee-beige-pair.webp" alt="" loading="lazy" /></button>
+                <button type="button" data-src="assets/family/tee-navy-longsleeve.webp" aria-label="深藍長袖紀念 T 恤"><img src="assets/family/tee-navy-longsleeve.webp" alt="" loading="lazy" /></button>
+                <button type="button" data-src="assets/family/tee-navy-star-back.webp" aria-label="深藍 T 恤背面星星合畫"><img src="assets/family/tee-navy-star-back.webp" alt="" loading="lazy" /></button>
+              </div>
+            </div>
+            <p class="pack-label">SIGNATURE・03</p>
+            <h2 class="gd-title">紀念 T 恤 <span class="tag tag-navy">人氣推薦</span></h2>
+            <p class="gd-price"><span class="num">$720</span> 起 <small>成人短袖・單面</small></p>
+            <details class="gd-more">
+              <summary>規格與說明<i class="q-icon" aria-hidden="true"></i></summary>
+              <ul class="gd-specs">
+                <li><b>成人</b><span>短袖 $720／長袖 $830</span></li>
+                <li><b>兒童</b><span>短袖 $650／長袖 $800</span></li>
+                <li><b>雙面</b><span>升級雙面印製 +$150／件</span></li>
+                <li><b>套組</b><span>2 件以上自動套用，<span class="hl">3 件以上免運費！</span> <a href="index.html?go=packages">看套組</a></span></li>
+                <li><b>適合</b><span>全家出遊・家族聚會・長輩生日</span></li>
+              </ul>
+            </details>
+            <a class="btn btn-lime btn-sm" href="#" data-line>LINE 詢問 <i class="arrow"></i></a>
+          </article>
         </div>
       </div>
     </section>
@@ -281,6 +280,6 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
   </button>
 
-  <script src="main.js?v=50" defer></script>
+  <script src="main.js?v=51" defer></script>
 </body>
 </html>

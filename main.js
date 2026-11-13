@@ -344,6 +344,7 @@
   };
   swipeDots($('.plans'), '.plan', '方案');
   swipeDots($('.pack-grid'), '.pack', '套組');
+  swipeDots($('.gd-grid'), '.gd-card', '商品');
 
   /* ---------- Goods page: gallery thumbnails swap the main image ---------- */
   $$('.g-gallery').forEach((g) => {
