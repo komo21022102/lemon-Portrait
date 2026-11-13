@@ -739,3 +739,8 @@ ul, ol { list-style: none; }
   .plans .notice-title { font-size: 15px; }
 }
 .plans .plan-list b.wrap-ok { white-space: normal; flex-wrap: wrap; column-gap: 4px; }
+
+/* ---------- PLAN A: colour / mono price pairs ---------- */
+#price-a .amt-group .amt-lg { line-height: 1.1; }
+#price-a .amt-group .amt-lg .amt-label { font-size: 13px; }
+#price-a .plan-list li > div:first-child { min-width: 0; }

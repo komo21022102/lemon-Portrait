@@ -265,9 +265,11 @@
     const DOUBLE = 150, SHIP = 60, FREE_SHIP_MIN = 3; // 雙面 +$150／件；3 件以上免運
     const money = (n) => '$' + n.toLocaleString('en-US');
     const rows = $$('.calc-row[data-price]', calc);
-    // PLAN A：1 人 $600、2 人 $1,200、3 人 $1,500、第 4 人起每位 +$400；毛孩 +$400／隻；特殊場景 +$600 起
-    const designFor = (p) => (p <= 0 ? 0 : p === 1 ? 600 : p === 2 ? 1200 : 1500 + 400 * (p - 3));
-    const PET = 400, BG = 600;
+    // PLAN A 彩色：1 人 $600、2 人 $1,200、3 人 $1,500、第 4 人起每位（人物或毛孩）+$400
+    // PLAN A 單色線稿：1 人 $500、2 人 $1,000、3 人 $1,200、第 4 人起每位 +$300；特殊場景 +$800 起
+    const PRICE = { color: { one: 600, three: 1500, extra: 400 }, mono: { one: 500, three: 1200, extra: 300 } };
+    const designFor = (p, t) => (p <= 0 ? 0 : p === 1 ? t.one : p === 2 ? t.one * 2 : t.three + t.extra * (p - 3));
+    const BG = 800;
     const dealFor = (n) => {
       if (n >= 8) return { name: '大家族價（每件 −$80＋免運）', off: 80 * n, freeShip: true };
       if (n >= 5) return { name: '全家福價（每件 −$50）', off: 50 * n };
@@ -288,7 +290,10 @@
       $('#calc-deal').textContent = '−' + money(deal.off);
       $('#calc-ship').textContent = n && freeShip ? '免運' : money(ship);
       const people = +$('#calc-people output').value, pets = +$('#calc-pets output').value, bg = $('#calc-bg').checked;
-      const design = designFor(people) + PET * pets + (bg ? BG : 0);
+      const t = $('#calc-mono').checked ? PRICE.mono : PRICE.color;
+      $('#calc-people-note').textContent = `1 人 ${money(t.one)}・3 人 ${money(t.three)}`;
+      $('#calc-pets-note').textContent = `+${money(t.extra)}／隻`;
+      const design = designFor(people, t) + t.extra * pets + (bg ? BG : 0);
       $('#calc-design').textContent = money(design) + (bg ? ' 起' : '');
       $('#calc-total').textContent = money(design + sub - deal.off + ship) + (bg ? ' 起' : '');
     };
@@ -301,6 +306,7 @@
     });
     $('#calc-double').addEventListener('change', update);
     $('#calc-bg').addEventListener('change', update);
+    $('#calc-mono').addEventListener('change', update);
     update();
   }
 
