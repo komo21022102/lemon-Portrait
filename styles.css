@@ -773,3 +773,22 @@ ul, ol { list-style: none; }
   .plans .plan-list li { padding: 12px 0; }
   .plans .plan-sub { padding-bottom: 12px; }
 }
+
+/* ---------- PLAN B title: smaller second part, one line on phones ---------- */
+.plan-name-small { font-size: .8em; }
+@media (max-width: 560px) {
+  .plans { padding-top: 30px; }
+  .plans .plan { position: relative; }
+  .plans .plan-name { font-size: min(24px, 6vw); }
+  .plans .plan-name-text { white-space: nowrap; }
+  .plans .plan-icon { position: absolute; top: -18px; right: 14px; width: 58px; margin: 0; }
+}
+
+/* ---------- Plan subtitle: note line drops below the subtitle ---------- */
+.plan-sub .sub-line { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+
+/* ---------- Plan icons 20% larger ---------- */
+.plan-icon { flex-basis: 115px; width: 115px; min-width: 67px; margin: -26px 0 -18px; }
+@media (max-width: 560px) {
+  .plans .plan-icon { width: 70px; top: -24px; right: 12px; }
+}
