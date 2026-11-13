@@ -941,6 +941,8 @@ ul, ol { list-style: none; }
   .gd-grid::-webkit-scrollbar { display: none; }
   .gd-card { flex: 0 0 78%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
   .gd-card.reveal { opacity: 1; transform: none; transition: none; }
+}
+
 /* ---------- Info cards (提供檔案／修改次數／原始檔): square cards, 3 across on every size ---------- */
 .info-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; gap: 20px; }
 .info { aspect-ratio: 1 / 1; display: flex; flex-direction: column; justify-content: center; padding: 28px; border-radius: 32px; }
@@ -959,4 +961,87 @@ ul, ol { list-style: none; }
   .info h3 { font-size: 12.5px; gap: 4px; align-items: flex-start; line-height: 1.3; letter-spacing: -.01em; }
   .info h3::before { width: 5px; height: 5px; margin-top: .45em; flex: none; }
   .info p { font-size: 10.5px; line-height: 1.5; margin-top: 5px; letter-spacing: -.02em; }
+}
+
+/* =========================================================
+   Goods page v2 — follows Figma「分頁 周邊商品」(1483:22926)
+   ========================================================= */
+.goods-hero { padding: 83px 0 0; }
+.crumbs { font-size: 16px; color: #665f5f; padding-left: 13px; }
+.gh-inner { margin-top: clamp(40px, 6vw, 84px); }
+.gh-title { font-size: clamp(28px, 2.5vw, 36px); line-height: 1.5; color: #2b4c7d; margin-top: 0; }
+.gh-lead { font-size: 15px; line-height: 22px; margin-top: 18px; }
+
+.gp-tiers { padding-top: 112px; }
+.gp-tier-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 332px)); justify-content: center; gap: 64px; }
+.gp-tier { position: relative; background: #fcf5ef; border-radius: 60px; padding: 30px 37px 19px; transition: transform .45s var(--ease-spring), box-shadow .45s var(--ease); }
+.gp-tier:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -40px rgba(45,73,112,.5); }
+.gp-tier-art { position: absolute; top: -44px; right: 45px; width: 93px; height: auto; pointer-events: none; }
+.gp-tier-art.is-wide { width: 142px; right: 21px; top: -44px; }
+.gp-tier-name { font-size: 24px; line-height: 36px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+.gp-tier-name .tag { height: 22px; padding: 0 12px; font-size: 10.5px; }
+.gp-tier-price { margin-top: 8px; display: flex; align-items: baseline; gap: 1px; font-family: var(--font-en); }
+.gp-tier-price .num { font-size: 32px; line-height: 39px; font-weight: 800; color: var(--navy); }
+.gp-tier-price small { font-family: var(--font-tc); font-size: 11px; color: var(--ink-2); }
+.gp-tier-line { margin-top: 8px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-2); white-space: nowrap; }
+.gp-pill { flex: none; display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 50px; background: var(--lime); color: var(--navy); font-size: 12px; font-weight: 700; }
+.gp-more { margin-top: 16px; display: flex; justify-content: flex-end; align-items: center; gap: 11px; font-size: 13px; font-weight: 700; color: var(--navy); }
+.gp-more .arrow { width: 24px; }
+.gp-more:hover { color: var(--ink); }
+.gp-tiers .goods-note { margin-top: 28px; font-size: 12.5px; }
+.gp-tiers .goods-note a { text-decoration: none; color: var(--ink); font-weight: 700; margin-left: 2px; }
+
+.gp-detail { padding-top: 188px; scroll-margin-top: 40px; }
+.gp-detail + .gp-detail { padding-top: 117px; }
+.gp-head { text-align: center; }
+.gp-title { font-family: var(--font-title); font-size: 36px; line-height: 54px; font-weight: 700; color: var(--navy); letter-spacing: .02em; }
+.gp-price { margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; }
+.gp-price .num { font-family: var(--font-en); font-size: 32px; line-height: 39px; font-weight: 800; color: var(--navy); }
+.gp-price small { font-size: 14px; font-weight: 700; color: var(--ink-2); align-self: flex-end; margin-bottom: 2px; }
+.gp-tag { margin-left: 10px; display: inline-flex; align-items: center; height: 33px; padding: 0 14px; border: 1px solid #2b4c7d; border-radius: 40px; color: #2b4c7d; font-size: 14px; font-weight: 700; }
+.gp-body { margin-top: 20px; display: grid; grid-template-columns: minmax(0, 723px) minmax(0, 369px); justify-content: center; gap: 60px; align-items: start; }
+.gp-detail.is-flip .gp-body { grid-template-columns: minmax(0, 383px) minmax(0, 719px); }
+.gp-detail.is-flip .gp-photo { order: 2; }
+.gp-photo { aspect-ratio: 723 / 407; border-radius: 40px; overflow: hidden; background: #f4efed; }
+.gp-photo img { width: 100%; height: 100%; object-fit: cover; }
+.gp-specs { display: grid; gap: 16px; }
+.gp-specs li { display: flex; align-items: center; gap: 10px; font-size: 16px; line-height: 24px; color: var(--ink-2); }
+.gp-specs b { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 26px; border-radius: 50px; background: var(--lime); color: var(--navy); font-size: 16px; font-weight: 700; }
+
+.gp-cta { padding-top: 170px; }
+.gp-cta .cta-card { max-width: 886px; border-radius: 200px; padding: 30px 40px; }
+.gp-cta .cta-card p { font-size: 16px; font-weight: 700; margin-top: 18px; }
+.gp-cta .cta-card .btn { margin-top: 21px; }
+
+@media (max-width: 1180px) {
+  .gp-tier-grid { gap: 28px; }
+  .gp-tier { padding-inline: 28px; }
+  .gp-tier-line { white-space: normal; align-items: flex-start; }
+}
+@media (max-width: 960px) {
+  .gp-body, .gp-detail.is-flip .gp-body { grid-template-columns: minmax(0, 1fr); max-width: 640px; margin-inline: auto; gap: 24px; }
+  .gp-detail.is-flip .gp-photo { order: 0; }
+  .gp-detail { padding-top: 110px; }
+  .gp-detail + .gp-detail { padding-top: 90px; }
+}
+@media (max-width: 760px) {
+  .goods-hero { padding-top: 24px; }
+  .crumbs { font-size: 13px; padding-left: 0; }
+  .gh-inner { margin-top: 28px; }
+  .gh-lead { font-size: 14px; line-height: 1.7; }
+  .gp-tiers { padding-top: 64px; }
+  .gp-tier-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; max-width: 420px; margin-inline: auto; }
+  .gp-tier { border-radius: 40px; }
+  .gp-detail { padding-top: 80px; }
+  .gp-detail + .gp-detail { padding-top: 72px; }
+  .gp-title { font-size: 26px; line-height: 38px; }
+  .gp-price .num { font-size: 28px; }
+  .gp-tag { height: 28px; font-size: 13px; padding: 0 12px; }
+  .gp-photo { border-radius: 28px; }
+  .gp-specs { gap: 12px; }
+  .gp-specs li { font-size: 14px; line-height: 22px; align-items: flex-start; }
+  .gp-specs b { width: 60px; height: 24px; font-size: 13.5px; margin-top: -1px; }
+  .gp-cta { padding-top: 90px; }
+  .gp-cta .cta-card { border-radius: 48px; padding: 36px 24px; }
+  .gp-cta .cta-card p { font-size: 14px; }
 }

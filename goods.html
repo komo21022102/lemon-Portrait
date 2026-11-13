@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=83" />
+  <link rel="stylesheet" href="styles.css?v=86" />
 </head>
 <body class="page-goods">
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -70,186 +70,109 @@
   </header>
 
   <main id="main">
-    <!-- ============ Intro ============ -->
+    <!-- ============ Intro (Figma 1483:22926) ============ -->
     <section class="goods-hero">
       <div class="container">
         <nav class="crumbs" aria-label="麵包屑"><a href="index.html">首頁</a><span aria-hidden="true">›</span><span>周邊商品</span></nav>
         <div class="gh-inner reveal">
-          <p class="packs-eyebrow" lang="en">MERCH</p>
           <h1 class="gh-title">一張插畫，<span class="nowrap">三種帶回家的方式</span></h1>
-          <p class="gh-lead">先完成專屬插畫，再挑一個天天用得到的小物。<br />從入門小物到人氣紀念 T 恤，依預算自由選。</p>
-          <div class="gh-jumps">
-            <a class="pill pill-outline" href="#purse">零錢包</a>
-            <a class="pill pill-outline" href="#tote">側背帆布包</a>
-            <a class="pill pill-outline" href="#tee">紀念 T 恤</a>
-          </div>
+          <p class="gh-lead">先完成專屬插畫，再挑一個實用的貼身小物。<br />把最重要的人事物 穿帶在身邊～！</p>
         </div>
       </div>
     </section>
 
-    <!-- ============ Tier compare ============ -->
-    <section class="goods-tiers">
+    <!-- ============ Tier cards ============ -->
+    <section class="gp-tiers">
       <div class="container">
-        <div class="pack-grid goods-grid">
-          <article class="pack has-art reveal" style="--d:0">
-            <img class="pack-art is-square" src="assets/goods/purse.svg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
-            <p class="pack-label">STARTER</p>
-            <h2 class="pack-name">零錢包</h2>
-            <p class="pack-price"><span class="num">$—</span><small>起</small></p>
-            <p class="pack-save">入門小物</p>
-            <p class="pack-copy">放零錢、耳機、悠遊卡剛剛好。小巧好送，第一次訂製的人氣選擇。</p>
-            <a class="goods-more" href="#purse">看商品細節 <i class="arrow"></i></a>
+        <div class="gp-tier-grid">
+          <article class="gp-tier reveal" style="--d:0">
+            <img class="gp-tier-art" src="assets/goods/purse-icon.webp" alt="" aria-hidden="true" width="279" height="276" />
+            <h2 class="gp-tier-name">防水零錢包</h2>
+            <p class="gp-tier-price"><span class="num">$250</span><small>起</small></p>
+            <p class="gp-tier-line"><span class="gp-pill">入門小物</span>放零錢、耳機、悠遊卡剛剛好。</p>
+            <a class="gp-more" href="#purse">看商品細節 <i class="arrow"></i></a>
           </article>
-
-          <article class="pack has-art reveal" style="--d:1">
-            <img class="pack-art is-square" src="assets/goods/tote.svg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
-            <p class="pack-label">DAILY</p>
-            <h2 class="pack-name">側背帆布包</h2>
-            <p class="pack-price"><span class="num">$—</span><small>起</small></p>
-            <p class="pack-save">日常實用</p>
-            <p class="pack-copy">每天出門都背得到的插畫。上班、上課、逛市集，一家人一直陪在身邊。</p>
-            <a class="goods-more" href="#tote">看商品細節 <i class="arrow"></i></a>
+          <article class="gp-tier reveal" style="--d:1">
+            <img class="gp-tier-art" src="assets/goods/tote-icon.webp" alt="" aria-hidden="true" width="279" height="276" />
+            <h2 class="gp-tier-name">側背帆布小包</h2>
+            <p class="gp-tier-price"><span class="num">$460</span><small>起</small></p>
+            <p class="gp-tier-line"><span class="gp-pill">日常實用</span>每天出門都背得到的陪伴型插畫！</p>
+            <a class="gp-more" href="#tote">看商品細節 <i class="arrow"></i></a>
           </article>
-
-          <article class="pack pack-hot has-art reveal" style="--d:2">
-            <img class="pack-art" src="assets/price/plan-b-icon.svg" alt="" aria-hidden="true" width="141" height="89" loading="lazy" />
-            <p class="pack-label">SIGNATURE</p>
-            <h2 class="pack-name">紀念 T 恤 <span class="tag tag-navy pack-badge">人氣推薦</span></h2>
-            <p class="pack-price"><span class="num">$720</span><small>起</small></p>
-            <p class="pack-save">人氣招牌</p>
-            <p class="pack-copy">全家一起穿出門的紀念感。可升級雙面印製，正面小圖＋背面家庭合畫。</p>
-            <a class="goods-more" href="#tee">看商品細節 <i class="arrow"></i></a>
+          <article class="gp-tier reveal" style="--d:2">
+            <img class="gp-tier-art is-wide" src="assets/goods/tee-icon.webp" alt="" aria-hidden="true" width="428" height="267" />
+            <h2 class="gp-tier-name">紀念 T <span class="tag tag-navy">推薦</span></h2>
+            <p class="gp-tier-price"><span class="num">$720</span><small>起</small></p>
+            <p class="gp-tier-line"><span class="gp-pill">人氣招牌</span>正面個人形象圖＋背面家庭合畫！</p>
+            <a class="gp-more" href="#tee">看商品細節 <i class="arrow"></i></a>
           </article>
         </div>
-        <p class="goods-note">＊以上皆為「完成插畫後」的商品加購費用，插畫設計費依 <a href="index.html?go=pricing">PLAN A</a> 另計。</p>
+        <p class="goods-note">＊以上皆為「完成插畫後」的商品加購費用，插畫設計費依<a href="index.html?go=pricing">PLAN A</a> 另計。</p>
       </div>
     </section>
 
-    <!-- ============ Product details: three compact square cards ============ -->
-    <section class="goods-detail" aria-label="商品細節">
+    <section class="gp-detail" id="purse" aria-labelledby="purse-title">
       <div class="container">
-        <div class="gd-grid">
-          <article class="gd-card reveal" id="purse" style="--d:0">
-            <div class="g-gallery">
-              <figure class="g-main"><img src="assets/goods/purse.svg" alt="零錢包示意圖" width="160" height="160" /></figure>
-            </div>
-            <p class="pack-label">STARTER・01</p>
-            <h2 class="gd-title">零錢包</h2>
-            <p class="gd-price"><span class="num">$—</span> 起 <small>示意・價格確認中</small></p>
-            <details class="gd-more">
-              <summary>規格與說明<i class="q-icon" aria-hidden="true"></i></summary>
-              <ul class="gd-specs">
-                <li><b>尺寸</b><span>約 — × — cm（待確認）</span></li>
-                <li><b>材質</b><span>待確認</span></li>
-                <li><b>印製</b><span>單面全彩印製</span></li>
-                <li><b>顏色</b><span>待確認</span></li>
-                <li><b>適合</b><span>好朋友・畢業紀念・小禮物</span></li>
-              </ul>
-            </details>
-            <a class="btn btn-lime btn-sm" href="#" data-line>LINE 詢問 <i class="arrow"></i></a>
-          </article>
-
-          <article class="gd-card reveal" id="tote" style="--d:1">
-            <div class="g-gallery">
-              <figure class="g-main"><img src="assets/goods/tote.svg" alt="側背帆布包示意圖" width="160" height="160" /></figure>
-            </div>
-            <p class="pack-label">DAILY・02</p>
-            <h2 class="gd-title">側背帆布包</h2>
-            <p class="gd-price"><span class="num">$—</span> 起 <small>示意・價格確認中</small></p>
-            <details class="gd-more">
-              <summary>規格與說明<i class="q-icon" aria-hidden="true"></i></summary>
-              <ul class="gd-specs">
-                <li><b>尺寸</b><span>約 — × — cm（待確認）</span></li>
-                <li><b>材質</b><span>帆布（厚度待確認）</span></li>
-                <li><b>印製</b><span>單面全彩印製</span></li>
-                <li><b>顏色</b><span>待確認</span></li>
-                <li><b>適合</b><span>媽媽・情侶・自己</span></li>
-              </ul>
-            </details>
-            <a class="btn btn-lime btn-sm" href="#" data-line>LINE 詢問 <i class="arrow"></i></a>
-          </article>
-
-          <article class="gd-card is-hot reveal" id="tee" style="--d:2">
-            <div class="g-gallery">
-              <figure class="g-main is-photo"><img src="assets/family/tee-blue-pair.webp" alt="淺藍紀念 T 恤：正面小圖＋背面合畫" /></figure>
-              <div class="g-thumbs" role="group" aria-label="切換 T 恤照片">
-                <button class="is-active" type="button" data-src="assets/family/tee-blue-pair.webp" aria-label="淺藍紀念 T 恤：正面小圖＋背面合畫"><img src="assets/family/tee-blue-pair.webp" alt="" loading="lazy" /></button>
-                <button type="button" data-src="assets/family/tee-beige-pair.webp" aria-label="米色紀念 T 恤：正面小圖＋背面合畫"><img src="assets/family/tee-beige-pair.webp" alt="" loading="lazy" /></button>
-                <button type="button" data-src="assets/family/tee-navy-longsleeve.webp" aria-label="深藍長袖紀念 T 恤"><img src="assets/family/tee-navy-longsleeve.webp" alt="" loading="lazy" /></button>
-                <button type="button" data-src="assets/family/tee-navy-star-back.webp" aria-label="深藍 T 恤背面星星合畫"><img src="assets/family/tee-navy-star-back.webp" alt="" loading="lazy" /></button>
-              </div>
-            </div>
-            <p class="pack-label">SIGNATURE・03</p>
-            <h2 class="gd-title">紀念 T 恤 <span class="tag tag-navy">人氣推薦</span></h2>
-            <p class="gd-price"><span class="num">$720</span> 起 <small>成人短袖・單面</small></p>
-            <details class="gd-more">
-              <summary>規格與說明<i class="q-icon" aria-hidden="true"></i></summary>
-              <ul class="gd-specs">
-                <li><b>成人</b><span>短袖 $720／長袖 $830</span></li>
-                <li><b>兒童</b><span>短袖 $650／長袖 $800</span></li>
-                <li><b>雙面</b><span>升級雙面印製 +$150／件</span></li>
-                <li><b>套組</b><span>2 件以上自動套用，<span class="hl">3 件以上免運費！</span> <a href="index.html?go=packages">看套組</a></span></li>
-                <li><b>適合</b><span>全家出遊・家族聚會・長輩生日</span></li>
-              </ul>
-            </details>
-            <a class="btn btn-lime btn-sm" href="#" data-line>LINE 詢問 <i class="arrow"></i></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ Combo ============ -->
-    <section class="goods-combo section">
-      <div class="container">
-        <div class="combo-card reveal">
-          <p class="packs-eyebrow" lang="en">BUNDLE</p>
-          <h2 class="ge-title">一起帶回家，更划算</h2>
-          <p class="ge-desc">同一張插畫做成多種周邊，例如「T 恤＋帆布包」「全家 T 恤＋零錢包」。<br />組合優惠內容規劃中，歡迎先私訊詢問！</p>
-          <div class="combo-row" aria-hidden="true">
-            <img src="assets/price/plan-b-icon.svg" alt="" width="141" height="89" />
-            <span>＋</span>
-            <img src="assets/goods/tote.svg" alt="" width="160" height="160" />
-            <span>＋</span>
-            <img src="assets/goods/purse.svg" alt="" width="160" height="160" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ Goods FAQ ============ -->
-    <section class="faq section goods-faq" id="goods-faq">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow center">FAQ</p>
-          <h2 class="h2">周邊商品常見問題</h2>
+        <header class="gp-head reveal">
+          <h2 class="gp-title" id="purse-title">防水零錢包</h2>
+          <p class="gp-price"><span class="num">$250</span><small>起</small><span class="gp-tag">入門小物</span></p>
         </header>
-        <div class="faq-list">
-          <details class="qa reveal">
-            <summary><span class="q-no">Q1</span><span class="q-text">可以只買周邊，不訂插畫嗎？</span><i class="q-icon" aria-hidden="true"></i></summary>
-            <div class="qa-body"><p>周邊商品是用你的專屬插畫製作，需要先完成插畫（PLAN A）。如果你已經有我們畫好的插畫，可以直接加購周邊。</p></div>
-          </details>
-          <details class="qa reveal">
-            <summary><span class="q-no">Q2</span><span class="q-text">交期大概多久？</span><i class="q-icon" aria-hidden="true"></i></summary>
-            <div class="qa-body"><p>插畫完成後，周邊製作約 1～2 週（實際依商品與數量確認）。</p></div>
-          </details>
-          <details class="qa reveal">
-            <summary><span class="q-no">Q3</span><span class="q-text">運費怎麼計算？</span><i class="q-icon" aria-hidden="true"></i></summary>
-            <div class="qa-body"><p>本島一般店到店運費 $60／筆。多樣商品一起寄送時，運費依實際包裹確認。</p></div>
-          </details>
-          <details class="qa reveal">
-            <summary><span class="q-no">Q4</span><span class="q-text">帆布包、零錢包可以清洗嗎？</span><i class="q-icon" aria-hidden="true"></i></summary>
-            <div class="qa-body"><p>建議冷水手洗、反面陰乾，避免烘乾與長時間浸泡（實際洗滌方式依商品材質確認）。</p></div>
-          </details>
+        <div class="gp-body">
+          <figure class="gp-photo reveal"><img src="assets/goods/purse-photo.webp" alt="防水零錢包：白色圓形零錢包與黑色拉鍊" width="1600" height="900" loading="lazy" /></figure>
+          <ul class="gp-specs reveal" style="--d:1">
+              <li><b>顏色</b><span>錢包白色、拉鍊黑</span></li>
+              <li><b>尺寸</b><span>直徑10cm</span></li>
+              <li><b>印刷</b><span>熱昇華印刷，圖案染進纖維</span></li>
+              <li><b>製成</b><span>台灣印製一般 2–3 個工作天出貨（從確認稿件＋付款起算，不含假日與運送時間）</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-detail is-flip" id="tote" aria-labelledby="tote-title">
+      <div class="container">
+        <header class="gp-head reveal">
+          <h2 class="gp-title" id="tote-title">帆布側背小包</h2>
+          <p class="gp-price"><span class="num">$460</span><small>起</small><span class="gp-tag">日常實用</span></p>
+        </header>
+        <div class="gp-body">
+          <figure class="gp-photo reveal"><img src="assets/goods/tote-photo.webp" alt="帆布側背小包：黑色與米色" width="1600" height="900" loading="lazy" /></figure>
+          <ul class="gp-specs reveal" style="--d:1">
+              <li><b>顏色</b><span>黑色、米色</span></li>
+              <li><b>尺寸</b><span>袋體 高23cm、寬30cm、背帶長105cm</span></li>
+              <li><b>材質</b><span>100%棉 帆布材質、袋子開口處有縫製押扣</span></li>
+              <li><b>容量</b><span>0.7L</span></li>
+              <li><b>製成</b><span>台灣印製一般 7 個工作天出貨（從確認稿件＋付款起算，不含假日與運送時間）</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="gp-detail" id="tee" aria-labelledby="tee-title">
+      <div class="container">
+        <header class="gp-head reveal">
+          <h2 class="gp-title" id="tee-title">紀念T印刷</h2>
+          <p class="gp-price"><span class="num">$720</span><small>起</small><span class="gp-tag">紀念推薦</span></p>
+        </header>
+        <div class="gp-body">
+          <figure class="gp-photo reveal"><img src="assets/goods/tee-photo.webp" alt="多款顏色的素面 T 恤" width="1600" height="900" loading="lazy" /></figure>
+          <ul class="gp-specs reveal" style="--d:1">
+              <li><b>顏色</b><span>多款顏色</span></li>
+              <li><b>材質</b><span>棉100%<br />※麻灰：80%棉、20%聚酯纖維<br />※白灰：95%棉、5%聚酯纖維<br />※其它：100%全棉、布料厚度 5.6oz<br />※僅白色為棉線縫紉</span></li>
+              <li><b>尺寸</b><span>衣長偏長、品質與耐洗強韌度兼具</span></li>
+              <li><b>印刷</b><span>轉印</span></li>
+              <li><b>製成</b><span>台灣印製一般 7 個工作天出貨（從確認稿件＋付款起算，不含假日與運送時間）</span></li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- ============ CTA ============ -->
-    <section class="cta section" id="contact">
+    <section class="cta section gp-cta" id="contact">
       <div class="container">
         <div class="cta-card reveal">
-          <h2 class="h2"><span class="m-line">想做哪一種周邊？</span></h2>
-          <p>告訴我想畫的家人、想做的商品和數量，我們幫你估一個最剛好的組合。</p>
+          <h2 class="h2">想做哪一種周邊？</h2>
+          <p>告訴我想畫的家人、想做的商品和數量，<span class="nowrap">我幫你估一個最剛好的組合！</span></p>
           <a class="btn btn-lime btn-lg" href="#" data-line>透過LINE詢問 <i class="arrow"></i></a>
         </div>
       </div>
