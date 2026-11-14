@@ -1092,3 +1092,16 @@ ul, ol { list-style: none; }
   .plans .plan-icon { width: 88px; top: -36px; right: 12px; }
 }
 @media (min-width: 561px) and (max-width: 960px) { .plans { row-gap: 76px; } }
+
+/* ---------- Plan icons another 20% larger ---------- */
+.plan-icon { width: 173px; top: -64px; right: 18px; }
+@media (min-width: 561px) and (max-width: 1180px) {
+  .price .section-head { margin-bottom: calc(clamp(36px, 5vw, 64px) + 52px); }
+  .plan-icon { top: -78px; right: 12px; }
+}
+@media (min-width: 561px) and (max-width: 960px) { .plans { row-gap: 96px; } }
+@media (max-width: 560px) {
+  .plans { padding-top: 56px; }
+  .plans .plan-icon { width: 106px; top: -47px; right: 10px; }
+}
+@media (min-width: 1181px) { .price .section-head { margin-bottom: calc(clamp(36px, 5vw, 64px) + 18px); } }
