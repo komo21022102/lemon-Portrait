@@ -1079,3 +1079,16 @@ ul, ol { list-style: none; }
   .pack-grid { margin-top: 40px; padding-top: 80px; }
   .pack-art { width: 130px; top: -70px; }
 }
+
+/* ---------- Plan icons another 25% larger; sit on the card's top-right corner so titles keep their room ---------- */
+.plans .plan { position: relative; }
+.plan-icon { position: absolute; top: -46px; right: 22px; width: 144px; min-width: 0; flex: none; margin: 0; }
+@media (min-width: 561px) and (max-width: 1180px) {
+  .price .section-head { margin-bottom: calc(clamp(36px, 5vw, 64px) + 32px); }
+  .plan-icon { top: -60px; right: 16px; }
+}
+@media (max-width: 560px) {
+  .plans { padding-top: 44px; }
+  .plans .plan-icon { width: 88px; top: -36px; right: 12px; }
+}
+@media (min-width: 561px) and (max-width: 960px) { .plans { row-gap: 76px; } }
