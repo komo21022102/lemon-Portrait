@@ -266,7 +266,7 @@
      價格改這裡：單件價寫在 index.html 的 data-price；套組折扣規則在 dealFor() */
   const calc = $('#calc');
   if (calc) {
-    const DOUBLE = 150, SHIP = 60, FREE_SHIP_MIN = 3; // 雙面 +$150／件；3 件以上免運
+    const DOUBLE = 150, SHIP = 60, FREE_SHIP_MIN = 5; // 雙面 +$150／件；5 件以上免運
     const money = (n) => '$' + n.toLocaleString('en-US');
     const rows = $$('.calc-row[data-price]', calc);
     // PLAN A 彩色：1 人 $600、2 人 $1,200、3 人 $1,500、第 4 人起每位（人物或毛孩）+$400
