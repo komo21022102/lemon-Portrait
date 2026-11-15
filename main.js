@@ -270,8 +270,8 @@
     const money = (n) => '$' + n.toLocaleString('en-US');
     const rows = $$('.calc-row[data-price]', calc);
     // PLAN A 彩色：1 人 $600、2 人 $1,200、3 人 $1,500、第 4 人起每位（人物或毛孩）+$400
-    // PLAN A 單色線稿：1 人 $500、2 人 $1,000、3 人 $1,200、第 4 人起每位 +$300；特殊場景 +$800 起
-    const PRICE = { color: { one: 600, three: 1500, extra: 400 }, mono: { one: 500, three: 1200, extra: 300 } };
+    // PLAN A 單色線稿：1 人 $500、2 人 $1,000、3 人 $1,200、第 4 人起每位 +$400；特殊場景 +$800 起
+    const PRICE = { color: { one: 600, three: 1500, extra: 400 }, mono: { one: 500, three: 1200, extra: 400 } };
     const designFor = (p, t) => (p <= 0 ? 0 : p === 1 ? t.one : p === 2 ? t.one * 2 : t.three + t.extra * (p - 3));
     const BG = 800;
     const dealFor = (n) => {
