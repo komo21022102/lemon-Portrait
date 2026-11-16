@@ -1119,3 +1119,4 @@ ul, ol { list-style: none; }
 /* ---------- PLAN B 成人/兒童 note: 15px with a small arrow ---------- */
 .plan-list small.spec-note { font-size: 15px; line-height: 1.55; margin-top: 4px; padding-left: 16px; position: relative; }
 .plan-list small.spec-note::before { content: ""; position: absolute; left: 2px; top: .62em; width: 0; height: 0; border-left: 6px solid var(--navy); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+@media (max-width: 560px) { .plans .amt.amt-stack { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; } .plans .amt-stack .amt-label { margin-right: 0; } }
