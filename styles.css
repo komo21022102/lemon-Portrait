@@ -1152,6 +1152,3 @@ ul, ol { list-style: none; }
 @media (min-width: 561px) {
   .plans .plan-list li > div:first-child > b { font-size: 20px; line-height: 30px; }
 }
-
-/* ---------- Spec-note marker: dash instead of triangle ---------- */
-.plan-list small.spec-note::before { content: "-"; top: 0; left: 1px; width: auto; height: auto; border: 0; color: var(--navy); font-weight: 700; line-height: inherit; }
