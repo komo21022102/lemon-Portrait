@@ -1218,3 +1218,7 @@ ul, ol { list-style: none; }
   .step h3 { font-size: 15px; line-height: 1.4; }
   .step p:last-child { margin-top: 6px; padding-bottom: 12px; line-height: 1.6; }
 }
+
+/* ---------- Process steps: description fills the card so underlines line up ---------- */
+.steps { align-items: stretch; }
+.step p:last-child { flex: 1 1 auto; }
