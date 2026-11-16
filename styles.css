@@ -1192,3 +1192,9 @@ ul, ol { list-style: none; }
 
 /* ---------- PLAN A/B price numbers in blue ---------- */
 .plans .amt, .plans .amt-lg { color: #2F63B0; }
+
+/* ---------- Goods prices with a prefix / shipping note (purse) ---------- */
+.gp-price { flex-wrap: wrap; justify-content: center; row-gap: 2px; }
+.gp-price small.pre, .gp-tier-price small.pre { margin-right: 4px; }
+.gp-tier-price { flex-wrap: wrap; }
+.gp-tier-price small.ship { flex-basis: 100%; margin-top: 2px; }
