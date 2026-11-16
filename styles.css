@@ -1245,3 +1245,8 @@ ul, ol { list-style: none; }
 .gp-dots button { width: 8px; height: 8px; padding: 0; border-radius: 99px; background: #d6d1c8; transition: width .3s var(--ease), background-color .3s; }
 .gp-dots button.is-active { width: 22px; background: var(--navy); }
 @media (max-width: 960px) { .gp-detail.is-flip .gp-media { order: 0; } }
+
+/* ---------- PLAN B tee prices: 轉印／直噴 × 短袖／長袖 (stacked on phone) ---------- */
+@media (max-width: 560px) {
+  .plans .plan-list li > .amt-group.amt-quad { flex-direction: column; align-items: flex-end; gap: 2px; }
+}
