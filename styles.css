@@ -1222,3 +1222,7 @@ ul, ol { list-style: none; }
 /* ---------- Process steps: description fills the card so underlines line up ---------- */
 .steps { align-items: stretch; }
 .step p:last-child { flex: 1 1 auto; }
+
+/* ---------- Goods entry: merch illustration replaces the MERCH eyebrow ---------- */
+.ge-head-art { display: block; width: 170px; height: auto; margin: 0 auto 4px; }
+@media (max-width: 560px) { .ge-head-art { width: 130px; } }
