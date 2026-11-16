@@ -1115,3 +1115,7 @@ ul, ol { list-style: none; }
 @media (max-width: 1180px) { .simple-plus { width: 32px; height: 32px; } .simple-plus::before, .simple-plus::after { height: 5px; margin-top: -2.5px; } }
 @media (max-width: 960px) { .simple-plus { display: none; } }
 @media (max-width: 560px) { .bubble-tag { height: 26px; font-size: 12.5px; padding: 0 12px; margin-bottom: 6px; } }
+
+/* ---------- PLAN B 成人/兒童 note: 15px with a small arrow ---------- */
+.plan-list small.spec-note { font-size: 15px; line-height: 1.55; margin-top: 4px; padding-left: 16px; position: relative; }
+.plan-list small.spec-note::before { content: ""; position: absolute; left: 2px; top: .62em; width: 0; height: 0; border-left: 6px solid var(--navy); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
