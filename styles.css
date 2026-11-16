@@ -1295,3 +1295,10 @@ ul, ol { list-style: none; }
 @media (min-width: 961px) {
   .info { aspect-ratio: auto; height: 280px; justify-content: flex-start; padding: 44px 34px 28px; }
 }
+
+/* ---------- Info cards: no fill, thin grey dividers ---------- */
+.info { background: none; border-radius: 0; }
+.info + .info { border-left: 1px solid #e4dfd8; }
+.info:hover { transform: none; }
+.info-cards { gap: 0; }
+@media (max-width: 960px) { .info { aspect-ratio: auto; min-height: 0; justify-content: flex-start; padding-block: 8px; } }
