@@ -266,7 +266,7 @@
      價格改這裡：單件價寫在 index.html 的 data-price；套組折扣規則在 dealFor() */
   const calc = $('#calc');
   if (calc) {
-    const DOUBLE = 150, SHIP = 60, FREE_SHIP_MIN = 5; // 雙面 +$150／件；5 件以上免運
+    const DOUBLE = 80, SHIP = 60, FREE_SHIP_MIN = 5; // 雙面 +$80／件；5 件以上免運
     const money = (n) => '$' + n.toLocaleString('en-US');
     const rows = $$('.calc-row[data-price]', calc);
     // PLAN A 彩色：1 人 $600、2 人 $1,200、3 人 $1,500、第 4 人起每位（人物或毛孩）+$400
@@ -369,7 +369,7 @@
       }
       if (q.n) {
         q.items.forEach((it) => { if (it.qty) B.push([`${it.name} ${it.qty} 件`, `${money(it.price)} × ${it.qty}`, money(it.price * it.qty)]); });
-        if (q.double && q.teeN) B.push([`${goodsMode ? 'T 恤' : ''}升級雙面印製 ${q.teeN} 件`, `$150 × ${q.teeN}`, money(150 * q.teeN)]);
+        if (q.double && q.teeN) B.push([`${goodsMode ? 'T 恤' : ''}升級雙面印製 ${q.teeN} 件`, `${money(DOUBLE)} × ${q.teeN}`, money(DOUBLE * q.teeN)]);
         if (q.deal.off) B.push([q.deal.name, '套組優惠', '−' + money(q.deal.off)]);
         B.push(['店到店運費', q.freeShip ? '5 件以上免運' : '本島一般超商店到店', q.freeShip ? '免運' : money(q.ship)]);
       }
