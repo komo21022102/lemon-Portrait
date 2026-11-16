@@ -1186,3 +1186,6 @@ ul, ol { list-style: none; }
   }
   .plans .amt-stack .amt-label { margin-right: 6px; }
 }
+
+/* ---------- Plan title outline: 12px padding, pill shape ---------- */
+.plans .plan-name-box { padding: 12px; border-radius: 100px; line-height: 1; margin-left: .15em; }
