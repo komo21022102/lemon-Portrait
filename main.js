@@ -335,6 +335,7 @@
       ['提供檔案', '彩色高解析 JPG、透明高解析背景 PNG，符合印製需求。'],
       ['修改次數', '含修改2次確認草稿、上色修改1次，超過另計 $300／次，繪製約 1.5 週內'],
       ['原始檔及使用授權', '可編輯 AI／PSD 原始檔加購 $1,000 起；商業用途與授權另議。'],
+      ['費用付款', '設計啟動前先付款項，即可進行！'],
     ];
     const pad2 = (v) => String(v).padStart(2, '0');
     const loadImg = (src) => new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
