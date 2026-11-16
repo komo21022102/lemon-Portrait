@@ -1302,3 +1302,19 @@ ul, ol { list-style: none; }
 .info:hover { transform: none; }
 .info-cards { gap: 0; }
 @media (max-width: 960px) { .info { aspect-ratio: auto; min-height: 0; justify-content: flex-start; padding-block: 8px; } }
+
+/* ---------- Desktop: goods entry card ~440px tall (text left, items right) ---------- */
+@media (min-width: 961px) {
+  .ge-card { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); grid-template-areas: "head items" "btn items"; column-gap: 48px; align-items: center; padding: 62px 56px; }
+  .ge-head { grid-area: head; align-self: end; }
+  .ge-head-art { width: 130px; }
+  .ge-card > .btn { grid-area: btn; justify-self: center; align-self: start; margin-top: 20px; }
+  .ge-items { grid-area: items; margin: 0; max-width: none; gap: 16px; }
+}
+
+/* ---------- Desktop: FAQ a little shorter ---------- */
+@media (min-width: 961px) {
+  #faq.section { padding-block: 88px; }
+  .qa summary { padding: 18px 0 16px; }
+  .qa-body p { padding-bottom: 20px; }
+}
