@@ -329,7 +329,7 @@
     update();
 
     /* ---------- Quote sheet (JPG) ----------
-       「算報價」把目前的選擇畫成一張報價單圖片；「下載報價」存成 JPG */
+       「製作報價單」把目前的選擇畫成一張報價單圖片；「下載報價」存成 JPG */
     const QUOTE_NOTES = [
       ['', '基本授權為個人與家庭紀念使用。若要用於商品販售、廣告等商業用途，請先告知用途，授權範圍與費用另議噢'],
       ['提供檔案', '彩色高解析 JPG、透明高解析背景 PNG，符合印製需求。'],
@@ -465,7 +465,7 @@
       const btn = e.currentTarget;
       if (!state || (!state.people && !state.pets && !state.n)) { errBox.hidden = false; return; }
       errBox.hidden = true;
-      btn.disabled = true; btn.textContent = '計算中…';
+      btn.disabled = true; btn.textContent = '製作中…';
       try {
         const blob = await drawQuote();
         if (quoteImg.src) URL.revokeObjectURL(quoteImg.src);
@@ -473,7 +473,7 @@
         quoteImg.src = URL.createObjectURL(blob);
         quoteBox.hidden = false; dlBtn.hidden = false;
         quoteBox.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
-      } finally { btn.disabled = false; btn.textContent = '算報價'; }
+      } finally { btn.disabled = false; btn.textContent = '製作報價單'; }
     });
     dlBtn.addEventListener('click', () => {
       if (!quoteBlob) return;
