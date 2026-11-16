@@ -292,16 +292,19 @@
       quoteImg.removeAttribute('src');
       quoteBox.hidden = true; dlBtn.hidden = true;
     };
+    // goods.html 用 data-mode="goods"：沒有 T 恤套組優惠、運費固定 $60／筆
+    const goodsMode = calc.dataset.mode === 'goods';
     const update = () => {
-      let n = 0, sub = 0;
-      rows.forEach((r) => { const q = +$('output', r).value; n += q; sub += q * +r.dataset.price; });
-      if ($('#calc-double').checked) sub += DOUBLE * n;
-      const deal = dealFor(n);
-      const freeShip = n >= FREE_SHIP_MIN || deal.freeShip;
+      let n = 0, teeN = 0, sub = 0;
+      const items = rows.map((r) => ({ name: r.dataset.name || '', price: +r.dataset.price, qty: +$('output', r).value, tee: r.hasAttribute('data-tee') }));
+      items.forEach((it) => { n += it.qty; sub += it.qty * it.price; if (it.tee) teeN += it.qty; });
+      const double = $('#calc-double').checked;
+      if (double) sub += DOUBLE * teeN;
+      const deal = goodsMode ? { name: '', off: 0 } : dealFor(n);
+      const freeShip = !goodsMode && (n >= FREE_SHIP_MIN || deal.freeShip);
       const ship = n === 0 || freeShip ? 0 : SHIP;
       $('#calc-sub').textContent = money(sub);
-      $('#calc-deal-name').textContent = deal.name;
-      $('#calc-deal').textContent = '−' + money(deal.off);
+      if ($('#calc-deal')) { $('#calc-deal-name').textContent = deal.name; $('#calc-deal').textContent = '−' + money(deal.off); }
       $('#calc-ship').textContent = n && freeShip ? '免運' : money(ship);
       const people = +$('#calc-people output').value, pets = +$('#calc-pets output').value, bg = $('#calc-bg').checked;
       const t = $('#calc-mono').checked ? PRICE.mono : PRICE.color;
@@ -310,9 +313,8 @@
       const design = designFor(people, t) + t.extra * pets + (bg ? BG : 0);
       $('#calc-design').textContent = money(design) + (bg ? ' 起' : '');
       $('#calc-total').textContent = money(design + sub - deal.off + ship) + (bg ? ' 起' : '');
-      const qty = rows.map((r) => +$('output', r).value);
-      state = { people, pets, pets_unit: t.extra, mono: $('#calc-mono').checked, bg, short: qty[0] || 0, long: qty[1] || 0,
-        double: $('#calc-double').checked, n, sub, deal, ship, freeShip: n > 0 && freeShip, designPeople: designFor(people, t), design,
+      state = { people, pets, pets_unit: t.extra, mono: $('#calc-mono').checked, bg, items,
+        double, teeN, n, sub, deal, ship, freeShip: n > 0 && freeShip, designPeople: designFor(people, t), design,
         total: design + sub - deal.off + ship };
       resetQuote();
     };
@@ -366,9 +368,8 @@
         if (q.bg) A.push(['特殊場景／背景', '依複雜度另議', '+$800 起']);
       }
       if (q.n) {
-        if (q.short) B.push([`短袖 ${q.short} 件`, `$660 × ${q.short}`, money(660 * q.short)]);
-        if (q.long) B.push([`長袖 ${q.long} 件`, `$770 × ${q.long}`, money(770 * q.long)]);
-        if (q.double) B.push([`升級雙面印製 ${q.n} 件`, `$150 × ${q.n}`, money(150 * q.n)]);
+        q.items.forEach((it) => { if (it.qty) B.push([`${it.name} ${it.qty} 件`, `${money(it.price)} × ${it.qty}`, money(it.price * it.qty)]); });
+        if (q.double && q.teeN) B.push([`${goodsMode ? 'T 恤' : ''}升級雙面印製 ${q.teeN} 件`, `$150 × ${q.teeN}`, money(150 * q.teeN)]);
         if (q.deal.off) B.push([q.deal.name, '套組優惠', '−' + money(q.deal.off)]);
         B.push(['店到店運費', q.freeShip ? '5 件以上免運' : '本島一般超商店到店', q.freeShip ? '免運' : money(q.ship)]);
       }
@@ -427,7 +428,7 @@
         y += 74;
       };
       if (A.length) section('PLAN A 插畫設計', A, '插畫設計費', money(q.design) + (q.bg ? ' 起' : ''));
-      if (B.length) section('PLAN B T-Shirt 印製', B, 'T 恤小計', money(q.sub - q.deal.off + q.ship));
+      if (B.length) section(calc.dataset.planB || 'PLAN B T-Shirt 印製', B, calc.dataset.subLabel || 'T 恤小計', money(q.sub - q.deal.off + q.ship));
 
       // total box
       ctx.fillStyle = '#ffe04b'; ctx.beginPath(); ctx.roundRect(P, y, CW, 120, 28); ctx.fill();

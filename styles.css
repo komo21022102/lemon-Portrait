@@ -1226,3 +1226,7 @@ ul, ol { list-style: none; }
 /* ---------- Goods entry: merch illustration replaces the MERCH eyebrow ---------- */
 .ge-head-art { display: block; width: 170px; height: auto; margin: 0 auto 4px; }
 @media (max-width: 560px) { .ge-head-art { width: 130px; } }
+
+/* ---------- Goods page: design + goods calculator above the CTA ---------- */
+.gp-calc { padding: clamp(48px, 6vw, 88px) 0 0; scroll-margin-top: 80px; }
+.gp-calc .calc { max-width: 1134px; margin: 0 auto; }
