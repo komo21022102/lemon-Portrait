@@ -1282,3 +1282,4 @@ ul, ol { list-style: none; }
   .scenes-text { font-size: 14.5px; letter-spacing: .06em; gap: 4px; }
   .scenes-art { margin-top: 20px; }
 }
+.scenes-text .warm { color: #e8742a; font-weight: 700; }
