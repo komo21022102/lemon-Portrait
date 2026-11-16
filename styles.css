@@ -1230,3 +1230,6 @@ ul, ol { list-style: none; }
 /* ---------- Goods page: design + goods calculator above the CTA ---------- */
 .gp-calc { padding: clamp(48px, 6vw, 88px) 0 0; scroll-margin-top: 80px; }
 .gp-calc .calc { max-width: 1134px; margin: 0 auto; }
+
+/* ---------- PLAN B subtitle: production time on its own line ---------- */
+.plan-sub .sub-line em.sub-break { flex-basis: 100%; }
