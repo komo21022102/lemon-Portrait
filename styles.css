@@ -1189,3 +1189,6 @@ ul, ol { list-style: none; }
 
 /* ---------- Plan title outline: 12px padding, pill shape ---------- */
 .plans .plan-name-box { padding: 12px; border-radius: 100px; line-height: 1; margin-left: .15em; }
+
+/* ---------- PLAN A/B price numbers in blue ---------- */
+.plans .amt, .plans .amt-lg { color: #2F63B0; }
