@@ -1198,3 +1198,12 @@ ul, ol { list-style: none; }
 .gp-price small.pre, .gp-tier-price small.pre { margin-right: 4px; }
 .gp-tier-price { flex-wrap: wrap; }
 .gp-tier-price small.ship { flex-basis: 100%; margin-top: 2px; }
+
+/* ---------- Process steps: all 5 in one row on desktop ---------- */
+@media (min-width: 961px) {
+  .steps { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px 24px; max-width: 1180px; }
+  .step, .step:nth-child(4), .step:nth-child(5) { grid-column: auto; }
+  .step img { height: 120px; max-width: 100%; }
+  .step h3 { font-size: clamp(16px, 1.4vw, 20px); white-space: nowrap; }
+  .step p:last-child { max-width: none; }
+}
