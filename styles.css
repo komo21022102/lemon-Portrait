@@ -1271,3 +1271,14 @@ ul, ol { list-style: none; }
   .method-close { top: 8px; right: 8px; width: 34px; height: 34px; font-size: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .method-dialog[open] { animation: none; } }
+
+/* ---------- Simple pricing: 更多使用情境 pill ---------- */
+.scenes { max-width: 1163px; margin: clamp(48px, 6vw, 80px) auto 0; padding: 56px clamp(24px, 6vw, 80px) 48px; border-radius: 300px; background: #FCF5EF; text-align: center; }
+.scenes-title { font-family: var(--font-title); font-size: clamp(26px, 3vw, 36px); line-height: 1.4; font-weight: 700; color: var(--navy); letter-spacing: .02em; }
+.scenes-text { margin-top: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; line-height: 1.75; font-weight: 500; color: #555; letter-spacing: .12em; }
+.scenes-art { display: block; width: min(562px, 100%); height: auto; margin: 28px auto 0; }
+@media (max-width: 760px) {
+  .scenes { border-radius: 40px; padding: 40px 20px 32px; }
+  .scenes-text { font-size: 14.5px; letter-spacing: .06em; gap: 4px; }
+  .scenes-art { margin-top: 20px; }
+}
