@@ -519,6 +519,15 @@
   };
   swipeDots($('.plans'), '.plan', '方案');
 
+  /* ---------- Info dialogs (印刷工法介紹): open via [data-open-dialog], close via × / backdrop / Esc ---------- */
+  $$('[data-open-dialog]').forEach((btn) => {
+    const dlg = document.getElementById(btn.dataset.openDialog);
+    if (!dlg || typeof dlg.showModal !== 'function') return;
+    btn.addEventListener('click', () => dlg.showModal());
+    $$('[data-close-dialog]', dlg).forEach((x) => x.addEventListener('click', () => dlg.close()));
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+  });
+
   /* ---------- Goods detail photo sliders: dots + gentle autoplay ---------- */
   $$('.gp-slider').forEach((fig) => {
     const track = $('.gp-slides', fig);

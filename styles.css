@@ -1250,3 +1250,24 @@ ul, ol { list-style: none; }
 @media (max-width: 560px) {
   .plans .plan-list li > .amt-group.amt-quad { flex-direction: column; align-items: flex-end; gap: 2px; }
 }
+
+/* ---------- PLAN B: 印刷工法介紹 button + dialog ---------- */
+.plans .plan-list li.has-method > .amt-group { grid-row: 1 / span 3; }
+.method-btn { grid-column: 1; grid-row: 3; justify-self: start; align-self: start; margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 16px; border: 1px solid var(--navy); border-radius: 100px; background: #fff; color: var(--navy); font-size: 14px; font-weight: 700; cursor: pointer; transition: background-color .25s, color .25s; }
+.method-btn:hover, .method-btn:focus-visible { background: var(--navy); color: #fff; }
+.method-arrow { display: inline-block; transition: transform .25s var(--ease); }
+.method-btn:hover .method-arrow { transform: translateX(3px); }
+.method-dialog { padding: 0; border: 0; border-radius: 24px; background: #fff; width: min(900px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); overflow: auto; box-shadow: 0 24px 60px rgba(28, 34, 46, .28); }
+.method-dialog::backdrop { background: rgba(28, 34, 46, .7); }
+.method-dialog img { display: block; width: 100%; height: auto; }
+.method-close { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 26px; line-height: 1; display: grid; place-items: center; cursor: pointer; transition: background-color .25s, color .25s; }
+.method-close:hover, .method-close:focus-visible { background: var(--lime); color: var(--navy); }
+.method-dialog[open] { animation: method-in .3s var(--ease); }
+@keyframes method-in { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+@media (max-width: 560px) {
+  .plans .plan-list li.has-method > .amt-group { grid-row: 3; }
+  .method-btn { grid-column: 1 / -1; grid-row: 4; margin-top: 8px; height: 32px; font-size: 13.5px; }
+  .method-dialog { border-radius: 18px; }
+  .method-close { top: 8px; right: 8px; width: 34px; height: 34px; font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .method-dialog[open] { animation: none; } }

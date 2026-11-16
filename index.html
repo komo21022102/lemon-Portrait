@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=119" />
+  <link rel="stylesheet" href="styles.css?v=120" />
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -301,7 +301,7 @@
             <h3 class="plan-name"><span class="plan-name-text">PLAN B <span class="nowrap plan-name-small plan-name-box">➕購T-shirt 印刷</span></span><img class="plan-icon" src="assets/price/plan-b-icon.svg" alt="" aria-hidden="true" width="141" height="89" /></h3>
             <p class="plan-sub">印刷服務 <span class="sub-line"><em>單件＆多件優惠價・全彩印製</em><em class="sub-break">台灣印製，一般10個工作天出貨<span class="nowrap">（不包含假日）</span></em></span></p>
             <ul class="plan-list">
-              <li><div><b>成人/兒童</b><small class="spec-note">含素面衣服＋<span class="hl">單面A5大小</span>印刷彩色圖</small></div><div class="amt-group amt-quad"><span class="amt"><i class="amt-label">短袖・轉印</i>+$650 <small>/件</small></span><span class="amt"><i class="amt-label">短袖・直噴</i>+$710 <small>/件</small></span><span class="amt"><i class="amt-label">長袖・轉印</i>+$750 <small>/件</small></span><span class="amt"><i class="amt-label">長袖・直噴</i>+$800 <small>/件</small></span></div></li>
+              <li class="has-method"><div><b>成人/兒童</b><small class="spec-note">含素面衣服＋<span class="hl">單面A5大小</span>印刷彩色圖</small><button type="button" class="method-btn" data-open-dialog="print-method">印刷工法介紹<span class="method-arrow" aria-hidden="true">→</span></button></div><div class="amt-group amt-quad"><span class="amt"><i class="amt-label">短袖・轉印</i>+$650 <small>/件</small></span><span class="amt"><i class="amt-label">短袖・直噴</i>+$710 <small>/件</small></span><span class="amt"><i class="amt-label">長袖・轉印</i>+$750 <small>/件</small></span><span class="amt"><i class="amt-label">長袖・直噴</i>+$800 <small>/件</small></span></div></li>
               <li><div><b>升級雙面印製</b><small class="spec-note">＋價購 - A5尺寸印刷彩色圖</small></div><span class="amt">+$150 <small>/件</small></span></li>
               <li><div><b>店到店運送</b><small class="spec-note">限本島一般超商店到店，<span class="hl">5人以上免運費！</span></small></div><span class="amt">+$60 <small>/筆</small></span></li>
             </ul>
@@ -532,6 +532,12 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
   </button>
 
+  <!-- 印刷工法介紹 -->
+  <dialog class="method-dialog" id="print-method" aria-label="印刷工法介紹：直噴與轉印比較">
+    <button type="button" class="method-close" data-close-dialog aria-label="關閉">×</button>
+    <img src="assets/price/print-method.webp" alt="印刷方式比較。直噴：價格較高、墨水直接吸附在布料上、色彩不如轉印鮮豔、耐洗度佳會慢慢褪色、印刷薄較透氣。轉印：價格較低、製作轉印膜高溫燙印上去、色彩鮮豔、耐洗度可能剝落、印刷厚較不透氣。" width="1491" height="1055" loading="lazy" />
+  </dialog>
+
   <!-- lightbox -->
   <div class="lightbox" id="lightbox" hidden aria-modal="true" role="dialog" aria-label="作品大圖">
     <button class="lb-close" aria-label="關閉">×</button>
@@ -541,6 +547,6 @@
     <p class="lb-count"></p>
   </div>
 
-  <script src="main.js?v=62" defer></script>
+  <script src="main.js?v=63" defer></script>
 </body>
 </html>
