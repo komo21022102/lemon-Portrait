@@ -1163,7 +1163,7 @@ ul, ol { list-style: none; }
 .plans .plan-list li:last-child { border-bottom: 0; }
 .plans .plan-list li > div:first-child { display: contents; }
 .plans .plan-list li > div:first-child > b { grid-column: 1; grid-row: 1; }
-.plans .plan-list small.spec-note { grid-column: 1; grid-row: 2; margin-top: 0; color: #767676; }
+.plans .plan-list small.spec-note { grid-column: 1; grid-row: 2; margin-top: 0; color: #444; }
 .plans .plan-list li > .amt-group, .plans .plan-list li > .amt { grid-column: 2; grid-row: 1 / span 2; }
 /* quieter price labels so the numbers stand out */
 .plans .amt-label { font-weight: 500; color: #8a8a8a; }
