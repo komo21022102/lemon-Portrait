@@ -1152,3 +1152,37 @@ ul, ol { list-style: none; }
 @media (min-width: 561px) {
   .plans .plan-list li > div:first-child > b { font-size: 20px; line-height: 30px; }
 }
+
+/* ---------- PLAN A/B rows: clearer hierarchy & airier layout ---------- */
+/* grid rows: title + note on the left, prices on the right */
+.plans .plan-list li {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 20px; row-gap: 6px; align-items: start;
+  border-radius: 0; border-bottom: 1px dashed rgba(45, 73, 112, .22);
+}
+.plans .plan-list li:hover { background: none; padding-inline: 0; }
+.plans .plan-list li:last-child { border-bottom: 0; }
+.plans .plan-list li > div:first-child { display: contents; }
+.plans .plan-list li > div:first-child > b { grid-column: 1; grid-row: 1; }
+.plans .plan-list small.spec-note { grid-column: 1; grid-row: 2; margin-top: 0; color: #767676; }
+.plans .plan-list li > .amt-group, .plans .plan-list li > .amt { grid-column: 2; grid-row: 1 / span 2; }
+/* quieter price labels so the numbers stand out */
+.plans .amt-label { font-weight: 500; color: #8a8a8a; }
+.plans .amt-group { gap: 4px; }
+.plans .amt-group .amt { display: flex; align-items: baseline; justify-content: flex-end; }
+
+/* phone: notes use the full width; price pairs sit on their own line */
+@media (max-width: 560px) {
+  .plans .plan-list li { column-gap: 12px; row-gap: 3px; padding: 12px 0; }
+  .plans .plan-list li > div:first-child > b { font-size: 16.5px; line-height: 1.45; }
+  .plans .plan-list b.hot-title .tag { vertical-align: 3px; }
+  .plans .plan-list small.spec-note { grid-column: 1 / -1; line-height: 1.5; }
+  .plans .plan-list li > .amt { grid-row: 1; align-self: center; }
+  .plans .plan-list li:has(> .amt-group) > div:first-child > b,
+  .plans .plan-list li:has(> .amt-stack) > div:first-child > b { grid-column: 1 / -1; }
+  .plans .plan-list li > .amt-group,
+  .plans .plan-list li > .amt.amt-stack {
+    grid-column: 1 / -1; grid-row: 3; margin-top: 6px;
+    display: flex; flex-direction: row; justify-content: flex-end; align-items: baseline; gap: 16px;
+  }
+  .plans .amt-stack .amt-label { margin-right: 6px; }
+}
