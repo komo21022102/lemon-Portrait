@@ -292,7 +292,7 @@
       quoteImg.removeAttribute('src');
       quoteBox.hidden = true; dlBtn.hidden = true;
     };
-    // goods.html 用 data-mode="goods"：沒有 T 恤套組優惠、運費固定 $60／筆
+    // goods.html 用 data-mode="goods"：沒有 T 恤套組優惠；運費 $60／筆，5 件以上免運
     const goodsMode = calc.dataset.mode === 'goods';
     const update = () => {
       let n = 0, teeN = 0, sub = 0;
@@ -301,7 +301,7 @@
       const double = $('#calc-double').checked;
       if (double) sub += DOUBLE * teeN;
       const deal = goodsMode ? { name: '', off: 0 } : dealFor(n);
-      const freeShip = !goodsMode && (n >= FREE_SHIP_MIN || deal.freeShip);
+      const freeShip = n >= FREE_SHIP_MIN || deal.freeShip;
       const ship = n === 0 || freeShip ? 0 : SHIP;
       $('#calc-sub').textContent = money(sub);
       if ($('#calc-deal')) { $('#calc-deal-name').textContent = deal.name; $('#calc-deal').textContent = '−' + money(deal.off); }
