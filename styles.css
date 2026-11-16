@@ -1105,3 +1105,13 @@ ul, ol { list-style: none; }
   .plans .plan-icon { width: 106px; top: -47px; right: 10px; }
 }
 @media (min-width: 1181px) { .price .section-head { margin-bottom: calc(clamp(36px, 5vw, 64px) + 18px); } }
+
+/* ---------- Simple pricing: tag pills above prices and a "+" before the T-shirt bubble ---------- */
+.bubble-tag { align-self: center; display: inline-flex; align-items: center; height: 30px; padding: 0 16px; margin-bottom: 10px; border: 1.5px solid var(--navy); border-radius: 99px; background: #fff; color: var(--navy); font-size: 14px; font-weight: 700; letter-spacing: .04em; }
+.bubble-tag.is-lime { background: var(--lime); border-color: var(--lime); }
+.simple-plus { position: relative; justify-self: center; width: 44px; height: 44px; }
+.simple-plus::before, .simple-plus::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 7px; margin-top: -3.5px; border-radius: 4px; background: var(--navy); }
+.simple-plus::after { transform: rotate(90deg); }
+@media (max-width: 1180px) { .simple-plus { width: 32px; height: 32px; } .simple-plus::before, .simple-plus::after { height: 5px; margin-top: -2.5px; } }
+@media (max-width: 960px) { .simple-plus { display: none; } }
+@media (max-width: 560px) { .bubble-tag { height: 26px; font-size: 12.5px; padding: 0 12px; margin-bottom: 6px; } }
