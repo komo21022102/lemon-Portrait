@@ -1147,3 +1147,8 @@ ul, ol { list-style: none; }
   .plan-card .btn { margin-top: auto; }
   .plan-card-art { margin-bottom: 20px; }
 }
+
+/* ---------- PLAN A/B item titles: 20px on desktop/tablet ---------- */
+@media (min-width: 561px) {
+  .plans .plan-list li > div:first-child > b { font-size: 20px; line-height: 30px; }
+}
