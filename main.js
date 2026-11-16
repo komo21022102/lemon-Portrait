@@ -518,6 +518,37 @@
     sync();
   };
   swipeDots($('.plans'), '.plan', '方案');
+
+  /* ---------- Goods detail photo sliders: dots + gentle autoplay ---------- */
+  $$('.gp-slider').forEach((fig) => {
+    const track = $('.gp-slides', fig);
+    const slides = $$('img', track);
+    if (slides.length < 2) return;
+    const dots = document.createElement('div');
+    dots.className = 'gp-dots';
+    dots.setAttribute('aria-label', '照片切換');
+    let cur = 0, timer = null;
+    const go = (i) => track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+    const stop = () => { clearInterval(timer); timer = null; };
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', '第 ' + (i + 1) + ' 張照片');
+      b.addEventListener('click', () => { stop(); go(i); });
+      dots.appendChild(b);
+    });
+    fig.after(dots);
+    const sync = () => {
+      cur = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+      $$('button', dots).forEach((b, i) => { b.classList.toggle('is-active', i === cur); b.setAttribute('aria-current', String(i === cur)); });
+    };
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) timer = setInterval(() => go((cur + 1) % slides.length), 4500);
+    ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => track.addEventListener(ev, stop, { passive: true }));
+    track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+    window.addEventListener('resize', () => { track.scrollLeft = cur * track.clientWidth; });
+    sync();
+  });
   swipeDots($('.pack-grid'), '.pack', '套組');
   swipeDots($('.gd-grid'), '.gd-card', '商品');
 
