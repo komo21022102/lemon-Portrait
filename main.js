@@ -281,6 +281,17 @@
       if (n === 2) return { name: '情侶雙人套組', off: 60 };
       return { name: '套組優惠', off: 0 };
     };
+    let state = null;
+    let quoteBlob = null;
+    const quoteBox = $('#calc-quote'), quoteImg = $('#calc-quote-img');
+    const dlBtn = $('#calc-download-btn'), errBox = $('#calc-error');
+    const resetQuote = () => {
+      if (!quoteBlob) return;
+      quoteBlob = null;
+      if (quoteImg.src) URL.revokeObjectURL(quoteImg.src);
+      quoteImg.removeAttribute('src');
+      quoteBox.hidden = true; dlBtn.hidden = true;
+    };
     const update = () => {
       let n = 0, sub = 0;
       rows.forEach((r) => { const q = +$('output', r).value; n += q; sub += q * +r.dataset.price; });
@@ -299,6 +310,11 @@
       const design = designFor(people, t) + t.extra * pets + (bg ? BG : 0);
       $('#calc-design').textContent = money(design) + (bg ? ' 起' : '');
       $('#calc-total').textContent = money(design + sub - deal.off + ship) + (bg ? ' 起' : '');
+      const qty = rows.map((r) => +$('output', r).value);
+      state = { people, pets, pets_unit: t.extra, mono: $('#calc-mono').checked, bg, short: qty[0] || 0, long: qty[1] || 0,
+        double: $('#calc-double').checked, n, sub, deal, ship, freeShip: n > 0 && freeShip, designPeople: designFor(people, t), design,
+        total: design + sub - deal.off + ship };
+      resetQuote();
     };
     calc.addEventListener('click', (e) => {
       const b = e.target.closest('[data-step]');
@@ -311,6 +327,164 @@
     $('#calc-bg').addEventListener('change', update);
     $('#calc-mono').addEventListener('change', update);
     update();
+
+    /* ---------- Quote sheet (JPG) ----------
+       「算報價」把目前的選擇畫成一張報價單圖片；「下載報價」存成 JPG */
+    const QUOTE_NOTES = [
+      ['', '基本授權為個人與家庭紀念使用。若要用於商品販售、廣告等商業用途，請先告知用途，授權範圍與費用另議噢'],
+      ['提供檔案', '彩色高解析 JPG、透明高解析背景 PNG，符合印製需求。'],
+      ['修改次數', '含修改2次確認草稿、上色修改1次，超過另計 $300／次，繪製約 1.5 週內'],
+      ['原始檔及使用授權', '可編輯 AI／PSD 原始檔加購 $1,000 起；商業用途與授權另議。'],
+    ];
+    const pad2 = (v) => String(v).padStart(2, '0');
+    const loadImg = (src) => new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
+    const wrap = (ctx, text, maxW) => {
+      const lines = []; let line = '';
+      for (const ch of text) {
+        if (ctx.measureText(line + ch).width > maxW && line) { lines.push(line); line = ch.trim() ? ch : ''; }
+        else line += ch;
+      }
+      if (line) lines.push(line);
+      return lines;
+    };
+    const drawQuote = async () => {
+      const q = state, now = new Date();
+      const date = `${now.getFullYear()}/${pad2(now.getMonth() + 1)}/${pad2(now.getDate())}`;
+      const no = `LM-${now.getFullYear()}${pad2(now.getMonth() + 1)}${pad2(now.getDate())}-${pad2(now.getHours())}${pad2(now.getMinutes())}`;
+      const TC = '"Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif';
+      const EN = '"Montserrat", "Noto Sans TC", sans-serif';
+      try { await Promise.all([`400 20px ${TC}`, `700 20px ${TC}`, `900 20px ${TC}`, `800 20px ${EN}`, `700 20px ${EN}`].map((f) => document.fonts.load(f, '報價$0'))); } catch (e) {}
+      const logo = await loadImg('assets/logo.webp');
+
+      // rows to print
+      const A = [], B = [];
+      if (q.people || q.pets || q.bg) {
+        A.push([q.mono ? '版本：單色線稿' : '版本：彩色版本', '', '']);
+        if (q.people) A.push([`人物 ${q.people} 位`, q.people >= 3 ? '3 人合畫優惠' + (q.people > 3 ? `＋${q.people - 3} 位` : '') : '', money(q.designPeople)]);
+        if (q.pets) A.push([`毛孩 ${q.pets} 隻`, `${money(q.pets_unit)} × ${q.pets}`, money(q.pets_unit * q.pets)]);
+        if (q.bg) A.push(['特殊場景／背景', '依複雜度另議', '+$800 起']);
+      }
+      if (q.n) {
+        if (q.short) B.push([`短袖 ${q.short} 件`, `$660 × ${q.short}`, money(660 * q.short)]);
+        if (q.long) B.push([`長袖 ${q.long} 件`, `$770 × ${q.long}`, money(770 * q.long)]);
+        if (q.double) B.push([`升級雙面印製 ${q.n} 件`, `$150 × ${q.n}`, money(150 * q.n)]);
+        if (q.deal.off) B.push([q.deal.name, '套組優惠', '−' + money(q.deal.off)]);
+        B.push(['店到店運費', q.freeShip ? '5 件以上免運' : '本島一般超商店到店', q.freeShip ? '免運' : money(q.ship)]);
+      }
+
+      const W = 1080, P = 72, CW = W - P * 2;
+      const c = document.createElement('canvas');
+      const ctx = c.getContext('2d');
+      // measure notes height first
+      ctx.font = `400 26px ${TC}`;
+      const noteBlocks = QUOTE_NOTES.map(([t, body], i) => {
+        const head = `${i + 1}. ${t ? t : ''}`;
+        const lines = wrap(ctx, body, CW - 40);
+        return { head, lines, h: (t ? 40 : 0) + lines.length * 40 + 18 };
+      });
+      const rowH = 64;
+      let H = 250 + 40;
+      if (A.length) H += 70 + A.length * rowH + 74;
+      if (B.length) H += 70 + B.length * rowH + 74;
+      H += 150 + 60 + 60 + noteBlocks.reduce((a, b) => a + b.h, 0) + 170;
+      const S = 1.5; // render at 1.5x for a crisp JPG
+      c.width = W * S; c.height = H * S; ctx.scale(S, S);
+
+      const NAVY = '#2d4970', INK = '#2b2b2b', INK2 = '#555555', BEIGE = '#faf5ef', LIME = '#cde36f', LINE = '#e7e1da';
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+      // header band
+      ctx.fillStyle = BEIGE; ctx.fillRect(0, 0, W, 250);
+      if (logo) ctx.drawImage(logo, P, 56, 214, 77);
+      ctx.fillStyle = NAVY; ctx.font = `700 34px ${TC}`; ctx.textBaseline = 'alphabetic';
+      ctx.fillText('檸檬手繪家', P + 228, 112);
+      ctx.font = `900 30px ${TC}`; ctx.fillStyle = INK2;
+      ctx.fillText('家庭插畫客製・紀念 T 恤', P, 196);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = NAVY; ctx.font = `900 64px ${TC}`; ctx.fillText('報價單', W - P, 116);
+      ctx.font = `400 24px ${TC}`; ctx.fillStyle = INK2;
+      ctx.fillText(`報價日期　${date}`, W - P, 166);
+      ctx.fillText(`報價編號　${no}`, W - P, 202);
+      ctx.textAlign = 'left';
+
+      let y = 250 + 40;
+      const section = (title, rowsArr, subtotalLabel, subtotal) => {
+        ctx.fillStyle = LIME; ctx.beginPath(); ctx.roundRect(P, y + 6, 10, 40, 5); ctx.fill();
+        ctx.fillStyle = NAVY; ctx.font = `900 32px ${TC}`; ctx.fillText(title, P + 26, y + 38);
+        y += 70;
+        ctx.strokeStyle = INK; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(P, y - 8); ctx.lineTo(W - P, y - 8); ctx.stroke();
+        rowsArr.forEach(([label, note, amt]) => {
+          ctx.fillStyle = INK; ctx.font = `700 27px ${TC}`; ctx.fillText(label, P, y + 40);
+          if (note) { ctx.fillStyle = INK2; ctx.font = `400 22px ${TC}`; ctx.fillText(note, P + 360, y + 40); }
+          if (amt) { ctx.textAlign = 'right'; ctx.fillStyle = INK; ctx.font = `700 28px ${EN}`; ctx.fillText(amt, W - P, y + 40); ctx.textAlign = 'left'; }
+          ctx.strokeStyle = LINE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(P, y + rowH - 2); ctx.lineTo(W - P, y + rowH - 2); ctx.stroke();
+          y += rowH;
+        });
+        ctx.textAlign = 'right';
+        ctx.fillStyle = INK2; ctx.font = `700 24px ${TC}`; ctx.fillText(subtotalLabel, W - P - 200, y + 46);
+        ctx.fillStyle = NAVY; ctx.font = `800 32px ${EN}`; ctx.fillText(subtotal, W - P, y + 46);
+        ctx.textAlign = 'left';
+        y += 74;
+      };
+      if (A.length) section('PLAN A 插畫設計', A, '插畫設計費', money(q.design) + (q.bg ? ' 起' : ''));
+      if (B.length) section('PLAN B T-Shirt 印製', B, 'T 恤小計', money(q.sub - q.deal.off + q.ship));
+
+      // total box
+      ctx.fillStyle = '#ffe04b'; ctx.beginPath(); ctx.roundRect(P, y, CW, 120, 28); ctx.fill();
+      ctx.strokeStyle = NAVY; ctx.lineWidth = 3; ctx.stroke();
+      ctx.fillStyle = NAVY; ctx.font = `900 34px ${TC}`; ctx.fillText('預估總計', P + 40, y + 74);
+      ctx.textAlign = 'right'; ctx.font = `800 58px ${EN}`;
+      ctx.fillText(money(q.total) + (q.bg ? ' 起' : ''), W - P - 40, y + 82); ctx.textAlign = 'left';
+      y += 150;
+
+      // notes
+      ctx.fillStyle = NAVY; ctx.font = `900 30px ${TC}`; ctx.fillText('注意事項', P, y + 30);
+      y += 60;
+      noteBlocks.forEach(({ head, lines }, i) => {
+        const hasTitle = !!QUOTE_NOTES[i][0];
+        ctx.fillStyle = INK; ctx.font = `700 26px ${TC}`;
+        if (hasTitle) { ctx.fillText(head, P, y + 28); y += 40; }
+        ctx.font = `400 26px ${TC}`; ctx.fillStyle = INK2;
+        lines.forEach((ln, k) => {
+          if (!hasTitle && k === 0) { ctx.fillStyle = INK; ctx.font = `700 26px ${TC}`; ctx.fillText('1.', P, y + 28); ctx.font = `400 26px ${TC}`; ctx.fillStyle = INK2; }
+          ctx.fillText(ln, P + 40, y + 28); y += 40;
+        });
+        y += 18;
+      });
+
+      // footer
+      y += 30;
+      ctx.fillStyle = BEIGE; ctx.fillRect(0, y, W, H - y);
+      ctx.fillStyle = '#c0563b'; ctx.font = `700 24px ${TC}`;
+      ctx.fillText('＊此為網站線上試算，實際金額以私訊確認的報價為準。', P, y + 52);
+      ctx.fillStyle = NAVY; ctx.font = `700 26px ${TC}`;
+      ctx.fillText('LINE ID：komo2102　｜　IG：@ball_ball_cute', P, y + 100);
+
+      return new Promise((res) => c.toBlob(res, 'image/jpeg', 0.92));
+    };
+    $('#calc-quote-btn').addEventListener('click', async (e) => {
+      const btn = e.currentTarget;
+      if (!state || (!state.people && !state.pets && !state.n)) { errBox.hidden = false; return; }
+      errBox.hidden = true;
+      btn.disabled = true; btn.textContent = '計算中…';
+      try {
+        const blob = await drawQuote();
+        if (quoteImg.src) URL.revokeObjectURL(quoteImg.src);
+        quoteBlob = blob;
+        quoteImg.src = URL.createObjectURL(blob);
+        quoteBox.hidden = false; dlBtn.hidden = false;
+        quoteBox.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+      } finally { btn.disabled = false; btn.textContent = '算報價'; }
+    });
+    dlBtn.addEventListener('click', () => {
+      if (!quoteBlob) return;
+      const now = new Date();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(quoteBlob);
+      a.download = `檸檬手繪家報價單-${now.getFullYear()}${pad2(now.getMonth() + 1)}${pad2(now.getDate())}.jpg`;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    });
+    calc.addEventListener('click', (e) => { if (e.target.closest('[data-step]')) errBox.hidden = true; });
   }
 
   /* ---------- Swipe carousels on phones (plans + packages): dots indicator ---------- */
@@ -357,7 +531,7 @@
   });
 
   /* ---------- Image protection: no right-click / drag on illustrations ---------- */
-  const isProtected = (t) => t instanceof Element && (t.tagName === 'IMG' || t.closest('.w-item, .f-card, .hero-stage, .lightbox figure'));
+  const isProtected = (t) => t instanceof Element && !t.closest('.calc-quote') && (t.tagName === 'IMG' || t.closest('.w-item, .f-card, .hero-stage, .lightbox figure'));
   document.addEventListener('contextmenu', (e) => { if (isProtected(e.target)) e.preventDefault(); });
   document.addEventListener('dragstart', (e) => { if (isProtected(e.target)) e.preventDefault(); });
   $$('img').forEach((img) => img.setAttribute('draggable', 'false'));

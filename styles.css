@@ -1120,3 +1120,14 @@ ul, ol { list-style: none; }
 .plan-list small.spec-note { font-size: 15px; line-height: 1.55; margin-top: 4px; padding-left: 16px; position: relative; }
 .plan-list small.spec-note::before { content: ""; position: absolute; left: 2px; top: .62em; width: 0; height: 0; border-left: 6px solid var(--navy); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
 @media (max-width: 560px) { .plans .amt.amt-stack { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; } .plans .amt-stack .amt-label { margin-right: 0; } }
+
+/* ---------- Calculator: quote buttons + JPG preview ---------- */
+.calc-side { display: grid; gap: 14px; align-self: start; }
+.calc-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.calc-actions .btn { min-height: 52px; justify-content: center; gap: 12px; font-size: 16px; padding: 0 18px; }
+.calc-actions .btn[hidden] { display: none; }
+.calc-actions .calc-quote-btn:only-child, .calc-actions .calc-quote-btn:has(+ [hidden]) { grid-column: 1 / -1; }
+.calc-error { font-size: 13.5px; font-weight: 700; color: #c0563b; }
+.calc-quote { grid-column: 1 / -1; margin-top: 4px; text-align: center; }
+.calc-quote img { display: block; width: 100%; max-width: 520px; margin-inline: auto; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 20px 40px -30px rgba(45,73,112,.6); }
+.calc-quote figcaption { font-size: 12.5px; color: var(--ink-2); margin-top: 10px; }

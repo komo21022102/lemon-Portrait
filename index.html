@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=100" />
+  <link rel="stylesheet" href="styles.css?v=101" />
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -399,6 +399,7 @@
                 <div class="calc-row" data-price="770"><span>長袖 <small>成人/兒童 $770</small></span><div class="stepper"><button type="button" data-step="-1" aria-label="長袖減一件">−</button><output>0</output><button type="button" data-step="1" aria-label="長袖加一件">+</button></div></div>
                 <label class="calc-double"><input type="checkbox" id="calc-double" /> 全部升級雙面印製 <small>+$150／件</small></label>
               </div>
+              <div class="calc-side">
               <dl class="calc-sum" aria-live="polite">
                 <div><dt>插畫設計費</dt><dd id="calc-design">$0</dd></div>
                 <div><dt>T 恤原價小計</dt><dd id="calc-sub">$0</dd></div>
@@ -406,7 +407,17 @@
                 <div><dt>店到店運費</dt><dd id="calc-ship">$0</dd></div>
                 <div class="calc-total"><dt>預估總計</dt><dd id="calc-total">$0</dd></div>
               </dl>
+              <div class="calc-actions">
+                <button type="button" class="btn btn-navy calc-quote-btn" id="calc-quote-btn">算報價</button>
+                <button type="button" class="btn btn-lime calc-download-btn" id="calc-download-btn" hidden>下載報價 <i class="arrow"></i></button>
+              </div>
+              <p class="calc-error" id="calc-error" role="alert" hidden>請先選擇人物或 T 恤數量，再按「算報價」。</p>
+              </div>
               <p class="calc-note">＊2 人以 2 位單人計（彩色 $1,200／單色 $1,000），第 4 人起每位 +$400（彩色、單色同價）；特殊場景依複雜度另行報價，實際金額以私訊報價為準。</p>
+              <figure class="calc-quote" id="calc-quote" hidden>
+                <img id="calc-quote-img" alt="報價單預覽" />
+                <figcaption>報價單預覽・手機可長按圖片儲存，或按「下載報價」存成 JPG</figcaption>
+              </figure>
             </div>
           </details>
         </div>
@@ -554,6 +565,6 @@
     <p class="lb-count"></p>
   </div>
 
-  <script src="main.js?v=56" defer></script>
+  <script src="main.js?v=57" defer></script>
 </body>
 </html>
