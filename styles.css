@@ -1207,3 +1207,14 @@ ul, ol { list-style: none; }
   .step h3 { font-size: clamp(16px, 1.4vw, 20px); white-space: nowrap; }
   .step p:last-child { max-width: none; }
 }
+
+/* ---------- Process steps: shorter on phones ---------- */
+@media (max-width: 560px) {
+  #process { padding-block: 56px; }
+  #process .section-head { margin-bottom: 24px; }
+  .steps { row-gap: 26px; }
+  .step-no { font-size: 22px; gap: 8px; }
+  .step img { height: 72px; margin: 10px 0 8px; }
+  .step h3 { font-size: 15px; line-height: 1.4; }
+  .step p:last-child { margin-top: 6px; padding-bottom: 12px; line-height: 1.6; }
+}
