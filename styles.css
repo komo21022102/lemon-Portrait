@@ -1351,3 +1351,7 @@ ul, ol { list-style: none; }
 .img-single { width: 115.2px; }
 @media (max-width: 960px) { .img-single { width: 99.25px; } }
 @media (max-width: 560px) { .img-single { width: 83.2px; } }
+
+/* ---------- Footer: Behance pill in brand navy ---------- */
+.pill-navy { background: var(--navy); color: #fff; font-weight: 700; }
+.pill-navy:hover { transform: scale(1.06); }
