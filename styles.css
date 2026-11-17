@@ -1346,3 +1346,8 @@ ul, ol { list-style: none; }
 
 /* ---------- Lightbox: family artwork has its own baked-in rounded corners (~150px on 1634×1227) — match them ---------- */
 .lightbox.is-family img { border-radius: 9.8% / 13%; background: transparent; }
+
+/* ---------- Pricing bubble: single-person art 5px shorter at every size (495×520 source) ---------- */
+.img-single { width: 115.2px; }
+@media (max-width: 960px) { .img-single { width: 99.25px; } }
+@media (max-width: 560px) { .img-single { width: 83.2px; } }
