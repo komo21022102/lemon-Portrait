@@ -1358,3 +1358,9 @@ ul, ol { list-style: none; }
 
 /* ---------- Simple pricing packs: titles wrap to 2 lines between 961–1223px — reserve 2 lines so prices line up ---------- */
 @media (min-width: 961px) and (max-width: 1239px) { .pack-grid .pack-name { min-height: 61px; } }
+
+/* ---------- PLAN B title: longer tag drops to its own line on phones when it doesn't fit ---------- */
+@media (max-width: 560px) {
+  .plans .plan-name-text { white-space: normal; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; }
+  .plans .plan-name-box { margin-left: 0; }
+}
