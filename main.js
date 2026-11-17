@@ -43,15 +43,15 @@
   // Order follows the staggered grid in Figma (1352:2110):
   // row 1 = illustrations, rows 2–3 = T-shirt mockups (full-bleed photos)
   const familyData = [
-    ['f0', 'Happy Family 大家族合畫', ''],
-    ['f1', 'Sweet Family 全家福', 'bg-beige'],
-    ['f2', 'Happy Wedding 婚禮插畫', ''],
-    ['tee-navy-longsleeve', '深藍長袖紀念 T 恤：正面小圖＋背面 Cute Family 合畫', 'photo'],
-    ['tee-blue-back', '淺藍 T 恤背面 Happy Family 合畫', 'photo'],
-    ['tee-beige-back', '米色 T 恤背面 Sweet Family 合畫', 'photo'],
-    ['tee-navy-star-back', '深藍 T 恤背面 Cute Family 星星合畫', 'photo'],
-    ['tee-blue-pair', '淺藍紀念 T 恤：正面小圖＋背面 Happy Family 合畫', 'photo'],
-    ['tee-beige-pair', '米色紀念 T 恤：正面小圖＋背面 Sweet Family 合畫', 'photo'],
+    ['art-happy-family-hd', 'Happy Family 大家族合畫', 'photo'],
+    ['art-sweet-family-hd', 'Sweet Family 全家福', 'photo'],
+    ['art-wedding-hd', 'Happy Wedding 婚禮插畫', 'photo'],
+    ['tee-navy-longsleeve-hd', '深藍長袖紀念 T 恤：正面小圖＋背面 Cute Family 合畫', 'photo'],
+    ['tee-blue-back-hd', '淺藍 T 恤背面 Happy Family 合畫', 'photo'],
+    ['tee-beige-back-hd', '米色 T 恤背面 Sweet Family 合畫', 'photo'],
+    ['tee-navy-star-back-hd', '深藍 T 恤背面 Cute Family 星星合畫', 'photo'],
+    ['tee-blue-pair-hd', '淺藍紀念 T 恤：正面小圖＋背面 Happy Family 合畫', 'photo'],
+    ['tee-beige-pair-hd', '米色紀念 T 恤：正面小圖＋背面 Sweet Family 合畫', 'photo'],
   ];
   if (familyGrid) {
     familyGrid.innerHTML = familyData
