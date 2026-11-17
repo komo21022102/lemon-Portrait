@@ -1364,3 +1364,41 @@ ul, ol { list-style: none; }
   .plans .plan-name-text { white-space: normal; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; }
   .plans .plan-name-box { margin-left: 0; }
 }
+
+/* =========================================================
+   Three-step pricing (01 插畫 → 02 加購 T 恤 → 03 套組)
+   ========================================================= */
+.simple .h2, .simple .h2:where(*) { margin-bottom: 14px; }
+.psteps-lead { text-align: center; font-size: clamp(15px, 1.3vw, 17px); color: var(--ink-2); letter-spacing: .06em; }
+.psteps { list-style: none; margin: clamp(32px, 4vw, 56px) auto 0; padding: 0; max-width: 1200px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.4vw, 36px); counter-reset: none; }
+.pstep { display: flex; flex-direction: column; }
+.pstep-img { display: block; width: 100%; height: auto; aspect-ratio: 1634 / 1227; object-fit: cover; border-radius: 9.8% / 13%; transition: transform .5s var(--ease-spring); }
+.pstep:hover .pstep-img { transform: translateY(-6px) rotate(-1deg); }
+.pstep-body { padding: 20px 6px 0; }
+.pstep-title { display: flex; align-items: center; gap: 12px; font-family: var(--font-tc); font-size: clamp(19px, 1.7vw, 23px); font-weight: 900; color: var(--ink); letter-spacing: .04em; }
+.pstep-no { font-family: var(--font-en); font-weight: 800; color: var(--navy); padding-right: 12px; border-right: 2px solid var(--navy); line-height: 1; }
+.pstep-text { margin-top: 10px; font-size: 15px; line-height: 1.75; color: var(--ink-2); }
+.pstep-price { margin-top: 12px; display: inline-block; padding: 6px 16px; border-radius: 99px; background: var(--lime); color: var(--navy); font-size: 14px; font-weight: 700; }
+.pstep-price .num { font-family: var(--font-en); font-size: 20px; font-weight: 800; margin-inline: 2px; }
+@media (max-width: 760px) {
+  .psteps { grid-template-columns: 1fr; gap: 0; max-width: 560px; }
+  .pstep { display: grid; grid-template-columns: minmax(0, 38%) 1fr; gap: 16px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .pstep:first-child { padding-top: 0; }
+  .pstep:last-child { border-bottom: 0; padding-bottom: 0; }
+  .pstep-body { padding: 0; }
+  .pstep-title { font-size: 17px; gap: 8px; }
+  .pstep-no { padding-right: 8px; }
+  .pstep-text { margin-top: 6px; font-size: 13.5px; line-height: 1.65; }
+  .pstep-price { margin-top: 8px; padding: 4px 12px; font-size: 12.5px; }
+  .pstep-price .num { font-size: 17px; }
+}
+
+.pstep-media { border-radius: 9.8% / 13%; background: var(--card-grey); overflow: hidden; aspect-ratio: 1634 / 1227; transition: transform .5s var(--ease-spring); }
+.pstep-media .pstep-img { border-radius: 0; mix-blend-mode: multiply; transition: none; }
+.pstep:hover .pstep-media { transform: translateY(-6px) rotate(-1deg); }
+.pstep:hover .pstep-media .pstep-img { transform: none; }
+@media (min-width: 761px) {
+  .pstep-body { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+  .pstep-price { margin-top: auto; }
+  .pstep-text { margin-bottom: 14px; }
+}
