@@ -1318,3 +1318,16 @@ ul, ol { list-style: none; }
   .qa summary { padding: 18px 0 16px; }
   .qa-body p { padding-bottom: 20px; }
 }
+
+/* ---------- Hero: keep the title clear of the rounded top-left corner at every desktop width ---------- */
+@media (min-width: 961px) {
+  .hero-shell { border-radius: clamp(200px, 22vw, 360px) 0 0 0; }
+  .hero-copy { padding-left: clamp(40px, 6vw, 96px); }
+}
+@media (min-width: 961px) {
+  .hero-actions .btn { white-space: nowrap; }
+}
+@media (min-width: 961px) and (max-width: 1180px) {
+  .hero-actions .btn { padding: 0 20px 0 24px; gap: 12px; }
+  .hero-actions .arrow { width: 26px; }
+}
