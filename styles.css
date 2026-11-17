@@ -1343,3 +1343,6 @@ ul, ol { list-style: none; }
 .lb-prev::before, .lb-next::before { content: ""; position: absolute; top: 50%; left: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; box-sizing: border-box; border-top: 2.5px solid currentColor; border-left: 2.5px solid currentColor; border-radius: 1px; }
 .lb-prev::before { transform: translateX(3px) rotate(-45deg); }
 .lb-next::before { transform: translateX(-3px) rotate(135deg); }
+
+/* ---------- Lightbox: family artwork has its own baked-in rounded corners (~150px on 1634×1227) — match them ---------- */
+.lightbox.is-family img { border-radius: 9.8% / 13%; background: transparent; }

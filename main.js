@@ -223,6 +223,8 @@
   };
   const openLB = (list, i) => {
     group = list; lastFocus = document.activeElement;
+    // family cards are pre-rounded artwork: match their corner radius so no white shows
+    lb.classList.toggle('is-family', list.length > 0 && list[0].includes('assets/family/'));
     lb.hidden = false; document.body.style.overflow = 'hidden';
     show(i);
     requestAnimationFrame(() => lb.classList.add('is-open'));
