@@ -1355,3 +1355,6 @@ ul, ol { list-style: none; }
 /* ---------- Footer: Behance pill in brand navy ---------- */
 .pill-navy { background: var(--navy); color: #fff; font-weight: 700; }
 .pill-navy:hover { transform: scale(1.06); }
+
+/* ---------- Simple pricing packs: titles wrap to 2 lines between 961–1223px — reserve 2 lines so prices line up ---------- */
+@media (min-width: 961px) and (max-width: 1239px) { .pack-grid .pack-name { min-height: 61px; } }
