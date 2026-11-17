@@ -1337,3 +1337,9 @@ ul, ol { list-style: none; }
 .bubble-head .bubble-tag { margin-bottom: 0; flex: none; }
 .bubble-head .bubble-price { white-space: nowrap; }
 .bubble .bubble-head .bubble-price { font-size: inherit; color: var(--navy); margin-top: 0; }
+
+/* ---------- Lightbox prev/next: CSS chevrons, optically centred (the ‹ › glyphs sat off-centre) ---------- */
+.lightbox .lb-prev, .lightbox .lb-next { font-size: 0; }
+.lb-prev::before, .lb-next::before { content: ""; width: 12px; height: 12px; border-top: 2.5px solid currentColor; border-left: 2.5px solid currentColor; border-radius: 1px; }
+.lb-prev::before { transform: translateX(2px) rotate(-45deg); }
+.lb-next::before { transform: translateX(-2px) rotate(135deg); }
