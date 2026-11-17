@@ -1331,3 +1331,9 @@ ul, ol { list-style: none; }
   .hero-actions .btn { padding: 0 20px 0 24px; gap: 12px; }
   .hero-actions .arrow { width: 26px; }
 }
+
+/* ---------- Simple pricing: tag pill and price side by side ---------- */
+.bubble-head { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 12px; }
+.bubble-head .bubble-tag { margin-bottom: 0; flex: none; }
+.bubble-head .bubble-price { white-space: nowrap; }
+.bubble .bubble-head .bubble-price { font-size: inherit; color: var(--navy); margin-top: 0; }
