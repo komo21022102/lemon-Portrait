@@ -46,11 +46,11 @@
     ['art-happy-family-hd', 'Happy Family 大家族合畫', 'photo'],
     ['art-sweet-family-hd', 'Sweet Family 全家福', 'photo'],
     ['art-wedding-hd', 'Happy Wedding 婚禮插畫', 'photo'],
-    ['tee-navy-longsleeve-hd', '深藍長袖紀念 T 恤：正面小圖＋背面 Cute Family 合畫', 'photo'],
+    ['frame-love-mom-hd', '木框插畫：Love Mom 媽媽與家人、毛孩', 'photo'],
     ['tee-blue-back-hd', '淺藍 T 恤背面 Happy Family 合畫', 'photo'],
     ['tee-beige-back-hd', '米色 T 恤背面 Sweet Family 合畫', 'photo'],
-    ['tee-navy-star-back-hd', '深藍 T 恤背面 Cute Family 星星合畫', 'photo'],
-    ['tee-blue-pair-hd', '淺藍紀念 T 恤：正面小圖＋背面 Happy Family 合畫', 'photo'],
+    ['frame-cat-temple-hd', '木框插畫：噗萶宮 毛孩大合照與主人', 'photo'],
+    ['frame-family-cats-hd', '木框插畫：一家四口與貓咪', 'photo'],
     ['tee-beige-pair-hd', '米色紀念 T 恤：正面小圖＋背面 Sweet Family 合畫', 'photo'],
   ];
   if (familyGrid) {
