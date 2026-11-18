@@ -1609,3 +1609,13 @@ ul, ol { list-style: none; }
 
 /* 手機：試算區與所有按鈕快速連點不觸發雙擊放大（保留雙指縮放） */
 .calc, .calc *, button, .btn, .stepper button { touch-action: manipulation; }
+
+/* ---------- 手機／平板：右側浮動分頁按鈕（位於 TOP 鍵上方） ---------- */
+.float-nav { display: none; }
+@media (max-width: 960px) {
+  .float-nav { position: fixed; right: 20px; bottom: 74px; z-index: 89; display: flex; flex-direction: column; gap: 8px; }
+  .float-nav a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--navy); font-size: 12px; font-weight: 900; letter-spacing: .02em; box-shadow: 0 6px 16px -6px rgba(28, 34, 46, .45); border: 1.5px solid var(--navy); transition: transform .25s var(--ease), background-color .25s; }
+  .float-nav a.is-active { background: var(--lime); border-color: var(--lime); }
+  .float-nav a:active { transform: scale(.94); }
+  body:has(.mobile-menu:not([hidden])) .float-nav { display: none; }
+}
