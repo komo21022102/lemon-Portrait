@@ -1435,3 +1435,11 @@ ul, ol { list-style: none; }
 /* ---------- Plan cards: 小字說明去掉三角形，統一 15px ---------- */
 .plans .plan-list small.spec-note { padding-left: 0; font-size: 15px; }
 .plans .plan-list small.spec-note::before { content: none; }
+
+/* ---------- Plan cards: 費用區塊白底 ---------- */
+.plans .plan-list li > .amt-group,
+.plans .plan-list li > .amt { background: #fff; border-radius: 12px; padding: 6px 12px; }
+.plans .plan-list li > .amt-group { padding: 8px 14px; }
+.plans .plan-list li > .amt:not(.amt-stack) { padding: 2px 12px; border-radius: 10px; }
+.plans .plan-list li > .amt.amt-stack { padding: 8px 14px; }
+@media (min-width: 561px) { .plans .plan-list li > .amt.amt-stack { padding: 4px 10px; } }
