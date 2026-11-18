@@ -1621,3 +1621,15 @@ ul, ol { list-style: none; }
 }
 .review-photos { align-items: start; }
 .qa-body .qa-gap { display: block; height: .7em; }
+
+/* 手機：常見問題縮短高度（Q 編號與問題同一行、間距收緊） */
+@media (max-width: 560px) {
+  #faq.section { padding-block: 48px; }
+  #faq .faq-inner { gap: 12px; }
+  .qa summary { grid-template-columns: auto minmax(0, 1fr) 26px; grid-template-areas: "no text icon"; column-gap: 10px; padding: 14px 0; }
+  .q-no { font-size: 17px; line-height: 1.4; align-self: start; }
+  .q-text { margin-top: 0; font-size: 15px; line-height: 1.5; }
+  .q-icon { width: 26px; height: 26px; }
+  .q-icon::before, .q-icon::after { left: 7px; right: 7px; top: 12px; }
+  .qa-body p { padding-bottom: 16px; line-height: 1.75; }
+}
