@@ -549,6 +549,16 @@
       dots.appendChild(b);
     });
     fig.after(dots);
+    if (fig.hasAttribute('data-arrows')) {
+      [['prev', '上一張', -1], ['next', '下一張', 1]].forEach(([cls, label, step]) => {
+        const a = document.createElement('button');
+        a.type = 'button';
+        a.className = 'gp-arrow gp-' + cls;
+        a.setAttribute('aria-label', label);
+        a.addEventListener('click', () => { stop(); go((cur + step + slides.length) % slides.length); });
+        fig.appendChild(a);
+      });
+    }
     const sync = () => {
       cur = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
       $$('button', dots).forEach((b, i) => { b.classList.toggle('is-active', i === cur); b.setAttribute('aria-current', String(i === cur)); });
