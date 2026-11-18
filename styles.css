@@ -1633,3 +1633,13 @@ ul, ol { list-style: none; }
   .q-icon::before, .q-icon::after { left: 7px; right: 7px; top: 12px; }
   .qa-body p { padding-bottom: 16px; line-height: 1.75; }
 }
+
+/* 品牌故事：完整長文 */
+.story-article { max-width: 680px; margin-inline: auto; text-align: center; }
+.story-article p { font-size: clamp(16px, 1.4vw, 18px); line-height: 2; color: var(--ink-2); }
+.story-article p + p { margin-top: 18px; }
+.story-article b { color: var(--navy); font-weight: 900; }
+.story-article .story-origin-media { max-width: 560px; margin: clamp(28px, 4vw, 44px) auto; }
+.story-article .story-article-quote { margin-top: 28px; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.7; font-weight: 900; color: var(--navy); }
+.story-block .story-belief-wish + .story-belief-wish { margin-top: 14px; }
+.story-sign { margin-top: 28px !important; font-weight: 900; color: var(--navy) !important; }
