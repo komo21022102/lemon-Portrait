@@ -51,6 +51,7 @@
     ['art-jojo-birthday-hd', 'JoJo 20 歲生日插畫：坐在草莓蛋糕上', 'photo'],
     ['frame-cat-temple-hd', '木框插畫：噗萶宮 毛孩大合照與主人', 'photo'],
     ['frame-family-cats-hd', '木框插畫：一家四口與貓咪', 'photo'],
+    ['art-pop-family-hd', '普普風全家福：爸爸、媽媽和寶寶揮手打招呼', 'photo'],
   ];
   if (familyGrid) {
     familyGrid.innerHTML = familyData

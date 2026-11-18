@@ -1653,3 +1653,8 @@ ul, ol { list-style: none; }
   .family-grid .f-card:last-child { grid-column: auto; aspect-ratio: 4 / 3; }
   .family-grid .f-card.photo:last-child img { object-fit: cover; }
 }
+
+/* 插畫牆回到 9 張：手機版最後一張橫跨整列、維持 4:3 */
+@media (max-width: 960px) {
+  .family-grid .f-card:last-child { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+}
