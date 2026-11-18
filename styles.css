@@ -1456,3 +1456,21 @@ ul, ol { list-style: none; }
   .plans .plan-list li > .amt-group:not(.amt-quad) .amt { background: #fff; padding: 4px 12px; border-radius: 50px; }
 }
 @media (max-width: 560px) { .plans .plan-list li > .amt.amt-stack { justify-self: end; width: max-content; max-width: 100%; } }
+
+/* 白底緊貼文字（hug），左右 8px */
+.plans .plan-list li > .amt-group,
+.plans .plan-list li > .amt,
+.plans .plan-list li > .amt.amt-stack,
+.plans .plan-list li > .amt:not(.amt-stack),
+.plans .plan-list li > .amt-group .amt { padding-left: 8px; padding-right: 8px; }
+.plans .plan-list li > .amt-group.amt-quad,
+.plans .plan-list li > .amt-group.amt-quad .amt + .amt { padding-left: 8px; }
+.plans .plan-list li > .amt-group.amt-quad { padding: 0; }
+@media (max-width: 560px) {
+  .plans .plan-list li > .amt.amt-stack { justify-self: end; width: max-content; max-width: 100%; gap: 8px; }
+  .plans .plan-list li > .amt-group:not(.amt-quad) { justify-self: end; width: max-content; max-width: 100%; }
+}
+@media (max-width: 420px) { .plans .plan-list li > .amt-group:not(.amt-quad) { padding: 0; } }
+@media (min-width: 421px) { .plans .plan-list li > .amt-group:not(.amt-quad) .amt { padding: 0; } }
+@media (max-width: 420px) { .plans .plan-list li > .amt-group:not(.amt-quad) .amt { padding: 4px 8px; } }
+.plans .plan-list li > .amt-group.amt-quad .amt { padding-left: 8px; padding-right: 8px; }
