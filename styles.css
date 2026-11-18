@@ -1529,3 +1529,21 @@ ul, ol { list-style: none; }
   .story-value { padding: 22px 20px; }
   .d-br { display: none; }
 }
+
+/* 品牌故事：品牌由來 */
+.story-lead { font-size: clamp(17px, 1.6vw, 20px); font-weight: 700; color: var(--ink); }
+.story-origin { padding-bottom: 0; }
+.story-origin-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(24px, 5vw, 64px); max-width: 1080px; margin-inline: auto; }
+.story-origin-media { margin: 0; border-radius: 9.8% / 13%; overflow: hidden; background: var(--card-grey); }
+.story-origin-media img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.story-origin-copy p { font-size: clamp(16px, 1.4vw, 18px); line-height: 2; color: var(--ink-2); }
+.story-origin-copy p + p { margin-top: 18px; }
+.story-origin-copy b { color: var(--navy); font-weight: 900; }
+.story-belief-pre, .story-belief-post, .story-belief-wish { font-size: clamp(16px, 1.4vw, 18px); line-height: 1.9; color: var(--ink-2); margin-top: 0; }
+.story-quote { margin: 18px 0; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.6; font-weight: 900; color: var(--navy); letter-spacing: .03em; }
+.story-belief-post { margin-top: 8px; font-weight: 700; color: var(--ink); }
+.story-block .story-belief-wish { margin-top: 10px; }
+@media (max-width: 760px) {
+  .story-origin-inner { grid-template-columns: 1fr; }
+  .story-origin-copy { text-align: center; }
+}
