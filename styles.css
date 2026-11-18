@@ -1647,3 +1647,9 @@ ul, ol { list-style: none; }
 /* 品牌故事：合併段落後，長段落改靠左較好讀 */
 .story-article > .reveal > p:not(.story-article-quote) { text-align: justify; }
 .story-article p + p { margin-top: 22px; }
+
+/* 插畫牆改為 8 張：手機版不再讓最後一張橫跨整列 */
+@media (max-width: 960px) {
+  .family-grid .f-card:last-child { grid-column: auto; aspect-ratio: 4 / 3; }
+  .family-grid .f-card.photo:last-child img { object-fit: cover; }
+}
