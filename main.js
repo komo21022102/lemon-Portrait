@@ -97,10 +97,14 @@
     const y = scrollY;
     header.classList.toggle('is-scrolled', y > 40);
     const menuOpen = document.body.classList.contains('menu-open');
-    header.classList.toggle('is-hidden', !menuOpen && y > 600 && y > lastY + 4);
-    if (y < lastY - 4) header.classList.remove('is-hidden');
+    // 往下滑收起、往上滑出現（只在累積位移超過 6px 才切換，避免慢慢滑時忽隱忽現）
+    const hideAfter = innerWidth <= 960 ? 120 : 600;
+    const dy = y - lastY;
+    if (menuOpen || y < hideAfter) header.classList.remove('is-hidden');
+    else if (dy > 6) header.classList.add('is-hidden');
+    else if (dy < -6) header.classList.remove('is-hidden');
     toTop.classList.toggle('is-show', y > 900);
-    lastY = y;
+    if (Math.abs(dy) > 6 || y < hideAfter) lastY = y;
     ticking = false;
   };
   addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
