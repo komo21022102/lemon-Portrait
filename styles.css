@@ -1431,3 +1431,7 @@ ul, ol { list-style: none; }
   .ge-head .ge-title { font-size: 18px; }
   .ge-head .nowrap { white-space: normal; }
 }
+
+/* ---------- Plan cards: 小字說明去掉三角形，統一 15px ---------- */
+.plans .plan-list small.spec-note { padding-left: 0; font-size: 15px; }
+.plans .plan-list small.spec-note::before { content: none; }
