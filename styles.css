@@ -1485,3 +1485,16 @@ ul, ol { list-style: none; }
   .sp-br { display: inline; }
   .sp-line { white-space: nowrap; }
 }
+
+/* ---------- 第 4 欄上下切：四人以上暖心價 ＋ 大家庭優惠 ---------- */
+.pack-stack { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.pack-stack .pack { flex: 1 1 auto; padding: 22px 22px 20px; }
+.pack-stack .pack-tiers { margin-top: 10px; }
+.pack-stack .pack-copy { margin-top: 10px; }
+.pack-stack .pack-spec { margin-top: 10px; padding-top: 10px; }
+.pack-grid .pack-stack .pack-name { min-height: 0; }
+@media (max-width: 560px) {
+  .pack-grid .pack-stack { flex: 0 0 82%; scroll-snap-align: start; scroll-snap-stop: always; }
+  .pack-grid .pack-stack .pack { flex: 1 1 auto; min-width: 0; }
+  .pack-grid .pack-stack.reveal { opacity: 1; transform: none; transition: none; }
+}
