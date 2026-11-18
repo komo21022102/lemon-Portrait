@@ -1478,3 +1478,10 @@ ul, ol { list-style: none; }
 .plans .plan-list li > .amt-group:not(.amt-quad) { background: none; padding: 0; border-radius: 0; gap: 6px; }
 .plans .plan-list li > .amt-group:not(.amt-quad) .amt { background: #fff; padding: 4px 8px; border-radius: 50px; }
 @media (min-width: 421px) { .plans .plan-list li > .amt-group:not(.amt-quad) .amt { padding: 4px 8px; } }
+
+/* 手機版專用斷行：<br class="sp-br"> 只在手機出現 */
+.sp-br { display: none; }
+@media (max-width: 560px) {
+  .sp-br { display: inline; }
+  .sp-line { white-space: nowrap; }
+}
