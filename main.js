@@ -107,7 +107,7 @@
   onScroll();
   toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
 
-  const navLinks = $$('.main-nav a');
+  const navLinks = $$('.main-nav a[href^="#"]');
   const spyIO = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
