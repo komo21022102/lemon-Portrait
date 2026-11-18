@@ -1569,3 +1569,11 @@ ul, ol { list-style: none; }
 .review-meta b { color: var(--navy); font-weight: 900; }
 .review-meta span { font-size: 12.5px; background: #fff; border-radius: 99px; padding: 2px 10px; }
 @media (max-width: 560px) { .review { padding: 22px 20px 20px; margin-bottom: 14px; } }
+
+/* 顧客好評：LINE 對話泡泡 */
+.review-tag { display: inline-block; font-size: 12.5px; font-weight: 700; color: var(--navy); background: var(--lime); border-radius: 99px; padding: 3px 12px; }
+.chat { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.chat-msg { max-width: 88%; padding: 10px 14px; border-radius: 18px; font-size: 15px; line-height: 1.65; color: var(--ink); word-break: break-word; }
+.chat-msg.from-client { align-self: flex-start; background: #fff; border-top-left-radius: 6px; }
+.chat-msg.from-me { align-self: flex-end; background: var(--lime); border-top-right-radius: 6px; }
+.review-meta span { white-space: nowrap; }
