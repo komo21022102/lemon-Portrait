@@ -1643,3 +1643,7 @@ ul, ol { list-style: none; }
 .story-article .story-article-quote { margin-top: 28px; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.7; font-weight: 900; color: var(--navy); }
 .story-block .story-belief-wish + .story-belief-wish { margin-top: 14px; }
 .story-sign { margin-top: 28px !important; font-weight: 900; color: var(--navy) !important; }
+
+/* 品牌故事：合併段落後，長段落改靠左較好讀 */
+.story-article > .reveal > p:not(.story-article-quote) { text-align: justify; }
+.story-article p + p { margin-top: 22px; }
