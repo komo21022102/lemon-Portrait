@@ -1443,3 +1443,16 @@ ul, ol { list-style: none; }
 .plans .plan-list li > .amt:not(.amt-stack) { padding: 2px 12px; border-radius: 10px; }
 .plans .plan-list li > .amt.amt-stack { padding: 8px 14px; }
 @media (min-width: 561px) { .plans .plan-list li > .amt.amt-stack { padding: 4px 10px; } }
+/* 白底：上下 4px、圓角 50px */
+.plans .plan-list li > .amt-group,
+.plans .plan-list li > .amt,
+.plans .plan-list li > .amt.amt-stack { padding-top: 4px; padding-bottom: 4px; border-radius: 50px; }
+.plans .plan-list li > .amt:not(.amt-stack) { padding-top: 4px; padding-bottom: 4px; border-radius: 50px; }
+/* PLAN B T 恤三種價格：每個價格各自一顆白色膠囊 */
+.plans .plan-list li > .amt-group.amt-quad { background: none; padding: 0; border-radius: 0; gap: 6px; align-items: flex-end; }
+.plans .plan-list li > .amt-group.amt-quad .amt { background: #fff; padding: 4px 14px; border-radius: 50px; }
+@media (max-width: 420px) {
+  .plans .plan-list li > .amt-group:not(.amt-quad) { background: none; padding: 0; border-radius: 0; flex-wrap: wrap; gap: 6px 8px; }
+  .plans .plan-list li > .amt-group:not(.amt-quad) .amt { background: #fff; padding: 4px 12px; border-radius: 50px; }
+}
+@media (max-width: 560px) { .plans .plan-list li > .amt.amt-stack { justify-self: end; width: max-content; max-width: 100%; } }
