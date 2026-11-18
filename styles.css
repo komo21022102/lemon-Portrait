@@ -1577,3 +1577,7 @@ ul, ol { list-style: none; }
 .chat-msg.from-client { align-self: flex-start; background: #fff; border-top-left-radius: 6px; }
 .chat-msg.from-me { align-self: flex-end; background: var(--lime); border-top-right-radius: 6px; }
 .review-meta span { white-space: nowrap; }
+
+/* 顧客好評：真實 LINE 截圖 */
+.review-shots { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.review-shots img { display: block; width: 100%; height: auto; border-radius: 16px; background: #000; }
