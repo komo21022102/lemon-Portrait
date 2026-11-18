@@ -1412,3 +1412,22 @@ ul, ol { list-style: none; }
   .plans .plan-name-text { white-space: nowrap; column-gap: 4px; }
   .plans .plan-name-box.plan-name-small { font-size: .72em; padding: 7px 9px; }
 }
+
+/* ---------- Goods entry head (tablet/phone): 插圖在左，標題＋說明在右上下排 ---------- */
+@media (max-width: 960px) {
+  .ge-head { display: grid; grid-template-columns: auto minmax(0, auto); grid-template-rows: auto auto; justify-content: center; align-items: center; column-gap: clamp(16px, 3vw, 32px); text-align: left; }
+  .ge-head-art { grid-column: 1; grid-row: 1 / span 2; width: clamp(110px, 22vw, 180px); margin: 0; }
+  .ge-head .ge-title { grid-column: 2; grid-row: 1; align-self: end; margin-top: 0; }
+  .ge-head .ge-desc { grid-column: 2; grid-row: 2; align-self: start; margin-top: 8px; }
+}
+@media (max-width: 560px) {
+  .ge-head { column-gap: 12px; }
+  .ge-head-art { width: 104px; }
+  .ge-head .ge-title { font-size: 20px; line-height: 1.35; }
+  .ge-head .ge-desc { font-size: 12.5px; line-height: 1.6; margin-top: 6px; }
+}
+@media (max-width: 400px) { .ge-head-art { width: 88px; } }
+@media (max-width: 340px) {
+  .ge-head .ge-title { font-size: 18px; }
+  .ge-head .nowrap { white-space: normal; }
+}
