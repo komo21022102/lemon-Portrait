@@ -1581,3 +1581,11 @@ ul, ol { list-style: none; }
 /* 顧客好評：真實 LINE 截圖 */
 .review-shots { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
 .review-shots img { display: block; width: 100%; height: auto; border-radius: 16px; background: #000; }
+
+/* 顧客好評：單張卡片輪播 */
+.review-grid:has(.review-carousel) { columns: auto; max-width: 520px; }
+.review-carousel { margin-bottom: 0; }
+.review-slider .gp-slides { aspect-ratio: 804 / 896; height: auto; background: #000; border-radius: 16px; align-items: center; }
+.review-slider .gp-slides img { width: 100%; height: 100%; object-fit: contain; }
+.review-carousel + .gp-dots, .review-carousel .gp-dots { margin-top: 14px; }
+.review-carousel .review-meta { justify-content: center; }
