@@ -278,7 +278,7 @@
     const BG = 800;
     const dealFor = (n) => {
       if (n >= 10) return { name: '大家族價（每件 −$40＋免運）', off: 40 * n, freeShip: true };
-      if (n >= 4) return { name: '四人以上暖心價（每件 −$35）', off: 35 * n };
+      if (n >= 4) return { name: '四人以上暖心價（每件 −$20）', off: 20 * n };
       if (n === 3) return { name: '小家庭三人幸福價', off: 100 };
       if (n === 2) return { name: '情侶雙人套組', off: 60 };
       return { name: '套組優惠', off: 0 };
