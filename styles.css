@@ -1402,3 +1402,13 @@ ul, ol { list-style: none; }
   .pstep-price { margin-top: auto; }
   .pstep-text { margin-bottom: 14px; }
 }
+
+/* ---------- PLAN B title: 「PLAN B」與「➕購專屬紀念衣」永遠同一行 ---------- */
+@media (max-width: 560px) {
+  .plans .plan-name-text { flex-wrap: nowrap; }
+  .plans .plan-name-box { flex: none; padding: 8px 10px; }
+}
+@media (max-width: 420px) {
+  .plans .plan-name-text { white-space: nowrap; column-gap: 4px; }
+  .plans .plan-name-box.plan-name-small { font-size: .72em; padding: 7px 9px; }
+}
