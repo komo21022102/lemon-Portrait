@@ -367,7 +367,7 @@
         A.push([q.mono ? '版本：單色線稿' : '版本：彩色版本', '', '']);
         if (q.people) A.push([`人物 ${q.people} 位`, q.people >= 3 ? '3 人合畫優惠' + (q.people > 3 ? `＋${q.people - 3} 位` : '') : '', money(q.designPeople)]);
         if (q.pets) A.push([`毛孩 ${q.pets} 隻`, `${money(q.pets_unit)} × ${q.pets}`, money(q.pets_unit * q.pets)]);
-        if (q.bg) A.push(['特殊場景／背景', '依複雜度另議', '+$800 起']);
+        if (q.bg) A.push(['特殊場景（需討論）', '依複雜度另議', '+$800 起']);
       }
       if (q.n) {
         q.items.forEach((it) => { if (it.qty) B.push([`${it.name} ${it.qty} 件`, `${money(it.price)} × ${it.qty}`, money(it.price * it.qty)]); });
