@@ -1555,3 +1555,17 @@ ul, ol { list-style: none; }
 /* 套組規格：「短袖」改用 T 恤線條 icon（品牌藍） */
 .ico-tee { display: inline-block; width: 1.3em; height: 1.3em; vertical-align: -.28em; margin: 0 .12em; background: var(--navy); -webkit-mask: url(assets/icons/tee.svg) center / contain no-repeat; mask: url(assets/icons/tee.svg) center / contain no-repeat; }
 .pack-spec .pack-spec-line { display: block; margin-top: 6px; }
+
+/* =========================================================
+   顧客好評 reviews.html
+   ========================================================= */
+.reviews { padding-top: clamp(32px, 4vw, 56px); }
+.review-grid { columns: 3 300px; column-gap: 20px; max-width: 1134px; margin-inline: auto; }
+.review { break-inside: avoid; margin-bottom: 20px; background: var(--beige); border-radius: var(--radius-lg); padding: 28px 26px 24px; }
+.review-text { position: relative; font-size: 15.5px; line-height: 1.9; color: var(--ink); }
+.review-text::before { content: "“"; display: block; font-family: var(--font-en); font-size: 48px; line-height: .8; color: var(--lime-600); margin-bottom: 4px; }
+.review-photo { display: block; width: 100%; height: auto; border-radius: 16px; margin-top: 16px; }
+.review-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+.review-meta b { color: var(--navy); font-weight: 900; }
+.review-meta span { font-size: 12.5px; background: #fff; border-radius: 99px; padding: 2px 10px; }
+@media (max-width: 560px) { .review { padding: 22px 20px 20px; margin-bottom: 14px; } }
