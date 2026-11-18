@@ -1619,3 +1619,4 @@ ul, ol { list-style: none; }
   .float-nav a:active { transform: scale(.94); }
   body:has(.mobile-menu:not([hidden])) .float-nav { display: none; }
 }
+.review-photos { align-items: start; }
