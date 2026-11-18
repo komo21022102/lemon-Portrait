@@ -1554,3 +1554,4 @@ ul, ol { list-style: none; }
 
 /* 套組規格：「短袖」改用 T 恤線條 icon（品牌藍） */
 .ico-tee { display: inline-block; width: 1.3em; height: 1.3em; vertical-align: -.28em; margin: 0 .12em; background: var(--navy); -webkit-mask: url(assets/icons/tee.svg) center / contain no-repeat; mask: url(assets/icons/tee.svg) center / contain no-repeat; }
+.pack-spec .pack-spec-line { display: block; margin-top: 6px; }
