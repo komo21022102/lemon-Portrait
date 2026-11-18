@@ -1606,3 +1606,6 @@ ul, ol { list-style: none; }
 .review-photo { margin: 0; }
 .review-photo img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
 @media (max-width: 760px) { .review-photos { grid-template-columns: 1fr; gap: 14px; } .review-photo img { border-radius: 20px; } }
+
+/* 手機：試算區與所有按鈕快速連點不觸發雙擊放大（保留雙指縮放） */
+.calc, .calc *, button, .btn, .stepper button { touch-action: manipulation; }
