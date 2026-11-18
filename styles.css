@@ -1498,3 +1498,7 @@ ul, ol { list-style: none; }
   .pack-grid .pack-stack .pack { flex: 1 1 auto; min-width: 0; }
   .pack-grid .pack-stack.reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* 套組卡底部規格：15px 粗體 */
+#packages .pack-spec { font-size: 15px; font-weight: 700; line-height: 1.5; }
+#packages .pack-grid > .pack .pack-spec { min-height: calc(3em + 12px); }
