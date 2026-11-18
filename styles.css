@@ -1474,3 +1474,7 @@ ul, ol { list-style: none; }
 @media (min-width: 421px) { .plans .plan-list li > .amt-group:not(.amt-quad) .amt { padding: 0; } }
 @media (max-width: 420px) { .plans .plan-list li > .amt-group:not(.amt-quad) .amt { padding: 4px 8px; } }
 .plans .plan-list li > .amt-group.amt-quad .amt { padding-left: 8px; padding-right: 8px; }
+/* PLAN A 兩種價格：每個價格各自一顆膠囊（避免大圓角吃掉左右間距），左右 8px */
+.plans .plan-list li > .amt-group:not(.amt-quad) { background: none; padding: 0; border-radius: 0; gap: 6px; }
+.plans .plan-list li > .amt-group:not(.amt-quad) .amt { background: #fff; padding: 4px 8px; border-radius: 50px; }
+@media (min-width: 421px) { .plans .plan-list li > .amt-group:not(.amt-quad) .amt { padding: 4px 8px; } }
