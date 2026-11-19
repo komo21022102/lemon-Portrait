@@ -1,0 +1,144 @@
+/* =========================================================
+   檸檬手繪家 — iOS HIG 改版層（design/ios-hig-refresh）
+   載入順序：styles.css → 本檔。只覆寫，不改原始樣式；
+   移除本檔 <link> 即可回到原版。
+   依據：Apple Human Interface Guidelines
+   ========================================================= */
+
+/* ---------- Design tokens：保留品牌色，只加深「文字用」灰與橘 ---------- */
+:root {
+  --muted: #6e6e6e;          /* 原 #9a9a9a（2.6–2.8:1）→ 約 5:1 — HIG Accessibility › Vision */
+  --muted-2: #6b6b6b;        /* 原 #8a8a8a（3.45:1） */
+  --warm-text: #b5530f;      /* 原 #e8742a 用於文字時（2.8:1）→ 約 5:1；圖形裝飾仍用原橘 */
+  --tap: 44px;               /* HIG Buttons：建議點擊範圍 44×44pt */
+  --tabbar-h: 56px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+  --safe-l: env(safe-area-inset-left, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
+}
+
+/* 提高對比設定（iOS「增加對比」） */
+@media (prefers-contrast: more) {
+  :root { --muted: #4a4a4a; --muted-2: #4a4a4a; --ink-2: #333; --warm-text: #8f3f08; }
+}
+
+/* ---------- 對比：文字色 ---------- */
+.bubble-price .price-note,
+.plans .amt-label { color: var(--muted-2); }
+.notice-title,
+.scenes-text .warm { color: var(--warm-text); }
+#calc-deal, .calc-note, .calc-error { color: #a8432a; }   /* 原 #c0563b（4.18:1） */
+.works-eyebrow, .faq-side .eyebrow { color: var(--muted); } /* 原 #bababa／#c5c5c5（1.6–1.9:1） */
+
+/* ---------- 字級：最小 12px（HIG Typography：iOS 最小 11pt） ---------- */
+.tag,
+.plans .plan-list b.hot-title .tag,
+.gp-tier-name .tag,
+.pack-name .pack-badge { font-size: 12px; height: auto; min-height: 22px; padding-block: 2px; }
+.step-no small, .amt small, .pack-label, .pack-price small, .bubble-price small,
+.pack-tiers b small, .gp-tier-price small, .ge-tier { font-size: 12px; }
+@media (max-width: 760px) {
+  .ge-tier { font-size: 12px; padding: 2px 8px; }
+  .ge-price { font-size: 12px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }                         /* 原 15px，接近 iOS Body 17pt */
+  .info p { font-size: 12px; letter-spacing: 0; }   /* 原 10.5px */
+  .plans .amt-label { font-size: 12px; }            /* 原 11.5px */
+}
+
+/* ---------- Button：按壓狀態、觸控裝置不殘留 hover 放大 ---------- */
+.pill:active { transform: scale(.97); opacity: .85; }
+@media (hover: none) {
+  .btn:hover, .pill-outline:hover, .pill-lime:hover, .pill-navy:hover { transform: none; box-shadow: none; }
+  .btn:hover .arrow { transform: none; }
+  .btn:active { transform: scale(.97); opacity: .9; }
+}
+.btn-sm { min-height: var(--tap); }
+.method-btn { height: auto; min-height: var(--tap); }
+
+/* 外部連結（LINE / IG / Behance）：箭頭改成 ↗，預告會離開網站 */
+.btn[data-line] .arrow, .btn[data-social] .arrow, .btn[target="_blank"] .arrow {
+  width: auto; height: auto; transform: none;
+}
+.btn[data-line] .arrow::before, .btn[data-social] .arrow::before, .btn[target="_blank"] .arrow::before { display: none; }
+.btn[data-line] .arrow::after, .btn[data-social] .arrow::after, .btn[target="_blank"] .arrow::after {
+  content: "↗"; position: static; width: auto; height: auto; background: none; transform: none; font-size: 1.1em; line-height: 1; font-style: normal;
+}
+.btn[data-line]:hover .arrow, .btn[data-social]:hover .arrow, .btn[target="_blank"]:hover .arrow { transform: translate(2px, -2px); }
+.pill[data-line]::after, .pill[data-social]::after, .pill[target="_blank"]::after {
+  content: "↗"; font-size: .9em; line-height: 1; margin-left: 2px; opacity: .75;
+}
+
+/* ---------- 指示點：視覺大小不變，點擊範圍擴大到 44pt ---------- */
+.hero-dots { gap: 0; }
+.hero-dots button,
+.swipe-dots button,
+.gp-dots button {
+  position: relative; display: grid; place-items: center;
+  width: var(--tap); height: var(--tap); padding: 0; background: none !important; border-radius: 0;
+}
+.hero-dots button::before,
+.swipe-dots button::before,
+.gp-dots button::before {
+  content: ""; display: block; border-radius: 99px; transition: width .3s var(--ease), height .4s var(--ease), background-color .3s;
+}
+.hero-dots button::before { width: 12px; height: 12px; background: #d5d2cc; }
+.hero-dots button.is-active::before { background: var(--navy); height: 30px; }
+.swipe-dots button::before, .gp-dots button::before { width: 8px; height: 8px; background: #b9b2a6; }
+.swipe-dots button.is-active::before, .gp-dots button.is-active::before { width: 22px; background: var(--navy); }
+.swipe-dots, .gp-dots { gap: 0; margin-top: 4px; }
+.swipe-dots button.is-active, .gp-dots button.is-active { width: var(--tap); }
+@media (max-width: 960px) {
+  .hero-dots { bottom: 2px; }
+  .hero-dots button.is-active { width: var(--tap); height: var(--tap); }
+  .hero-dots button.is-active::before { width: 30px; height: 12px; }
+}
+
+/* ---------- Stepper／勾選列：44pt ---------- */
+.stepper button { width: var(--tap); height: var(--tap); font-size: 20px; }
+.stepper output { min-width: 32px; }
+.calc-double { min-height: var(--tap); margin-top: 2px; gap: 10px; }
+.calc-double input { width: 20px; height: 20px; flex: none; }
+
+/* ---------- 常見問題分類標籤 ---------- */
+@media (max-width: 960px) { .faq-filters button { height: var(--tap); } }
+
+/* ---------- Navigation Bar（手機） ---------- */
+@media (max-width: 960px) {
+  .site-header { padding-top: var(--safe-t); }
+  .header-inner { padding-left: calc(var(--gutter) + var(--safe-l)); padding-right: calc(var(--gutter) + var(--safe-r)); }
+  .brand { min-height: var(--tap); }
+  .mobile-menu { padding-bottom: calc(40px + var(--safe-b)); }
+  .mobile-menu nav a { min-height: 56px; display: flex; align-items: center; }
+  .footer-pills { flex-wrap: wrap; }
+  .footer-pills .pill { height: auto; min-height: var(--tap); padding: 0 18px; }
+}
+
+/* ---------- Tab Bar：取代右側直排浮動按鈕（HIG Tab bars） ---------- */
+@media (max-width: 960px) {
+  .float-nav.tab-bar {
+    left: 0; right: 0; bottom: 0; top: auto; z-index: 95;
+    flex-direction: row; gap: 0;
+    padding: 4px calc(8px + var(--safe-r)) calc(4px + var(--safe-b)) calc(8px + var(--safe-l));
+    background: rgba(255, 255, 255, .92);
+    -webkit-backdrop-filter: saturate(1.4) blur(16px); backdrop-filter: saturate(1.4) blur(16px);
+    border-top: 1px solid var(--line);
+  }
+  .float-nav.tab-bar a {
+    flex: 1 1 0; width: auto; height: auto; min-height: 48px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    border: 0; border-radius: 12px; box-shadow: none; background: none;
+    color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; line-height: 1.2;
+  }
+  .float-nav.tab-bar svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; transition: fill .2s; }
+  .float-nav.tab-bar a.is-active { color: var(--navy); background: none; }
+  .float-nav.tab-bar a.is-active svg { fill: var(--lime); }
+  .float-nav.tab-bar a:active { transform: none; background: var(--beige); }
+
+  /* 內容避開 Tab Bar */
+  body { padding-bottom: calc(var(--tabbar-h) + var(--safe-b)); }
+  .to-top { right: calc(16px + var(--safe-r)); bottom: calc(var(--tabbar-h) + 12px + var(--safe-b)); }
+  .mobile-menu { height: calc(100dvh - 64px - var(--safe-t)); }
+}

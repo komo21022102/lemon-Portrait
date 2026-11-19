@@ -523,7 +523,7 @@
       let best = 0, bestD = Infinity;
       cards.forEach((c, i) => { const d = Math.abs(posOf(c) - x); if (d < bestD) { bestD = d; best = i; } });
       if (x > 0 && x + grid.clientWidth >= grid.scrollWidth - 4) best = cards.length - 1;
-      $$('button', dots).forEach((b, i) => b.classList.toggle('is-active', i === best));
+      $$('button', dots).forEach((b, i) => { b.classList.toggle('is-active', i === best); b.setAttribute('aria-current', String(i === best)); });
     };
     grid.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
     window.addEventListener('resize', sync);
@@ -599,4 +599,10 @@
   document.addEventListener('contextmenu', (e) => { if (isProtected(e.target)) e.preventDefault(); });
   document.addEventListener('dragstart', (e) => { if (isProtected(e.target)) e.preventDefault(); });
   $$('img').forEach((img) => img.setAttribute('draggable', 'false'));
+
+  /* ---------- Tab Bar：點目前所在的分頁 → 捲回頂端（iOS 慣例） ---------- */
+  $$('.tab-bar a[aria-current="page"]').forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }));
 })();
