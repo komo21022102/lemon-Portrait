@@ -1658,3 +1658,8 @@ ul, ol { list-style: none; }
 
 /* 試算表：急件費列未勾選時隱藏 */
 .calc-sum > div[hidden] { display: none; }
+
+/* 手機版套組卡片高度 −20px：上下兩張疊卡各縮 10px（整排卡片跟著等高變矮） */
+@media (max-width: 560px) {
+  .pack-grid .pack-stack .pack { padding-top: 16px; padding-bottom: 16px; }
+}
