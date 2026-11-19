@@ -272,7 +272,7 @@
      價格改這裡：單件價寫在 index.html 的 data-price；套組折扣規則在 dealFor() */
   const calc = $('#calc');
   if (calc) {
-    const DOUBLE = 40, SHIP = 60, FREE_SHIP_MIN = 5; // 雙面 +$40／件；5 件以上免運
+    const DOUBLE = 40, SHIP = 60, FREE_SHIP_MIN = 5, RUSH_RATE = 0.2; // 雙面 +$40／件；5 件以上免運
     const money = (n) => '$' + n.toLocaleString('en-US');
     const rows = $$('.calc-row[data-price]', calc);
     // PLAN A 彩色：1 人 $600、2 人 $1,200、3 人 $1,500、第 4 人起每位（人物或毛孩）+$400
@@ -301,14 +301,18 @@
     // goods.html 用 data-mode="goods"：沒有 T 恤套組優惠；運費 $60／筆，5 件以上免運
     const goodsMode = calc.dataset.mode === 'goods';
     const update = () => {
-      let n = 0, teeN = 0, sub = 0;
+      let n = 0, teeN = 0, sub = 0, teeSub = 0;
       const items = rows.map((r) => ({ name: r.dataset.name || '', price: +r.dataset.price, qty: +$('output', r).value, tee: r.hasAttribute('data-tee') }));
-      items.forEach((it) => { n += it.qty; sub += it.qty * it.price; if (it.tee) teeN += it.qty; });
+      items.forEach((it) => { n += it.qty; sub += it.qty * it.price; if (it.tee) { teeN += it.qty; teeSub += it.qty * it.price; } });
       const double = $('#calc-double').checked;
-      if (double) sub += DOUBLE * teeN;
+      if (double) { sub += DOUBLE * teeN; teeSub += DOUBLE * teeN; }
       const deal = goodsMode ? { name: '', off: 0 } : dealFor(n);
       const freeShip = n >= FREE_SHIP_MIN || deal.freeShip;
       const ship = n === 0 || freeShip ? 0 : SHIP;
+      // 衣服印刷急件：T 恤印製費（扣掉套組優惠後）+20%
+      const rush = !!($('#calc-rush') && $('#calc-rush').checked && teeN);
+      const rushFee = rush ? Math.round((teeSub - deal.off) * RUSH_RATE) : 0;
+      if ($('#calc-rush-row')) { $('#calc-rush-row').hidden = !rush; $('#calc-rush-fee').textContent = '+' + money(rushFee); }
       $('#calc-sub').textContent = money(sub);
       if ($('#calc-deal')) { $('#calc-deal-name').textContent = deal.name; $('#calc-deal').textContent = '−' + money(deal.off); }
       $('#calc-ship').textContent = n && freeShip ? '免運' : money(ship);
@@ -318,10 +322,10 @@
       $('#calc-pets-note').textContent = `+${money(t.extra)}／隻`;
       const design = designFor(people, t) + t.extra * pets + (bg ? BG : 0);
       $('#calc-design').textContent = money(design) + (bg ? ' 起' : '');
-      $('#calc-total').textContent = money(design + sub - deal.off + ship) + (bg ? ' 起' : '');
+      $('#calc-total').textContent = money(design + sub - deal.off + rushFee + ship) + (bg ? ' 起' : '');
       state = { people, pets, pets_unit: t.extra, mono: $('#calc-mono').checked, bg, items,
-        double, teeN, n, sub, deal, ship, freeShip: n > 0 && freeShip, designPeople: designFor(people, t), design,
-        total: design + sub - deal.off + ship };
+        double, teeN, n, sub, deal, ship, rush, rushFee, freeShip: n > 0 && freeShip, designPeople: designFor(people, t), design,
+        total: design + sub - deal.off + rushFee + ship };
       resetQuote();
     };
     calc.addEventListener('click', (e) => {
@@ -332,6 +336,7 @@
       update();
     });
     $('#calc-double').addEventListener('change', update);
+    if ($('#calc-rush')) $('#calc-rush').addEventListener('change', update);
     $('#calc-bg').addEventListener('change', update);
     $('#calc-mono').addEventListener('change', update);
     update();
@@ -377,6 +382,7 @@
         q.items.forEach((it) => { if (it.qty) B.push([`${it.name} ${it.qty} 件`, `${money(it.price)} × ${it.qty}`, money(it.price * it.qty)]); });
         if (q.double && q.teeN) B.push([`${goodsMode ? 'T 恤' : ''}升級雙面印製 ${q.teeN} 件`, `${money(DOUBLE)} × ${q.teeN}`, money(DOUBLE * q.teeN)]);
         if (q.deal.off) B.push([q.deal.name, '套組優惠', '−' + money(q.deal.off)]);
+        if (q.rush) B.push(['衣服印刷急件費', '+20%，加急件減 3 個工作天', '+' + money(q.rushFee)]);
         B.push(['店到店運費', q.freeShip ? '5 件以上免運' : '本島一般超商店到店', q.freeShip ? '免運' : money(q.ship)]);
       }
 
@@ -434,7 +440,7 @@
         y += 74;
       };
       if (A.length) section('PLAN A 插畫設計', A, '插畫設計費', money(q.design) + (q.bg ? ' 起' : ''));
-      if (B.length) section(calc.dataset.planB || 'PLAN B T-Shirt 印製', B, calc.dataset.subLabel || 'T 恤小計', money(q.sub - q.deal.off + q.ship));
+      if (B.length) section(calc.dataset.planB || 'PLAN B T-Shirt 印製', B, calc.dataset.subLabel || 'T 恤小計', money(q.sub - q.deal.off + q.rushFee + q.ship));
 
       // total box
       ctx.fillStyle = '#ffe04b'; ctx.beginPath(); ctx.roundRect(P, y, CW, 120, 28); ctx.fill();

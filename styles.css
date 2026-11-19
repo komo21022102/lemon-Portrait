@@ -1655,3 +1655,6 @@ ul, ol { list-style: none; }
 }
 
 /* 插畫牆 9 張：手機版最後一張跟其他張一樣大（不橫跨整列） */
+
+/* 試算表：急件費列未勾選時隱藏 */
+.calc-sum > div[hidden] { display: none; }

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=172" />
+  <link rel="stylesheet" href="styles.css?v=173" />
 </head>
 <body class="page-goods">
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -202,11 +202,13 @@
               <div class="calc-row" data-price="690" data-name="紀念 T 恤 短袖・直噴" data-tee><span>紀念 T 恤 短袖・直噴 <small>$690</small></span><div class="stepper"><button type="button" data-step="-1" aria-label="短袖直噴減一件">−</button><output>0</output><button type="button" data-step="1" aria-label="短袖直噴加一件">+</button></div></div>
               <div class="calc-row" data-price="680" data-name="紀念 T 恤 長袖・轉印" data-tee><span>紀念 T 恤 長袖・轉印 <small>$680</small></span><div class="stepper"><button type="button" data-step="-1" aria-label="長袖轉印減一件">−</button><output>0</output><button type="button" data-step="1" aria-label="長袖轉印加一件">+</button></div></div>
               <label class="calc-double"><input type="checkbox" id="calc-double" /> T 恤升級雙面印製 <small>+$40／件</small></label>
+              <label class="calc-double"><input type="checkbox" id="calc-rush" /> 衣服印刷急件 <small>+20%・加急件減 3 個工作天</small></label>
             </div>
             <div class="calc-side">
               <dl class="calc-sum" aria-live="polite">
                 <div><dt>插畫設計費</dt><dd id="calc-design">$0</dd></div>
                 <div><dt>周邊小計</dt><dd id="calc-sub">$0</dd></div>
+                <div id="calc-rush-row" hidden><dt>衣服印刷急件費</dt><dd id="calc-rush-fee">+$0</dd></div>
                 <div><dt>店到店運費</dt><dd id="calc-ship">$0</dd></div>
                 <div class="calc-total"><dt>預估總計</dt><dd id="calc-total">$0</dd></div>
               </dl>
@@ -270,6 +272,6 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
   </button>
 
-  <script src="main.js?v=81" defer></script>
+  <script src="main.js?v=82" defer></script>
 </body>
 </html>
