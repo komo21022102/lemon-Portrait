@@ -1663,29 +1663,3 @@ ul, ol { list-style: none; }
 @media (max-width: 560px) {
   .pack-grid .pack-stack .pack { padding-top: 16px; padding-bottom: 16px; }
 }
-
-/* ---------- 家庭小故事（family-stories.html） ---------- */
-.fs-toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 760px; margin: clamp(24px, 3vw, 36px) auto 0; }
-.fs-toc a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--navy); color: var(--navy); font-size: 14px; font-weight: 700; background: #fff; transition: background-color .25s; }
-.fs-toc a:hover { background: var(--lime); border-color: var(--lime); }
-.fs-list { padding-top: clamp(16px, 3vw, 32px); }
-.fs-story { max-width: 760px; margin-inline: auto; scroll-margin-top: 96px; }
-.fs-story + .fs-story { margin-top: clamp(56px, 8vw, 96px); padding-top: clamp(56px, 8vw, 96px); border-top: 1.5px dashed var(--line); }
-.fs-head { text-align: center; }
-.fs-no { font-family: var(--font-en, Montserrat, sans-serif); font-weight: 800; font-size: 13px; letter-spacing: .18em; color: var(--navy); display: inline-block; padding: 4px 14px; border-radius: 999px; background: var(--lime); }
-.fs-title { margin-top: 14px; font-weight: 900; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.45; color: var(--navy); letter-spacing: .03em; }
-.fs-meta { margin-top: 8px; font-size: 14px; color: var(--muted); letter-spacing: .04em; }
-.fs-cover { margin: clamp(24px, 3vw, 36px) 0 0; }
-.fs-cover img, .fs-pair img { width: 100%; height: auto; border-radius: 20px; display: block; background: var(--beige); }
-.fs-story figcaption { margin-top: 10px; font-size: 13px; line-height: 1.6; color: var(--muted); text-align: center; }
-.fs-body { max-width: 680px; margin: clamp(24px, 3vw, 36px) auto 0; }
-.fs-body > p { font-size: clamp(16px, 1.4vw, 18px); line-height: 2; color: var(--ink-2); text-align: justify; }
-.fs-body > * + * { margin-top: 20px; }
-.fs-quote { margin: 32px 0; padding: 4px 0 4px 20px; border-left: 4px solid var(--lime); font-weight: 900; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.7; color: var(--navy); }
-.fs-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-block: 32px; }
-.fs-pair figure { margin: 0; }
-@media (max-width: 560px) {
-  .fs-toc { justify-content: flex-start; }
-  .fs-pair { grid-template-columns: 1fr; }
-  .fs-cover img, .fs-pair img { border-radius: 14px; }
-}
