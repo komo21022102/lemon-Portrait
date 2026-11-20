@@ -206,3 +206,11 @@
 
 /* 周邊頁：回到首頁按鈕 */
 .gp-home { display: flex; justify-content: center; margin-top: clamp(32px, 4vw, 48px); }
+
+/* 試算器：觸控裝置不要 hover 位移，避免 iOS 第一下只觸發 hover、第二下才打開 */
+@media (hover: none) {
+  .calc:not([open]):hover { transform: none; box-shadow: none; }
+  .calc summary:hover .q-icon { background: #fff; }
+  .calc summary:hover .q-icon::before, .calc summary:hover .q-icon::after { background: var(--navy); }
+}
+.calc summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
