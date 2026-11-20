@@ -303,3 +303,16 @@
   #packages .pack-grid .pack-stack .pack { grid-template-columns: minmax(0, 1fr); grid-template-areas: "label" "name" "price" "spec"; }
   #packages .pack-grid .pack-stack .pack-icon { display: none; }
 }
+
+/* 周邊頁頂部三張商品卡（手機）：卡片變矮、間距 22px */
+@media (max-width: 760px) {
+  .gp-tier-grid { gap: 22px; }
+  .gp-tier { padding: 20px 24px 14px; border-radius: 32px; }
+  .gp-tier-art.is-wide { top: 14px; right: 18px; width: 96px; }
+  .gp-tier-name { font-size: 21px; line-height: 30px; }
+  .gp-tier-price { margin-top: 4px; align-items: baseline; }
+  .gp-tier-price .num { font-size: 28px; line-height: 34px; }
+  .gp-tier-price small.ship { flex-basis: auto; margin: 0 0 0 6px; }
+  .gp-tier-line { margin-top: 6px; }
+  .gp-tier .gp-more { margin-top: 4px; }
+}
