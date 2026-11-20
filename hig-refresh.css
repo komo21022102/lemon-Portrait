@@ -203,3 +203,6 @@
 /* IG 按鈕：淡粉紅底 */
 .pill[data-social] { background: #fbe6e8; border-color: #f4cdd2; color: var(--ink); }
 .pill[data-social]:hover { background: #f8d6db; border-color: #f0bcc3; }
+
+/* 周邊頁：回到首頁按鈕 */
+.gp-home { display: flex; justify-content: center; margin-top: clamp(32px, 4vw, 48px); }
