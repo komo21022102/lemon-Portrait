@@ -199,7 +199,3 @@
   .ge-art img { max-height: 68px; }
   .ge-soon-art { font-size: 34px; }
 }
-/* 桌面版：卡片在左、標題在右 */
-@media (min-width: 961px) {
-  .ge-card { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); grid-template-areas: "items head" "items only" "items btn"; }
-}
