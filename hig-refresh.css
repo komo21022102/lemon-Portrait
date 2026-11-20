@@ -322,3 +322,8 @@
 @media (max-width: 760px) {
   .gp-tier-art.is-sq { top: 10px; right: 16px; width: 84px; }
 }
+
+/* 周邊頁頂部商品卡：「看商品細節」固定在卡片底部，三張對齊 */
+.gp-tier { display: flex; flex-direction: column; }
+.gp-tier .gp-more { margin-top: auto; padding-top: 16px; }
+@media (max-width: 760px) { .gp-tier .gp-more { padding-top: 4px; } }
