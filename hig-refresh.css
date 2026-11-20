@@ -316,3 +316,9 @@
   .gp-tier-line { margin-top: 6px; }
   .gp-tier .gp-more { margin-top: 4px; }
 }
+
+/* 周邊頁頂部卡片：零錢包、帆布包手繪插圖 */
+.gp-tier-art.is-sq { width: 116px; top: -62px; right: 22px; }
+@media (max-width: 760px) {
+  .gp-tier-art.is-sq { top: 10px; right: 16px; width: 84px; }
+}
