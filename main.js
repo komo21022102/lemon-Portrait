@@ -69,7 +69,7 @@
     for (let r = 0; r < rows; r++) {
       const set = works.slice(r * per, r * per + per);
       while (set.length < per) set.push(works[set.length]);
-      const items = (hidden) => set.map((src) => `<button class="w-item" data-full="${src}" ${hidden ? 'tabindex="-1" aria-hidden="true"' : 'aria-label="放大作品"'}><img src="${src}" alt="${hidden ? '' : '家庭插畫作品'}" loading="lazy"></button>`).join('');
+      const items = (hidden) => set.map((src) => `<button class="w-item" data-full="${src}" ${hidden ? 'tabindex="-1" aria-hidden="true"' : 'aria-label="放大作品"'}><img src="${src}" alt="${hidden ? '' : 'Q 版家庭似顏繪插畫作品'}" loading="lazy"></button>`).join('');
       out += `<div class="works-row marquee ${r % 2 ? 'reverse' : ''}"><div class="marquee-track" style="--dur:${60 + r * 8}s">${items(false)}${items(true)}</div></div>`;
     }
     worksWall.innerHTML = out;
