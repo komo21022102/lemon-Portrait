@@ -358,3 +358,17 @@
 /* 首頁周邊卡：純展示，不可點、無 hover 浮起 */
 .ge-items .ge-item { cursor: default; }
 .ge-items .ge-item:hover { transform: none; box-shadow: none; }
+
+/* 實木相框加入後：PLAN B 分頁 4 欄、周邊頁頂部 4 張卡 */
+.pb-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pb-tabs button { font-size: 13px; padding-inline: 2px; }
+@media (min-width: 1200px) {
+  .gp-tier-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; max-width: 1240px; margin-inline: auto; }
+  .gp-tier { padding: 28px 26px 18px; border-radius: 44px; }
+  .gp-tier-line { white-space: normal; align-items: flex-start; }
+  .gp-tier-art.is-sq { width: 96px; top: -54px; right: 18px; }
+}
+@media (min-width: 761px) and (max-width: 1199px) {
+  .gp-tier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 72px; max-width: 760px; margin-inline: auto; }
+}
+.gp-tier img[src*="frame-icon"] { border-radius: 14px; }
