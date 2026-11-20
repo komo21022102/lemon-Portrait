@@ -228,7 +228,6 @@
 .pack-icon { display: none; }
 @media (min-width: 961px) {
   #packages .pack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; margin-top: 32px; padding-top: 0; }
-  #packages .pack-stack { display: contents; }
   #packages .pack-grid .pack {
     display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; column-gap: 20px; row-gap: 2px;
     grid-template-areas: "art label label" "art name price" "art save spec";
@@ -251,4 +250,15 @@
   #packages .pack-grid .pack .pack-spec { min-height: 0; height: auto; margin-bottom: 0; line-height: 1.6; }
   #packages .pack-grid .pack-label { margin: 0; }
   #packages .pack-grid .pack:hover { transform: translateY(-3px); }
+
+  /* 四人以上、大家庭：在右欄並排成兩張方形卡 */
+  #packages .pack-stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+  #packages .pack-grid .pack-stack .pack {
+    grid-template-columns: 56px minmax(0, 1fr); grid-template-areas: "art label" "art name" "price price" "spec spec";
+    row-gap: 6px; column-gap: 14px; padding: 18px 20px; align-content: center;
+  }
+  #packages .pack-grid .pack-stack .pack-icon { width: 56px; height: 56px; border-radius: 16px; font-size: 18px; }
+  #packages .pack-grid .pack-stack .pack-tiers { justify-self: stretch; margin-top: 8px; }
+  #packages .pack-grid .pack-stack .pack-tiers li { justify-content: space-between; }
+  #packages .pack-grid .pack-stack .pack-spec { justify-self: start; margin-top: 2px; }
 }
