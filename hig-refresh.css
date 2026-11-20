@@ -229,8 +229,8 @@
 @media (min-width: 961px) {
   #packages .pack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; margin-top: 32px; padding-top: 0; }
   #packages .pack-grid .pack {
-    display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; column-gap: 20px; row-gap: 2px;
-    grid-template-areas: "art label label" "art name price" "art save spec";
+    display: grid; grid-template-columns: 88px auto minmax(0, 1fr) auto; column-gap: 20px; row-gap: 2px;
+    grid-template-areas: "art label label label" "art name name price" "art save spec spec";
     align-items: center; padding: 16px 24px;
   }
   #packages .pack-grid .pack-art, #packages .pack-grid .pack-icon { grid-area: art; position: static; transform: none; width: 88px; height: auto; align-self: center; }
@@ -246,7 +246,9 @@
   #packages .pack-grid .pack-save { grid-area: save; margin-top: 4px; justify-self: start; }
   #packages .pack-grid .pack-spec { grid-area: spec; margin-top: 4px; padding-top: 0; border-top: 0; justify-self: end; color: var(--ink-2); }
   #packages .pack-grid .pack-copy { display: none; }
-  #packages .pack-grid .pack .pack-name { margin: 0; min-height: 0; white-space: nowrap; }
+  #packages .pack-grid .pack .pack-name { margin: 0; min-height: 0; }
+  #packages .pack-grid .pack-save, #packages .pack-grid .pack-price { white-space: nowrap; }
+  #packages .pack-grid .pack > .pack-spec { text-align: right; }
   #packages .pack-grid .pack .pack-spec { min-height: 0; height: auto; margin-bottom: 0; line-height: 1.6; }
   #packages .pack-grid .pack-label { margin: 0; }
   #packages .pack-grid .pack:hover { transform: translateY(-3px); }
@@ -261,4 +263,15 @@
   #packages .pack-grid .pack-stack .pack-tiers { justify-self: stretch; margin-top: 8px; }
   #packages .pack-grid .pack-stack .pack-tiers li { justify-content: space-between; }
   #packages .pack-grid .pack-stack .pack-spec { justify-self: start; margin-top: 2px; }
+}
+/* 較窄的桌面（961–1199px）：規格改放最下一行，圖與價格縮小，避免擠壓 */
+@media (min-width: 961px) and (max-width: 1199px) {
+  #packages .pack-grid > .pack {
+    grid-template-columns: 64px auto minmax(0, 1fr) auto; column-gap: 14px; padding: 16px 20px;
+    grid-template-areas: "art label label label" "art name name price" "art save save save" "art spec spec spec";
+  }
+  #packages .pack-grid > .pack .pack-art { width: 64px; }
+  #packages .pack-grid > .pack .pack-price .num { font-size: 22px; }
+  #packages .pack-grid > .pack > .pack-spec { justify-self: start; text-align: left; font-size: 13px; }
+  #packages .pack-grid .pack-stack .pack-name { font-size: 16px; }
 }
