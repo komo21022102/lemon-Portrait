@@ -224,10 +224,31 @@
 }
 @media (min-width: 1101px) { .plan-sub .sub-line { white-space: nowrap; } }
 
-/* 周邊頁 T 恤套組：網頁版兩欄、卡片寬度撐滿、間距 30px */
+/* 周邊頁 T 恤套組：網頁版兩欄橫向精簡卡（圖在左、文在右） */
+.pack-icon { display: none; }
 @media (min-width: 961px) {
-  .gp-packs .pack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 30px; row-gap: 96px; }
-  .gp-packs .pack-stack { display: contents; }
-  .gp-packs .pack-stack .pack:last-child { grid-column: 1 / -1; }
-  .gp-packs .pack { padding: 30px 32px 26px; }
+  #packages .pack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; margin-top: 32px; padding-top: 0; }
+  #packages .pack-stack { display: contents; }
+  #packages .pack-grid .pack {
+    display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; column-gap: 20px; row-gap: 2px;
+    grid-template-areas: "art label label" "art name price" "art save spec";
+    align-items: center; padding: 16px 24px;
+  }
+  #packages .pack-grid .pack-art, #packages .pack-grid .pack-icon { grid-area: art; position: static; transform: none; width: 88px; height: auto; align-self: center; }
+  #packages .pack-grid .pack-icon {
+    display: grid; place-items: center; height: 72px; border-radius: 20px; background: var(--lime);
+    font-family: var(--font-en); font-weight: 800; font-size: 24px; color: var(--navy);
+  }
+  #packages .pack-grid .pack-label { grid-area: label; }
+  #packages .pack-grid .pack-name { grid-area: name; margin-top: 0; font-size: 18px; }
+  #packages .pack-grid .pack-price, #packages .pack-grid .pack-tiers { grid-area: price; margin-top: 0; justify-self: end; }
+  #packages .pack-grid .pack-price .num { font-size: 26px; }
+  #packages .pack-grid .pack-tiers li { padding: 4px 12px; }
+  #packages .pack-grid .pack-save { grid-area: save; margin-top: 4px; justify-self: start; }
+  #packages .pack-grid .pack-spec { grid-area: spec; margin-top: 4px; padding-top: 0; border-top: 0; justify-self: end; color: var(--ink-2); }
+  #packages .pack-grid .pack-copy { display: none; }
+  #packages .pack-grid .pack .pack-name { margin: 0; min-height: 0; white-space: nowrap; }
+  #packages .pack-grid .pack .pack-spec { min-height: 0; height: auto; margin-bottom: 0; line-height: 1.6; }
+  #packages .pack-grid .pack-label { margin: 0; }
+  #packages .pack-grid .pack:hover { transform: translateY(-3px); }
 }
