@@ -226,8 +226,8 @@
 
 /* 周邊頁 T 恤套組：網頁版兩欄橫向精簡卡（圖在左、文在右） */
 .pack-icon { display: none; }
-@media (min-width: 961px) {
-  #packages .pack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; margin-top: 32px; padding-top: 0; }
+@media all {
+  #packages .pack-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; margin-top: 32px; padding-top: 0; }
   #packages .pack-grid .pack {
     display: grid; grid-template-columns: 88px auto minmax(0, 1fr) auto; column-gap: 20px; row-gap: 2px;
     grid-template-areas: "art label label label" "art name name price" "art save spec spec";
@@ -274,4 +274,32 @@
   #packages .pack-grid > .pack .pack-price .num { font-size: 22px; }
   #packages .pack-grid > .pack > .pack-spec { justify-self: start; text-align: left; font-size: 13px; }
   #packages .pack-grid .pack-stack .pack-name { font-size: 16px; }
+}
+
+/* 平板／手機：套組也用橫條卡，單欄堆疊，取消左右滑 */
+@media (max-width: 960px) {
+  #packages .pack-grid {
+    grid-template-columns: minmax(0, 1fr); gap: 12px; margin: 24px 0 0; padding: 0;
+    overflow: visible; scroll-snap-type: none;
+  }
+  #packages .pack-grid .pack, #packages .pack-stack { flex: none; min-width: 0; }
+  #packages .pack-stack { gap: 12px; }
+  #packages .swipe-dots { display: none !important; }
+  #packages .pack-grid > .pack {
+    grid-template-columns: 56px auto minmax(0, 1fr) auto; column-gap: 12px; padding: 14px 16px; border-radius: 24px;
+    grid-template-areas: "art label label label" "art name name price" "art save save save" "art spec spec spec";
+  }
+  #packages .pack-grid > .pack .pack-art { width: 56px; }
+  #packages .pack-grid .pack .pack-name { font-size: 16px; }
+  #packages .pack-grid > .pack .pack-price .num { font-size: 20px; }
+  #packages .pack-grid > .pack > .pack-spec { justify-self: start; text-align: left; font-size: 13px; }
+  #packages .pack-grid .pack-stack .pack { padding: 14px; border-radius: 24px; grid-template-columns: 44px minmax(0, 1fr); column-gap: 10px; }
+  #packages .pack-grid .pack-stack .pack-icon { width: 44px; height: 44px; border-radius: 12px; font-size: 15px; }
+  #packages .pack-grid .pack-stack .pack-tiers li { padding: 4px 8px; font-size: 12px; flex-wrap: wrap; }
+  #packages .pack-grid .pack-stack .pack-spec { font-size: 13px; }
+  #packages .pack-grid .pack-label { font-size: 11px; }
+}
+@media (max-width: 560px) {
+  #packages .pack-grid .pack-stack .pack { grid-template-columns: minmax(0, 1fr); grid-template-areas: "label" "name" "price" "spec"; }
+  #packages .pack-grid .pack-stack .pack-icon { display: none; }
 }
