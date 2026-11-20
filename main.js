@@ -9,7 +9,7 @@
   // Contact links — 換成你的 LINE / IG 連結即可全站生效
   const LINKS = {
     line: 'https://line.me/ti/p/~komo2102',
-    social: 'https://www.instagram.com/ball_ball_cute/',
+    social: 'https://www.instagram.com/lemonhomeme/',
   };
   const setExternal = (sel, url) => $$(sel).forEach((a) => { a.href = url; a.target = '_blank'; a.rel = 'noopener'; });
   setExternal('[data-line]', LINKS.line);

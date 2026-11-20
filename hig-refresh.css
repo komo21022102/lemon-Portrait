@@ -199,3 +199,7 @@
   .ge-art img { max-height: 68px; }
   .ge-soon-art { font-size: 34px; }
 }
+
+/* IG 按鈕：淡粉紅底 */
+.pill[data-social] { background: #fbe6e8; border-color: #f4cdd2; color: var(--ink); }
+.pill[data-social]:hover { background: #f8d6db; border-color: #f0bcc3; }
