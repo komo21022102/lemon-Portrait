@@ -327,3 +327,6 @@
 .gp-tier { display: flex; flex-direction: column; }
 .gp-tier .gp-more { margin-top: auto; padding-top: 16px; }
 @media (max-width: 760px) { .gp-tier .gp-more { padding-top: 4px; } }
+
+/* 四人以上、大家庭：拿掉 4+／10+ 方塊，只留文字 */
+#packages .pack-grid .pack-stack .pack { grid-template-columns: minmax(0, 1fr); grid-template-areas: "label" "name" "price" "spec"; }
