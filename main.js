@@ -268,6 +268,34 @@
   lb.addEventListener('touchend', (e) => { if (lsx == null) return; const dx = e.changedTouches[0].clientX - lsx; if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1)); lsx = null; });
   }
 
+  /* ---------- PLAN B 周邊分頁（零錢包／帆布包／T 恤） ---------- */
+  const pbTabs = $('.pb-tabs');
+  if (pbTabs) {
+    const tabs = $$('[role="tab"]', pbTabs);
+    const select = (tab, focus) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        $('#' + t.getAttribute('aria-controls')).hidden = !on;
+      });
+      $$('[data-pb-for]').forEach((el) => { el.hidden = el.dataset.pbFor !== tab.getAttribute('aria-controls'); });
+      if (focus) tab.focus();
+    };
+    pbTabs.addEventListener('click', (e) => { const t = e.target.closest('[role="tab"]'); if (t) select(t); });
+    pbTabs.addEventListener('keydown', (e) => {
+      const i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (k) { e.preventDefault(); select(tabs[(i + k + tabs.length) % tabs.length], true); }
+      if (e.key === 'Home') { e.preventDefault(); select(tabs[0], true); }
+      if (e.key === 'End') { e.preventDefault(); select(tabs[tabs.length - 1], true); }
+    });
+    // 連到 #packages 或 #pb-tee 時自動切到 T 恤分頁
+    const openFromHash = () => { if (/^#(packages|pb-tee)$/.test(location.hash)) select($('#pb-tab-tee')); };
+    openFromHash(); window.addEventListener('hashchange', openFromHash);
+  }
+
   /* ---------- T-shirt calculator ----------
      價格改這裡：單件價寫在 index.html 的 data-price；套組折扣規則在 dealFor() */
   const calc = $('#calc');
@@ -306,7 +334,7 @@
       items.forEach((it) => { n += it.qty; sub += it.qty * it.price; if (it.tee) { teeN += it.qty; teeSub += it.qty * it.price; } });
       const double = $('#calc-double').checked;
       if (double) { sub += DOUBLE * teeN; teeSub += DOUBLE * teeN; }
-      const deal = goodsMode ? { name: '', off: 0 } : dealFor(n);
+      const deal = goodsMode ? { name: '', off: 0 } : dealFor(teeN); // 套組優惠只算 T 恤件數
       const freeShip = n >= FREE_SHIP_MIN || deal.freeShip;
       const ship = n === 0 || freeShip ? 0 : SHIP;
       // 衣服印刷急件：T 恤印製費（扣掉套組優惠後）+20%

@@ -142,3 +142,60 @@
   .to-top { right: calc(16px + var(--safe-r)); bottom: calc(var(--tabbar-h) + 12px + var(--safe-b)); }
   .mobile-menu { height: calc(100dvh - 64px - var(--safe-t)); }
 }
+
+/* =========================================================
+   周邊優先（design/goods-first）：首頁不再只強調 T 恤
+   ========================================================= */
+
+/* Hero：多一個「做成周邊」的價格入口 */
+.hero-goods {
+  display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 14px; margin: -6px 0;
+  border-radius: 999px; background: var(--lime); color: var(--navy); font-weight: 700;
+}
+.hero-goods b { color: var(--navy); }
+.hero-goods::after { content: "→"; margin-left: 6px; }
+.hero-goods:active { opacity: .85; }
+
+/* 選擇帶回家的方式：4 張卡片 */
+.ge-items { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 1000px; }
+.ge-total { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+.ge-total .num { font-family: var(--font-en); font-weight: 800; font-size: 20px; color: var(--navy); }
+.ge-price { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.ge-soon { background: transparent; border: 2px dashed #c9c2b6; }
+.ge-soon:hover { transform: none; box-shadow: none; }
+.ge-soon .ge-tier { background: #e9e4da; color: var(--ink-2); }
+.ge-soon-art { font-size: 40px; font-weight: 300; color: #b3aa9b; }
+.ge-only { font-size: 14px; color: var(--ink-2); margin: 0 auto 22px; line-height: 1.7; }
+.ge-only b { color: var(--navy); }
+.ge-only .num { font-family: var(--font-en); font-weight: 800; }
+@media (min-width: 961px) {
+  .ge-items { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-row: 1 / span 3; }
+  .ge-card { grid-template-areas: "head items" "only items" "btn items"; }
+  .ge-only { grid-area: only; margin: 18px 0 0; }
+}
+@media (max-width: 760px) {
+  .ge-items { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .ge-item { padding: 16px 8px; }
+  .ge-total { font-size: 12px; }
+  .ge-total .num { font-size: 18px; }
+  .ge-only { font-size: 13px; }
+}
+
+/* 步驟 02 改用周邊手繪示意，完整顯示不裁切 */
+.pstep-media .pstep-img-art { object-fit: contain; padding: 6% 8%; background: var(--beige); mix-blend-mode: normal; }
+
+/* PLAN B 周邊分頁：iOS 分段控制樣式 */
+.pb-tabs {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px;
+  margin: 16px 0 6px; padding: 3px; border-radius: 12px; background: rgba(45, 73, 112, .1);
+}
+.pb-tabs button {
+  min-height: 40px; border: 0; border-radius: 9px; background: none; cursor: pointer;
+  font: inherit; font-size: 14px; font-weight: 700; color: var(--ink-2);
+}
+.pb-tabs button[aria-selected="true"] { background: #fff; color: var(--navy); box-shadow: 0 2px 6px rgba(0, 0, 0, .12); }
+.pb-tabs button:focus-visible { outline: 2px solid var(--navy); outline-offset: 1px; }
+.pb-panel[hidden], .packs[hidden] { display: none !important; }
+.plan-more { display: inline-block; font-weight: 700; color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+.ge-total { display: grid; justify-items: center; gap: 0; }
+.ge-total small { font-size: 12px; font-weight: 700; color: var(--ink-2); }
