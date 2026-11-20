@@ -372,3 +372,7 @@
   .gp-tier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 72px; max-width: 760px; margin-inline: auto; }
 }
 .gp-tier img[src*="frame-icon"] { border-radius: 14px; }
+/* 實木相框插圖：方形，縮小一點跟其他卡片插畫等大 */
+.gp-tier-art.is-sq.is-frame { width: 92px; top: -50px; right: 28px; }
+@media (min-width: 1200px) { .gp-tier-art.is-sq.is-frame { width: 78px; top: -44px; right: 22px; } }
+@media (max-width: 760px) { .gp-tier-art.is-sq.is-frame { width: 66px; top: 14px; right: 24px; } }
