@@ -354,3 +354,7 @@
   .scenes { padding-top: 32px; padding-bottom: 28px; }
   .scenes-text { margin-top: 12px; gap: 2px; }
 }
+
+/* 首頁周邊卡：純展示，不可點、無 hover 浮起 */
+.ge-items .ge-item { cursor: default; }
+.ge-items .ge-item:hover { transform: none; box-shadow: none; }
