@@ -147,15 +147,6 @@
    周邊優先（design/goods-first）：首頁不再只強調 T 恤
    ========================================================= */
 
-/* Hero：多一個「做成周邊」的價格入口 */
-.hero-goods {
-  display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 14px; margin: -6px 0;
-  border-radius: 999px; background: var(--lime); color: var(--navy); font-weight: 700;
-}
-.hero-goods b { color: var(--navy); }
-.hero-goods::after { content: "→"; margin-left: 6px; }
-.hero-goods:active { opacity: .85; }
-
 /* 選擇帶回家的方式：4 張卡片 */
 .ge-items { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 1000px; }
 .ge-total { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.4; }
