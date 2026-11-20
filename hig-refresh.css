@@ -214,3 +214,12 @@
   .calc summary:hover .q-icon::before, .calc summary:hover .q-icon::after { background: var(--navy); }
 }
 .calc summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+/* 價格卡（PLAN A／B）桌面版：副標說明放在副標題旁邊、卡片高度收斂 */
+@media (min-width: 961px) {
+  .plan-sub { gap: 4px 12px; }
+  .plan-sub .sub-line { flex: 1 1 auto; flex-basis: auto; }
+  .plans .plan { padding-top: 32px; padding-bottom: 28px; }
+  .plans .plan-list li { padding-block: 12px; }
+}
+@media (min-width: 1101px) { .plan-sub .sub-line { white-space: nowrap; } }
