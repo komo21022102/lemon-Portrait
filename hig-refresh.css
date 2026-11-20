@@ -344,3 +344,7 @@
   .hero-sub { margin-top: 10px; font-size: 15px; line-height: 1.7; padding-inline: 8px; }
   .hero-more { margin-top: 2px; font-size: 14px; }
 }
+
+/* 更多使用情境：字稍微放大 */
+.scenes-text { font-size: 18px; }
+@media (max-width: 560px) { .scenes-text { font-size: 15.5px; letter-spacing: .02em; } }
