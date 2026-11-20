@@ -348,3 +348,9 @@
 /* 更多使用情境：字稍微放大 */
 .scenes-text { font-size: 18px; }
 @media (max-width: 560px) { .scenes-text { font-size: 15.5px; letter-spacing: .02em; } }
+/* 更多使用情境：手機／平板不放插圖、區塊縮矮；網頁版維持左右排插圖 */
+@media (max-width: 960px) {
+  .scenes-art { display: none; }
+  .scenes { padding-top: 32px; padding-bottom: 28px; }
+  .scenes-text { margin-top: 12px; gap: 2px; }
+}
