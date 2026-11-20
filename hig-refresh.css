@@ -190,3 +190,12 @@
 .plan-more { display: inline-block; font-weight: 700; color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
 .ge-total { display: grid; justify-items: center; gap: 0; }
 .ge-total small { font-size: 12px; font-weight: 700; color: var(--ink-2); }
+/* 桌面版：周邊卡片區高度收斂 */
+@media (min-width: 961px) {
+  .ge-card { padding: 44px 56px; }
+  .ge-items { gap: 12px; }
+  .ge-item { padding: 16px 14px 14px; gap: 4px; border-radius: 24px; }
+  .ge-art { height: 68px; }
+  .ge-art img { max-height: 68px; }
+  .ge-soon-art { font-size: 34px; }
+}
