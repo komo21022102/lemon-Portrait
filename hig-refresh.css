@@ -330,3 +330,17 @@
 
 /* 四人以上、大家庭：拿掉 4+／10+ 方塊，只留文字 */
 #packages .pack-grid .pack-stack .pack { grid-template-columns: minmax(0, 1fr); grid-template-areas: "label" "name" "price" "spec"; }
+
+/* 首頁 Hero 副標：不放價格，先讓人喜歡插畫 */
+.hero-sub { margin-top: 18px; max-width: 30em; font-size: 18px; line-height: 1.8; font-weight: 500; color: var(--ink-2); letter-spacing: .02em; }
+.hero-more {
+  display: inline-flex; align-items: center; gap: 10px; min-height: var(--tap); margin-top: 12px;
+  font-size: 15px; font-weight: 700; color: var(--navy);
+  text-decoration: underline; text-decoration-color: var(--lime); text-decoration-thickness: 3px; text-underline-offset: 6px;
+}
+.hero-more .arrow { width: 22px; }
+@media (hover: hover) { .hero-more:hover .arrow { transform: translateX(4px); } }
+@media (max-width: 960px) {
+  .hero-sub { margin-top: 10px; font-size: 15px; line-height: 1.7; padding-inline: 8px; }
+  .hero-more { margin-top: 2px; font-size: 14px; }
+}
