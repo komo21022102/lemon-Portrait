@@ -1663,3 +1663,14 @@ ul, ol { list-style: none; }
 @media (max-width: 560px) {
   .pack-grid .pack-stack .pack { padding-top: 16px; padding-bottom: 16px; }
 }
+
+/* ---------- 我家的故事（stories.html）：IG 貼文嵌入 ---------- */
+.ig-stories { padding-top: clamp(8px, 2vw, 24px); }
+.ig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(326px, 1fr)); gap: clamp(16px, 2.4vw, 28px); align-items: start; max-width: 1140px; margin-inline: auto; }
+.ig-item { min-width: 0; }
+.ig-item .instagram-media { margin: 0 !important; min-width: 0 !important; width: 100% !important; max-width: none !important; border-radius: 16px !important; box-shadow: 0 10px 28px -16px rgba(28, 34, 46, .35) !important; border: 1px solid var(--line) !important; }
+.ig-item blockquote.instagram-media:not(iframe) { display: grid; place-items: center; min-height: 420px; background: var(--beige); font-weight: 700; }
+.ig-item blockquote.instagram-media a { color: var(--navy); }
+.ig-more { display: flex; justify-content: center; margin-top: clamp(32px, 4vw, 48px); }
+.ig-more .btn { margin-top: 0; }
+@media (max-width: 400px) { .ig-grid { grid-template-columns: 1fr; } }
