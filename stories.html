@@ -69,7 +69,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=175" />
+  <link rel="stylesheet" href="styles.css?v=176" />
   <link rel="stylesheet" href="hig-refresh.css?v=19" />
 </head>
 <body class="page-goods page-story page-igstories">
@@ -140,42 +140,157 @@
       </div>
     </section>
 
-    <!-- ============ IG 貼文 ============ -->
+    <!-- ============ IG 貼文（圖＋故事文字） ============
+      新增一則：複製一整段 <article class="ig-card"> … </article> 貼到最上面，
+      換掉圖片（放在 assets/stories/）與文字即可；多張圖會自動變成可左右滑的輪播。
+    ===================================================== -->
     <section class="ig-stories section">
       <div class="container">
-        <div class="ig-grid" id="igGrid" aria-live="polite"></div>
+        <div class="ig-grid">
+        <!-- IG：https://www.instagram.com/p/Df-ARTVk7n-/ -->
+        <article class="ig-card reveal">
+          <div class="ig-media" style="aspect-ratio:904/904">
+            <div class="ig-track">
+              <img src="assets/stories/Df-ARTVk7n--1.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df-ARTVk7n--2.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df-ARTVk7n--3.webp" alt="" width="904" height="904" loading="lazy" />
+            </div>
+            <button type="button" class="ig-nav ig-prev" aria-label="上一張">‹</button>
+            <button type="button" class="ig-nav ig-next" aria-label="下一張">›</button>
+            <div class="ig-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          </div>
+          <div class="ig-text">
+            <p>有段時間，我一直都是自己一人住<br />時常會感到有點孤獨<br />那年冬天的聖誕節，我走在路上<br />下定決心要給自己一個最棒的禮物<br />是能陪伴在我身旁的毛孩 ❤️ 我會把所有的愛都給牠<br />有了小麥，我的心就像一盞燈暖了起來..</p>
+          </div>
+        </article>
+
+        <!-- IG：https://www.instagram.com/p/Df8gCm7zcd_/ -->
+        <article class="ig-card reveal">
+          <div class="ig-media" style="aspect-ratio:1080/1080">
+            <div class="ig-track">
+              <img src="assets/stories/Df8gCm7zcd_-1.webp" alt="" width="1080" height="1080" loading="lazy" />
+            </div>
+          </div>
+          <div class="ig-text">
+            <p>小象：媽咪～我交了一個新朋友！<br />媽咪：…我手上的是</p>
+          </div>
+        </article>
+
+        <!-- IG：https://www.instagram.com/p/Df7SaKHkzeO/ -->
+        <article class="ig-card reveal">
+          <div class="ig-media" style="aspect-ratio:904/904">
+            <div class="ig-track">
+              <img src="assets/stories/Df7SaKHkzeO-1.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df7SaKHkzeO-2.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df7SaKHkzeO-3.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df7SaKHkzeO-4.webp" alt="" width="904" height="904" loading="lazy" />
+            </div>
+            <button type="button" class="ig-nav ig-prev" aria-label="上一張">‹</button>
+            <button type="button" class="ig-nav ig-next" aria-label="下一張">›</button>
+            <div class="ig-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="ig-text">
+            <p>畫中吸引我的<br />就是裡面可愛的小朋友和狗狗們<br />每個成員都有自己的個性<br />湊在一起又有一種說不出來的可愛～<br />啊！這不就是我們這一家嗎 XD</p>
+          </div>
+        </article>
+
+        <!-- IG：https://www.instagram.com/p/Df7KBKSk-RF/ -->
+        <article class="ig-card reveal">
+          <div class="ig-media" style="aspect-ratio:904/904">
+            <div class="ig-track">
+              <img src="assets/stories/Df7KBKSk-RF-1.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df7KBKSk-RF-2.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df7KBKSk-RF-3.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df7KBKSk-RF-4.webp" alt="" width="904" height="904" loading="lazy" />
+            </div>
+            <button type="button" class="ig-nav ig-prev" aria-label="上一張">‹</button>
+            <button type="button" class="ig-nav ig-next" aria-label="下一張">›</button>
+            <div class="ig-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="ig-text">
+            <p>《 她們的小故事 》</p>
+            <p>主角是一個凍齡女兒 ❤️<br />她最愛和媽媽去唱歌～以及去爬山<br />她們都會穿著母女裝！！（媽媽也是美魔女）<br />所以她希望在媽媽生日時<br />可以有代表母女的永恆畫面<br />她還說：「媽媽愛死FILA了」哈哈！</p>
+          </div>
+        </article>
+
+        <!-- IG：https://www.instagram.com/p/Df6m7NyE6US/ -->
+        <article class="ig-card reveal">
+          <div class="ig-media" style="aspect-ratio:904/904">
+            <div class="ig-track">
+              <img src="assets/stories/Df6m7NyE6US-1.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df6m7NyE6US-2.webp" alt="" width="904" height="904" loading="lazy" />
+              <img src="assets/stories/Df6m7NyE6US-3.webp" alt="" width="924" height="924" loading="lazy" />
+              <img src="assets/stories/Df6m7NyE6US-4.webp" alt="" width="904" height="904" loading="lazy" />
+            </div>
+            <button type="button" class="ig-nav ig-prev" aria-label="上一張">‹</button>
+            <button type="button" class="ig-nav ig-next" aria-label="下一張">›</button>
+            <div class="ig-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="ig-text">
+            <p>最近收到的可愛的插畫委託！</p>
+            <p>這個家裡有一位超級愛狗的媽媽、<br />一個笑起來像太陽的混血寶寶、<br />還有走到哪都想喝咖啡的爸爸 ☕️</p>
+            <p>而故事還有一個毛孩主角，是從小被當成女兒疼愛的狗狗。</p>
+            <p>牠不只是家裡的毛孩，<br />更是寶寶最愛的大姊姊 ❤️</p>
+          </div>
+        </article>
+
+        <!-- IG：https://www.instagram.com/p/Df6VQW4kzpw/ -->
+        <article class="ig-card reveal">
+          <div class="ig-media" style="aspect-ratio:1226/919">
+            <div class="ig-track">
+              <img src="assets/stories/Df6VQW4kzpw-1.webp" alt="" width="1226" height="919" loading="lazy" />
+              <img src="assets/stories/Df6VQW4kzpw-2.webp" alt="" width="1219" height="914" loading="lazy" />
+            </div>
+            <button type="button" class="ig-nav ig-prev" aria-label="上一張">‹</button>
+            <button type="button" class="ig-nav ig-next" aria-label="下一張">›</button>
+            <div class="ig-dots" aria-hidden="true"><i></i><i></i></div>
+          </div>
+          <div class="ig-text">
+            <p>有一段時間我真的懷疑過，自己畫畫的價值在哪裡…</p>
+            <p>總覺得自己畫得不夠好，速度也比不上 AI，甚至一度懷疑自己對畫畫的喜歡</p>
+            <p>直到某天，我收到一份很特別的委託</p>
+            <p>一位客人希望我幫他們 17 人的大家族，畫出每個人獨一無二的 Q 版肖像。</p>
+            <p>除了每個人自己的圖像，她還希望在每件衣服背後，都放上一張全家福。因為對她來說，那象徵著一家人彼此陪伴、「背後」支持的溫暖。</p>
+            <p>於是，我拿著一張張不同的照片，慢慢觀察每個人的特色，再用自己的風格一個一個畫出來。</p>
+            <p>後來，看到他們收到插畫、穿上衣服時開心的模樣，我突然覺得，好像又找回了一點畫畫的初心。</p>
+            <p>我知道 AI 的發展是不可逆的，也真的很方便、很厲害。</p>
+            <p>但這件事讓我重新相信，原來用心溝通、親手畫出來的作品，還是有它無法取代的溫度。</p>
+            <p>希望把那些珍貴的人、回憶和情感，用手繪的方式，好好留下來～</p>
+            <p>也謝謝這個大家庭，提醒我找回畫畫的意義。</p>
+          </div>
+        </article>
+
+        <!-- IG：https://www.instagram.com/p/Df6UeYxTKbD/ -->
+        <article class="ig-card reveal">
+          <div class="ig-media" style="aspect-ratio:320/320">
+            <div class="ig-track">
+              <img src="assets/stories/Df6UeYxTKbD-1.webp" alt="" width="320" height="320" loading="lazy" />
+            </div>
+          </div>
+          <div class="ig-text">
+            <p>哈囉👋我是檸檬手繪家<br />一個酸甜苦辣心情喜怒無常的人（喂<br />喜歡畫任何東西，尤其是人和動物<br />從小就被美術渲染到大學<br />但是生活都脫離不了幫別人畫畫的過程與回憶<br />當看到收到的人開心的表情<br />自己也會好開心🤣😚</p>
+          </div>
+        </article>
+        </div>
         <div class="ig-more">
           <a class="btn btn-navy btn-lg" href="https://www.instagram.com/lemonhomeme/" target="_blank" rel="noopener noreferrer">到 Instagram 看更多 <i class="arrow"></i></a>
         </div>
       </div>
     </section>
 
-    <!--
-      ★ 上稿方式：在 IG 貼文按「⋯」→「複製連結」，
-        把網址中 /p/ 後面那段代碼（例如 Df-ARTVk7n-）加到下面清單的最前面即可。
-        清單順序 = 頁面顯示順序（最新放最上面）。
-    -->
     <script>
-      window.IG_POSTS = [
-        'Df-ARTVk7n-',
-        'Df8gCm7zcd_',
-        'Df7SaKHkzeO',
-        'Df7KBKSk-RF',
-        'Df6m7NyE6US',
-        'Df6VQW4kzpw',
-        'Df6UeYxTKbD',
-      ];
-      (function () {
-        var grid = document.getElementById('igGrid');
-        grid.innerHTML = window.IG_POSTS.map(function (code) {
-          var url = 'https://www.instagram.com/p/' + code + '/';
-          return '<div class="ig-item"><blockquote class="instagram-media" data-instgrm-permalink="' + url + '?utm_source=ig_embed" data-instgrm-captioned data-instgrm-version="14">' +
-            '<a href="' + url + '" target="_blank" rel="noopener noreferrer">在 Instagram 查看這則故事</a></blockquote></div>';
-        }).join('');
-        var js = document.createElement('script');
-        js.async = true; js.src = 'https://www.instagram.com/embed.js';
-        document.body.appendChild(js);
-      })();
+      document.querySelectorAll('.ig-media').forEach(function (m) {
+        var t = m.querySelector('.ig-track'), dots = m.querySelectorAll('.ig-dots i');
+        if (!dots.length) return;
+        function idx() { return Math.round(t.scrollLeft / t.clientWidth); }
+        function sync() { var i = idx(); dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+          m.querySelector('.ig-prev').hidden = i === 0; m.querySelector('.ig-next').hidden = i === dots.length - 1; }
+        function go(d) { t.scrollTo({ left: (idx() + d) * t.clientWidth, behavior: 'smooth' }); }
+        m.querySelector('.ig-prev').addEventListener('click', function () { go(-1); });
+        m.querySelector('.ig-next').addEventListener('click', function () { go(1); });
+        t.addEventListener('scroll', function () { requestAnimationFrame(sync); }, { passive: true });
+        sync();
+      });
     </script>
 
     <!-- ============ CTA ============ -->
