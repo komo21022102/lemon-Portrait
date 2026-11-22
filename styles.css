@@ -1664,7 +1664,7 @@ ul, ol { list-style: none; }
   .pack-grid .pack-stack .pack { padding-top: 16px; padding-bottom: 16px; }
 }
 
-/* ---------- 我家的故事（stories.html）：IG 圖文卡片 ---------- */
+/* ---------- 他們的故事（stories.html）：IG 圖文卡片 ---------- */
 .ig-stories { padding-top: clamp(8px, 2vw, 24px); }
 .ig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: clamp(18px, 2.4vw, 28px); align-items: start; max-width: 1140px; margin-inline: auto; }
 .ig-card { min-width: 0; background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 10px 28px -18px rgba(28, 34, 46, .35); }
