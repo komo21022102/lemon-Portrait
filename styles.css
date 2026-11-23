@@ -1693,3 +1693,73 @@ ul, ol { list-style: none; }
 .ig-more { display: flex; justify-content: center; margin-top: clamp(32px, 4vw, 48px); }
 .ig-more .btn { margin-top: 0; }
 @media (hover: none) { .ig-nav { display: none; } }
+
+/* ---------- 試算 → 帶入預填表單 ---------- */
+.calc-actions .calc-fill-btn { grid-column: 1 / -1; --bg: #fff; --fg: var(--navy); border: 1.5px solid var(--navy); }
+
+/* ---------- 預填表單 ---------- */
+.order-form { position: relative; max-width: 760px; margin-inline: auto; background: #fff; border-radius: var(--radius-lg); padding: clamp(20px, 4vw, 44px); box-shadow: 0 20px 40px -28px rgba(45,73,112,.35); }
+.order-form fieldset { border: 0; margin: 0 0 26px; padding: 0; min-width: 0; }
+.order-form legend { font-weight: 900; color: var(--navy); font-size: 17px; margin-bottom: 12px; padding: 0; }
+.of-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+.of-field { display: grid; gap: 6px; margin-top: 14px; font-size: 14px; font-weight: 700; color: var(--ink); }
+.of-grid .of-field { margin-top: 0; }
+.of-field em { font-style: normal; font-size: 12px; font-weight: 700; color: #a8432a; margin-left: 6px; }
+.of-field input, .of-field select, .of-field textarea {
+  width: 100%; min-height: 48px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 14px; background: #fff;
+  font: inherit; font-size: 16px; font-weight: 500; color: var(--ink); transition: border-color .2s, box-shadow .2s;
+}
+.of-field textarea { resize: vertical; line-height: 1.6; }
+.of-field input:focus, .of-field select:focus, .of-field textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(205,227,111,.7); }
+.of-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.of-chips label { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1.5px solid var(--line); border-radius: 99px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background-color .2s, border-color .2s; }
+.of-chips input { width: 18px; height: 18px; accent-color: var(--navy); margin: 0; }
+.of-chips label:has(input:checked) { background: var(--lime); border-color: var(--lime-600); color: var(--navy); }
+.of-hint { margin-top: 14px; font-size: 14px; color: var(--ink-2); background: var(--beige); border-radius: 14px; padding: 12px 14px; }
+.of-error { color: #a8432a; font-weight: 700; margin-bottom: 12px; }
+.of-error[hidden], .of-done[hidden] { display: none; }
+.of-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.of-done { margin-top: 26px; border-top: 1px dashed var(--line); padding-top: 22px; text-align: center; }
+.of-done h3 { font-size: 20px; color: var(--navy); }
+.of-done p { margin-top: 6px; color: var(--ink-2); }
+.of-done pre { text-align: left; white-space: pre-wrap; word-break: break-word; font-family: var(--font-tc); font-size: 14px; line-height: 1.8; background: var(--beige); border-radius: 16px; padding: 16px 18px; margin: 16px 0; user-select: text; -webkit-user-select: text; }
+@media (max-width: 560px) {
+  .of-grid { grid-template-columns: 1fr; }
+  .of-actions .btn { width: 100%; }
+}
+.of-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* 預填表單：預設收合 */
+.order-box { max-width: 760px; margin-inline: auto; background: #fff; border: 1.5px solid var(--navy); border-radius: 24px; overflow: hidden; }
+.order-box summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 16px 20px 16px 24px; font-weight: 900; font-size: 18px; color: var(--navy); -webkit-tap-highlight-color: transparent; }
+.order-box summary::-webkit-details-marker { display: none; }
+.order-box summary small { flex: 1; font-size: 13px; font-weight: 500; color: var(--ink-2); }
+.order-box summary .q-icon { flex: none; }
+.order-box summary:hover .q-icon { background: var(--lime); }
+.order-box[open] .q-icon::after { transform: rotate(0deg); }
+.order-box .order-form { max-width: none; border-radius: 0; box-shadow: none; border-top: 1px dashed var(--line); }
+
+.of-deadline { margin-top: 14px; line-height: 1.8; }
+.of-deadline[hidden] { display: none; }
+.of-deadline ul { margin-top: 4px; padding-left: 1.2em; list-style: disc; }
+.of-deadline b { color: var(--navy); }
+.of-deadline li.is-over { color: var(--muted); }
+
+/* 預填表單：商品數量與 T 恤尺寸 */
+.of-details { display: grid; gap: 10px; margin-top: 12px; }
+.of-detail { background: var(--beige); border-radius: 16px; padding: 12px 16px; }
+.of-detail[hidden] { display: none; }
+.of-qty { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 14px; font-weight: 700; }
+.of-step { display: inline-flex; align-items: center; gap: 4px; }
+.of-step button { width: 36px; height: 36px; border-radius: 50%; background: #fff; border: 1.5px solid var(--line); font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1; }
+.of-step button:hover { background: var(--lime); border-color: var(--lime-600); }
+.of-step input { width: 52px; min-height: 36px; text-align: center; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; font-family: var(--font-en); font-size: 16px; font-weight: 700; color: var(--ink); background: #fff; -moz-appearance: textfield; }
+.of-step input::-webkit-outer-spin-button, .of-step input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.of-sub { font-size: 13px; font-weight: 700; color: var(--ink-2); margin: 12px 0 8px; }
+.of-sub:first-child { margin-top: 2px; }
+.of-chips-sm label { min-height: 40px; padding: 0 12px; font-size: 13px; background: #fff; }
+.of-sizes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 14px; }
+.of-sizes .of-qty { background: #fff; border-radius: 12px; padding: 6px 8px 6px 12px; font-family: var(--font-en); }
+.of-tee-total { margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--navy); text-align: right; }
+@media (max-width: 760px) { .of-sizes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 380px) { .of-sizes { grid-template-columns: 1fr; } }

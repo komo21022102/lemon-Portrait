@@ -300,7 +300,7 @@
      價格改這裡：單件價寫在 index.html 的 data-price；套組折扣規則在 dealFor() */
   const calc = $('#calc');
   if (calc) {
-    const DOUBLE = 40, SHIP = 60, FREE_SHIP_MIN = 5, RUSH_RATE = 0.2; // 雙面 +$40／件；5 件以上免運
+    const DOUBLE = 40, SHIP = 60, FREE_SHIP_MIN = 5, FREE_SHIP_TEE = 6, RUSH_RATE = 0.2; // 雙面 +$40／件；零錢包・帆布包・相框合計 5 件以上免運，T 恤 6 件以上免運
     const money = (n) => '$' + n.toLocaleString('en-US');
     const rows = $$('.calc-row[data-price]', calc);
     // PLAN A 彩色：1 人 $600、2 人 $1,200、3 人 $1,500、第 4 人起每位（人物或毛孩）+$400
@@ -326,7 +326,7 @@
       quoteImg.removeAttribute('src');
       quoteBox.hidden = true; dlBtn.hidden = true;
     };
-    // goods.html 用 data-mode="goods"：沒有 T 恤套組優惠；運費 $60／筆，5 件以上免運
+    // goods.html 用 data-mode="goods"：沒有 T 恤套組優惠；運費 $60／筆，免運規則同上
     const goodsMode = calc.dataset.mode === 'goods';
     const update = () => {
       let n = 0, teeN = 0, sub = 0, teeSub = 0;
@@ -335,7 +335,7 @@
       const double = $('#calc-double').checked;
       if (double) { sub += DOUBLE * teeN; teeSub += DOUBLE * teeN; }
       const deal = goodsMode ? { name: '', off: 0 } : dealFor(teeN); // 套組優惠只算 T 恤件數
-      const freeShip = n >= FREE_SHIP_MIN || deal.freeShip;
+      const freeShip = (n - teeN) >= FREE_SHIP_MIN || teeN >= FREE_SHIP_TEE || deal.freeShip;
       const ship = n === 0 || freeShip ? 0 : SHIP;
       // 衣服印刷急件：T 恤印製費（扣掉套組優惠後）+20%
       const rush = !!($('#calc-rush') && $('#calc-rush').checked && teeN);
@@ -369,12 +369,42 @@
     $('#calc-mono').addEventListener('change', update);
     update();
 
+    /* ---------- 試算結果 → 帶入預填表單 ---------- */
+    const fillBtn = $('#calc-fill-btn');
+    if (fillBtn) fillBtn.addEventListener('click', () => {
+      const f = $('#orderForm');
+      if (!f || !state) return;
+      f.elements.people.value = state.people || '';
+      f.elements.pets.value = state.pets || '';
+      $$('input[name="style"]', f).forEach((r) => { r.checked = r.value === (state.mono ? '單色線稿' : '彩色'); });
+      const map = { '防水零錢包': ['防水零錢包', 'q_purse'], '側背帆布小包': ['側背帆布小包', 'q_tote'], '實木相框（含印刷）': ['實木相框', 'q_frame'] };
+      const picked = new Set();
+      const teeTypes = new Set();
+      ['q_purse', 'q_tote', 'q_frame'].forEach((k) => { f.elements[k].value = 0; });
+      state.items.forEach((it) => {
+        if (!it.qty) return;
+        if (it.tee) { picked.add('紀念 T 恤'); teeTypes.add(it.name); return; }
+        const [label, field] = map[it.name] || [it.name];
+        picked.add(label);
+        if (field) f.elements[field].value = it.qty;
+      });
+      if (state.double && state.teeN) teeTypes.add('雙面印製');
+      if (!state.n) picked.add('只要插畫電子檔');
+      $$('input[name="goods"]', f).forEach((c) => { c.checked = picked.has(c.value); });
+      $$('input[name="tee_type"]', f).forEach((c) => { c.checked = teeTypes.has(c.value); });
+      f.elements.qty.value = state.teeN ? `T 恤共 ${state.teeN} 件（尺寸請在上方選）${state.rush ? '，需衣服急件' : ''}` : '';
+      f.dispatchEvent(new Event('change'));
+      if (state.bg && !f.elements.note.value.includes('特殊場景')) f.elements.note.value = ('想加特殊場景／背景。' + f.elements.note.value).trim();
+      if ($('#orderBox')) $('#orderBox').open = true;
+      $('#order-form').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+
     /* ---------- Quote sheet (JPG) ----------
        「製作報價單」把目前的選擇畫成一張報價單圖片；「下載報價」存成 JPG */
     const QUOTE_NOTES = [
       ['', '基本授權為個人與家庭紀念使用。若要用於商品販售、廣告等商業用途，請先告知用途，授權範圍與費用另議噢'],
       ['提供檔案', '彩色高解析 JPG、透明高解析背景 PNG，符合印製需求。'],
-      ['修改次數', '含初稿2回合小修、印製前2回合視覺微調，超過另計 $300／次，繪製約 1.5 週內'],
+      ['修改次數', '含初稿2回合小修、印製前2回合視覺微調，超過另計 $300／次；插畫 1.5 週內，加值客製商品 2 週內'],
       ['原始檔及使用授權', '可編輯 AI／PSD 原始檔加購 $500；商業用途與授權另議。'],
       ['費用付款', '設計啟動前先付款項，即可進行！'],
     ];
@@ -411,7 +441,7 @@
         if (q.double && q.teeN) B.push([`${goodsMode ? 'T 恤' : ''}升級雙面印製 ${q.teeN} 件`, `${money(DOUBLE)} × ${q.teeN}`, money(DOUBLE * q.teeN)]);
         if (q.deal.off) B.push([q.deal.name, '套組優惠', '−' + money(q.deal.off)]);
         if (q.rush) B.push(['衣服印刷急件費', '+20%，加急件減 3 個工作天', '+' + money(q.rushFee)]);
-        B.push(['店到店運費', q.freeShip ? '5 件以上免運' : '本島一般超商店到店', q.freeShip ? '免運' : money(q.ship)]);
+        B.push(['店到店運費', q.freeShip ? (q.deal.freeShip ? '大家族價免運' : q.teeN >= FREE_SHIP_TEE ? 'T 恤 6 件以上免運' : '周邊 5 件以上免運') : '本島一般超商店到店', q.freeShip ? '免運' : money(q.ship)]);
       }
 
       const W = 1080, P = 72, CW = W - P * 2;
@@ -633,4 +663,124 @@
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   }));
+  /* ---------- 送禮截止日提醒 ----------
+     每個節日：想收到的日期 receive，以及各品項「最晚付款日」。過了最後一個日期就自動換下一個節日；全部過了就隱藏。
+     估算方式：插畫 1.5 週 ＋ 周邊 7 個工作天／T 恤 10～13 個工作天 ＋ 超商運送約 3 天 */
+  const GIFT_DEADLINES = [
+    { name: '聖誕節', receive: '2026-12-24', rows: [
+      ['插畫電子檔', '2026-12-11'],
+      ['零錢包・帆布包・相框', '2026-11-28'],
+      ['紀念 T 恤', '2026-11-26', '需加衣服急件'],
+    ] },
+    { name: '農曆春節', receive: '2027-02-02', rows: [
+      ['插畫電子檔', '2027-01-22'],
+      ['零錢包・帆布包・相框', '2027-01-08'],
+      ['紀念 T 恤', '2026-12-31'],
+    ] },
+    { name: '母親節', receive: '2027-05-07', rows: [
+      ['插畫電子檔', '2027-04-23'],
+      ['零錢包・帆布包・相框', '2027-04-09'],
+      ['紀念 T 恤', '2027-03-31'],
+    ] },
+  ];
+  // 在預填表單「希望收到的日期」下方列出最近節日的最晚付款日
+  const deadlineNote = $('#orderDeadline');
+  if (deadlineNote) {
+    const day = (iso) => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); };
+    const now = new Date(); const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const md = (iso) => { const d = day(iso); return `${d.getMonth() + 1}/${d.getDate()}`; };
+    const ev = GIFT_DEADLINES.find((e) => e.rows.some((r) => day(r[1]) >= today));
+    if (ev) {
+      const items = ev.rows.map(([label, iso, extra]) => (day(iso) < today
+        ? `<li class="is-over">${label}：已截止，可私訊詢問能否加急</li>`
+        : `<li>${label}：<b>${md(iso)}</b> 前確認</li>`)).join('');
+      deadlineNote.innerHTML = `⏰ <b>${ev.name}送禮提醒</b>｜想在 ${md(ev.receive)} 前收到商品，請在以下日期前確認品項！商品出貨才來得及喔！<ul>${items}</ul>`;
+      deadlineNote.hidden = false;
+    }
+  }
+
+  /* ---------- 預填表單 ----------
+     endpoint 留空：送出後整理成文字，讓客人複製到 LINE。
+     之後接上 Email（例如 Google Apps Script 網址）時，填入 endpoint 即可，表單會以 POST 送出。 */
+  const ORDER_FORM = { endpoint: 'https://script.google.com/macros/s/AKfycbycd2OLN9A-EY6F1kFbeO4iqCaT-I46WhcZJl9vAHBmWfGuSVuILEVrKalEiudz3m1jcw/exec' };
+  // 點「填寫預填表單」連結時自動展開表單
+  document.addEventListener('click', (e) => { if (e.target.closest('a[href="#order-form"]') && $('#orderBox')) $('#orderBox').open = true; }, true);
+  const orderForm = $('#orderForm');
+  if (orderForm) {
+    const err = $('#orderError'), done = $('#orderDone'), summary = $('#orderSummary');
+    const syncDetails = () => {
+      const on = new Set($$('input[name="goods"]:checked', orderForm).map((c) => c.value));
+      $$('.of-detail', orderForm).forEach((d) => {
+        const show = on.has(d.dataset.for);
+        if (show && d.hidden) { const first = $('input[type="number"]', d); if (first && !d.classList.contains('of-tee') && +first.value === 0) first.value = 1; }
+        d.hidden = !show;
+      });
+      const total = $$('input[name^="tee_"][type="number"]', orderForm).reduce((s, i) => s + (parseInt(i.value, 10) || 0), 0);
+      $('#teeTotal').textContent = `T 恤合計 ${total} 件`;
+    };
+    orderForm.addEventListener('change', syncDetails);
+    orderForm.addEventListener('input', syncDetails);
+    orderForm.addEventListener('click', (e) => {
+      const b = e.target.closest('.of-step [data-d]');
+      if (!b) return;
+      const input = $('input', b.parentElement);
+      input.value = Math.min(99, Math.max(0, (parseInt(input.value, 10) || 0) + +b.dataset.d));
+      syncDetails();
+    });
+    syncDetails();
+    const showErr = (msg) => { err.textContent = msg; err.hidden = false; };
+    orderForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.hidden = true;
+      const f = orderForm.elements;
+      const v = (k) => (f[k].value || '').trim();
+      if (!v('name')) { showErr('請填寫稱呼。'); f.name.focus(); return; }
+      if (!v('contact')) { showErr('請填寫 LINE ID 或 Email，我才能回覆你。'); f.contact.focus(); return; }
+      if (!(+v('people') > 0) && !(+v('pets') > 0)) { showErr('請填寫要畫幾位人物或幾隻毛孩。'); f.people.focus(); return; }
+      const goods = $$('input[name="goods"]:checked', orderForm).map((c) => c.value);
+      const n = (k) => Math.max(0, parseInt(f[k] && f[k].value, 10) || 0);
+      const qtyParts = [];
+      if (goods.includes('防水零錢包') && n('q_purse')) qtyParts.push(`防水零錢包×${n('q_purse')}`);
+      if (goods.includes('側背帆布小包') && n('q_tote')) qtyParts.push(`側背帆布小包×${n('q_tote')}`);
+      if (goods.includes('實木相框') && n('q_frame')) qtyParts.push(`實木相框×${n('q_frame')}`);
+      if (goods.includes('紀念 T 恤')) {
+        const types = $$('input[name="tee_type"]:checked', orderForm).map((c) => c.value);
+        const sizes = (pre, label) => $$(`input[name^="${pre}"]`, orderForm).filter((i) => +i.value > 0).map((i) => `${i.name.slice(pre.length)}×${i.value}`).join('、');
+        const a = sizes('tee_a_', '成人'), k = sizes('tee_k_', '兒童');
+        const tee = [types.length ? types.join('／') : '', a ? `成人 ${a}` : '', k ? `兒童 ${k}` : ''].filter(Boolean).join('；');
+        qtyParts.push(`T 恤（${tee || '尺寸未填'}）`);
+      }
+      if (v('qty')) qtyParts.push(v('qty'));
+      const data = {
+        稱呼: v('name'), 聯絡方式: v('contact'), 用途: v('occasion'), 希望收到日期: v('due'),
+        人物: v('people') || '0', 毛孩: v('pets') || '0', 風格: (orderForm.querySelector('input[name="style"]:checked') || {}).value || '',
+        想做成: goods.join('、'), '數量／尺寸': qtyParts.join('\n'), 一句話: v('text'), 備註: v('note'),
+      };
+      const text = ['【檸檬手繪家 預填表單】', ...Object.entries(data).filter(([, val]) => val && val !== '0').map(([k, val]) => `${k}：${val}`)].join('\n');
+      summary.textContent = text;
+      if (ORDER_FORM.endpoint) {
+        const submitBtn = $('button[type="submit"]', orderForm);
+        if (submitBtn.disabled) return;
+        submitBtn.disabled = true;
+        $('#orderDoneMsg').textContent = '送出中…';
+        try {
+          const res = await fetch(ORDER_FORM.endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ ...data, website: v('website') }) });
+          const out = await res.json().catch(() => ({}));
+          if (!res.ok || !out.ok) throw new Error(out.error || res.status);
+          $('#orderDoneMsg').textContent = '已收到你的需求！我會盡快回覆。照片請透過 LINE 傳給我（每人至少 2 張）。';
+        } catch (_) {
+          $('#orderDoneMsg').textContent = '送出時發生問題，請按「複製內容」貼到 LINE 給我，不好意思！';
+        }
+        submitBtn.disabled = false;
+      }
+      done.hidden = false;
+      done.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    });
+    $('#orderCopy').addEventListener('click', async (e) => {
+      const btn = e.currentTarget;
+      try { await navigator.clipboard.writeText(summary.textContent); btn.textContent = '已複製 ✓'; }
+      catch (_) { const r = document.createRange(); r.selectNodeContents(summary); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); btn.textContent = '請長按選取文字複製'; }
+      setTimeout(() => { btn.textContent = '複製內容'; }, 2500);
+    });
+  }
 })();
