@@ -137,6 +137,15 @@
   .float-nav.tab-bar a.is-active svg { fill: var(--lime); }
   .float-nav.tab-bar a:active { transform: none; background: var(--beige); }
 
+  /* 讓人一眼看出「可點選切換」：浮起陰影、未選分頁加深、目前分頁加萊姆色膠囊 */
+  .float-nav.tab-bar { box-shadow: 0 -6px 18px -8px rgba(28, 34, 46, .22); border-top-color: transparent; }
+  .float-nav.tab-bar a { color: var(--ink-2); }
+  .float-nav.tab-bar svg { width: 24px; height: 24px; padding: 4px 16px; box-sizing: content-box; border-radius: 999px; transition: background-color .2s; }
+  .float-nav.tab-bar a.is-active svg { fill: none; background: var(--lime); }
+  .float-nav.tab-bar a.is-active span { font-weight: 900; }
+  .float-nav.tab-bar a:not(.is-active):active svg { background: var(--beige); }
+  .float-nav.tab-bar a:active { background: none; }
+
   /* 內容避開 Tab Bar */
   body { padding-bottom: calc(var(--tabbar-h) + var(--safe-b)); }
   .to-top { right: calc(16px + var(--safe-r)); bottom: calc(var(--tabbar-h) + 12px + var(--safe-b)); }
