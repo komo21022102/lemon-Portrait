@@ -1763,3 +1763,12 @@ ul, ol { list-style: none; }
 .of-tee-total { margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--navy); text-align: right; }
 @media (max-width: 760px) { .of-sizes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 380px) { .of-sizes { grid-template-columns: 1fr; } }
+
+/* PLAN B 分頁：品項小圖示 */
+.pb-tabs button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.pb-ico { width: 34px; height: 30px; object-fit: contain; flex: none; opacity: .9; }
+.pb-tabs button[aria-selected="true"] .pb-ico { opacity: 1; }
+@media (max-width: 560px) {
+  .pb-tabs button { flex-direction: column; gap: 2px; min-height: 52px; padding-block: 4px; }
+  .pb-ico { width: 30px; height: 26px; }
+}
