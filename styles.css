@@ -1836,3 +1836,9 @@ ul, ol { list-style: none; }
   .fb-review-media img { aspect-ratio: 16 / 9; max-height: 220px; }
   .fb-review-body { padding: 0 4px 4px; }
 }
+/* 預填表單區：縮小上下留白與標題間距，整區高度更窄 */
+#order-form { padding-block: clamp(36px, 4.5vw, 64px); }
+#order-form .section-head { margin-bottom: clamp(18px, 2.4vw, 28px); }
+#order-form .eyebrow { margin-bottom: 4px; }
+#order-form .lead { margin-top: 8px; font-size: 15px; }
+#order-form .order-box summary { min-height: 56px; padding-block: 12px; }
