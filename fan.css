@@ -1,0 +1,95 @@
+/* =========================================================
+   追星應援專區 fan.html — page-only styles (uses tokens from styles.css)
+   ========================================================= */
+.page-fan { --fan-pink: #fbe6e8; --fan-pink-600: #f4cdd2; --fan-rose: #d9607a; }
+
+/* ---------- Hero ---------- */
+.fan-hero-inner { text-align: center; margin-top: clamp(32px, 5vw, 72px); }
+.fan-eyebrow { display: inline-block; font-family: var(--font-en); font-weight: 700; font-size: 12.5px; letter-spacing: .08em; color: var(--fan-rose); margin-bottom: 12px; }
+.fan-hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+
+.fan-sub { font-size: 14.5px; color: var(--ink-2); margin-top: 14px; text-wrap: balance; }
+
+/* ---------- Scenes ---------- */
+.fan-scene-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.fan-scene { position: relative; background: var(--beige); border: 2px solid transparent; border-radius: 28px; padding: 32px 24px 28px; }
+.fan-scene.is-hot { border-color: var(--fan-pink-600); }
+.fan-scene-ico { display: block; height: 120px; width: auto; max-width: 100%; object-fit: contain; }
+.fan-scene h3 { font-size: 19px; font-weight: 900; color: var(--navy); margin-top: 14px; }
+.fan-scene p { font-size: 14px; color: var(--ink-2); margin-top: 10px; line-height: 1.8; }
+.fan-badge { position: absolute; top: -12px; right: 20px; font-size: 12px; font-weight: 700; color: #fff; background: var(--fan-rose); border-radius: 99px; padding: 3px 12px; }
+
+/* ---------- Details ---------- */
+.fan-detail-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 960px; margin-inline: auto; }
+.fan-detail-list li { background: #fff; border-radius: 22px; padding: 22px 26px; display: grid; gap: 6px; }
+.fan-detail-list b { font-size: 17px; color: var(--navy); }
+.fan-detail-list b::before { content: "\2713"; display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 10px; border-radius: 50%; background: var(--lime); font-size: 13px; vertical-align: 2px; }
+.fan-detail-list span { font-size: 14px; color: var(--ink-2); line-height: 1.8; }
+
+/* ---------- Items ---------- */
+.fan-item-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 960px; margin-inline: auto; }
+.fan-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; background: var(--beige); border-radius: 28px; padding: 26px 16px 24px; transition: transform .4s var(--ease-spring), box-shadow .4s var(--ease); }
+.fan-item:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -36px rgba(45,73,112,.55); }
+.fan-item-art { height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+.fan-item-art img { max-height: 120px; width: auto; }
+.fan-item b { font-size: 17px; font-weight: 900; color: var(--navy); }
+.fan-item-price { font-size: 13px; color: var(--muted); }
+.fan-item-price .num { font-size: 20px; color: var(--ink); }
+.fan-item-note { font-size: 12.5px; color: var(--fan-rose); font-weight: 700; }
+
+.fan-soon { max-width: 960px; margin: 28px auto 0; border: 2px dashed var(--fan-pink-600); border-radius: 24px; padding: 22px 24px; text-align: center; }
+.fan-soon-title { font-weight: 900; color: var(--navy); }
+.fan-soon-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 12px; }
+.fan-soon-list li { font-size: 13.5px; font-weight: 700; background: var(--fan-pink); color: var(--ink); border-radius: 99px; padding: 4px 14px; }
+.fan-soon-note { font-size: 13px; color: var(--ink-2); margin-top: 12px; }
+
+/* ---------- Flow + timeline ---------- */
+.fan-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; counter-reset: none; }
+.fan-steps li { background: #fff; border-radius: 22px; padding: 22px 20px; display: grid; gap: 4px; }
+.fan-steps .num { font-size: 24px; font-weight: 800; color: var(--lime-600); }
+.fan-steps b { font-size: 16.5px; color: var(--navy); }
+.fan-steps li > span:last-child { font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+
+.fan-timeline { max-width: 760px; margin: clamp(36px, 5vw, 56px) auto 0; background: #fff; border-radius: 28px; padding: clamp(24px, 4vw, 40px); }
+.fan-timeline-title { font-size: 19px; font-weight: 900; color: var(--navy); text-align: center; text-wrap: balance; }
+.fan-timeline-action { display: flex; justify-content: center; margin-top: 20px; }
+.fan-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 15px; }
+.fan-table th { text-align: left; font-size: 13px; color: var(--muted); font-weight: 700; padding: 8px 12px; border-bottom: 2px solid var(--line); }
+.fan-table td { padding: 14px 12px; border-bottom: 1px solid var(--line); }
+.fan-table td b { color: var(--fan-rose); }
+.fan-table-note { font-size: 12.5px; color: var(--muted); margin-top: 14px; line-height: 1.8; }
+
+/* ---------- Notice ---------- */
+.fan-notice { padding-bottom: 0; }
+.fan-notice-card { max-width: 960px; margin-inline: auto; border: 2px solid var(--line); border-radius: 28px; padding: clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px); }
+.fan-notice-title { font-family: var(--font-title); font-size: clamp(22px, 2.2vw, 28px); color: var(--navy); text-align: center; letter-spacing: .04em; }
+.fan-notice-card ul { margin-top: 18px; display: grid; gap: 12px; }
+.fan-notice-card li { position: relative; padding-left: 22px; font-size: 14.5px; color: var(--ink-2); line-height: 1.8; }
+.fan-notice-card li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--fan-rose); }
+.fan-notice-card li b { color: var(--ink); }
+.fan-notice-card a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- FAQ ---------- */
+.fan-faq-list { max-width: 860px; margin-inline: auto; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .fan-scene-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+  .fan-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .fan-scene-grid, .fan-detail-list, .fan-steps { grid-template-columns: 1fr; }
+  .fan-scene { padding: 26px 20px 22px; }
+  .fan-scene-ico { height: 104px; }
+  .fan-item-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .fan-item { padding: 16px 6px 14px; border-radius: 20px; }
+  .fan-item-art { height: 64px; }
+  .fan-item-art img { max-height: 64px; }
+  .fan-item b { font-size: 13.5px; }
+  .fan-item-price { font-size: 11.5px; }
+  .fan-item-price .num { font-size: 15px; }
+  .fan-item-note { font-size: 11px; }
+  .fan-hero-actions .btn { width: 100%; }
+  .fan-table { font-size: 14px; }
+  .fan-table td, .fan-table th { padding-inline: 6px; }
+}

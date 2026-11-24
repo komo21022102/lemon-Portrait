@@ -64,11 +64,11 @@
 }
 .btn[data-line] .arrow::before, .btn[data-social] .arrow::before, .btn[target="_blank"] .arrow::before { display: none; }
 .btn[data-line] .arrow::after, .btn[data-social] .arrow::after, .btn[target="_blank"] .arrow::after {
-  content: "↗"; position: static; width: auto; height: auto; background: none; transform: none; font-size: 1.1em; line-height: 1; font-style: normal;
+  content: "\2197"; position: static; width: auto; height: auto; background: none; transform: none; font-size: 1.1em; line-height: 1; font-style: normal;
 }
 .btn[data-line]:hover .arrow, .btn[data-social]:hover .arrow, .btn[target="_blank"]:hover .arrow { transform: translate(2px, -2px); }
 .pill[data-line]::after, .pill[data-social]::after, .pill[target="_blank"]::after {
-  content: "↗"; font-size: .9em; line-height: 1; margin-left: 2px; opacity: .75;
+  content: "\2197"; font-size: .9em; line-height: 1; margin-left: 2px; opacity: .75;
 }
 
 /* ---------- 指示點：視覺大小不變，點擊範圍擴大到 44pt ---------- */
