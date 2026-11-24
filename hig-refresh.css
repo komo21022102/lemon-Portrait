@@ -385,3 +385,12 @@
 .gp-tier-art.is-sq.is-frame { width: 92px; top: -50px; right: 28px; }
 @media (min-width: 1200px) { .gp-tier-art.is-sq.is-frame { width: 78px; top: -44px; right: 22px; } }
 @media (max-width: 760px) { .gp-tier-art.is-sq.is-frame { width: 66px; top: 14px; right: 24px; } }
+
+/* 預填表單、常見問題、方案說明的展開區：觸控裝置不套 hover，避免 iOS 第一下只觸發 hover、第二下才打開 */
+@media (hover: none) {
+  .order-box summary:hover .q-icon { background: #ececec; }
+  .qa summary:hover .q-text { color: inherit; }
+  .qa summary:hover .q-icon { background: #ececec; }
+  .plan-notice summary:hover .q-icon { background: #fdeee3; }
+}
+.order-box summary, .qa summary, .plan-notice summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
