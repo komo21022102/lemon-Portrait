@@ -394,3 +394,14 @@
   .plan-notice summary:hover .q-icon { background: #fdeee3; }
 }
 .order-box summary, .qa summary, .plan-notice summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+/* ---------- 換頁順暢：第一屏不淡入、頁面之間淡入轉場、Tab Bar 點擊立即反應 ---------- */
+.reveal.no-anim, .squiggle.no-anim { transition: none !important; }
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .2s; }
+.site-header { view-transition-name: site-header; }
+.float-nav.tab-bar { view-transition-name: tab-bar; }
+.float-nav.tab-bar a { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}

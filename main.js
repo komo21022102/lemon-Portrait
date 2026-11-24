@@ -75,8 +75,16 @@
     worksWall.innerHTML = out;
   }
 
+  // 第一屏的內容直接顯示、不做淡入：換頁時才不會先閃一下、空白再慢慢浮現
+  const firstScreen = innerHeight;
+  $$('.reveal, .squiggle').forEach((el) => {
+    if (el.getBoundingClientRect().top < firstScreen) el.classList.add('is-in', 'no-anim');
+  });
   document.documentElement.classList.remove('no-js');
-  requestAnimationFrame(() => document.body.classList.add('is-loaded'));
+  requestAnimationFrame(() => {
+    document.body.classList.add('is-loaded');
+    requestAnimationFrame(() => $$('.no-anim').forEach((el) => el.classList.remove('no-anim')));
+  });
 
   /* ---------- Reveal on scroll ---------- */
   const revealIO = new IntersectionObserver((entries) => {
@@ -86,7 +94,7 @@
       revealIO.unobserve(e.target);
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-  $$('.reveal, .squiggle').forEach((el) => revealIO.observe(el));
+  $$('.reveal, .squiggle').forEach((el) => { if (!el.classList.contains('is-in')) revealIO.observe(el); });
 
   /* ---------- Header: shrink, hide on scroll down, scrollspy ---------- */
   const header = $('.site-header');
@@ -663,6 +671,11 @@
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   }));
+  /* Tab Bar：頁面載完後，先把其他分頁的 HTML 抓進瀏覽器快取，點下面分頁時換頁更快（省流量模式不抓） */
+  addEventListener('load', () => setTimeout(() => {
+    if (navigator.connection && navigator.connection.saveData) return;
+    $$('.tab-bar a:not([aria-current])').forEach((a) => { fetch(a.href, { credentials: 'same-origin' }).catch(() => {}); });
+  }, 2000));
   /* ---------- 送禮截止日提醒 ----------
      每個節日：想收到的日期 receive，以及各品項「最晚付款日」。過了最後一個日期就自動換下一個節日；全部過了就隱藏。
      估算方式：插畫 1.5 週 ＋ 周邊 7 個工作天／T 恤 10～13 個工作天 ＋ 超商運送約 3 天 */
