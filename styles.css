@@ -1820,3 +1820,19 @@ ul, ol { list-style: none; }
   .fb-review { grid-template-columns: 1fr; border-radius: 32px; }
   .fb-review-body { padding: 0 6px 6px; }
 }
+/* 口碑精選：縮小整體高度，並與下方預填表單之間留白 */
+.fb-review-sec { padding-block: clamp(40px, 5vw, 72px); }
+.fb-review { max-width: 980px; gap: clamp(18px, 3vw, 36px); border-radius: 32px; padding: clamp(14px, 1.8vw, 22px); }
+.fb-review-media img { aspect-ratio: 16 / 10; object-fit: cover; max-height: 280px; border-radius: 22px; }
+.fb-review-quote { margin-top: 4px; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.45; }
+.fb-review-quote::before { font-size: 42px; margin-bottom: 0; }
+.fb-review-text { margin-top: 10px; font-size: 14px; line-height: 1.8; }
+.fb-review-tags, .fb-review-who, .fb-review-comments { margin-top: 10px; }
+.fb-review-comments p { padding: 6px 12px; }
+.fb-review-actions { margin-top: 14px; }
+.fb-review-actions .btn { min-height: 44px; }
+.fb-review.is-text { padding: clamp(22px, 3vw, 34px) clamp(18px, 3vw, 40px); }
+@media (max-width: 860px) {
+  .fb-review-media img { aspect-ratio: 16 / 9; max-height: 220px; }
+  .fb-review-body { padding: 0 4px 4px; }
+}
