@@ -1838,3 +1838,20 @@ ul, ol { list-style: none; }
 #order-form .eyebrow { margin-bottom: 4px; }
 #order-form .lead { margin-top: 8px; font-size: 15px; }
 #order-form .order-box summary { min-height: 56px; padding-block: 12px; }
+/* 口碑精選（首頁）手機版：圖左文右，高度約減半 */
+@media (max-width: 860px) {
+  .fb-review-home .fb-review { grid-template-columns: minmax(0, 42fr) minmax(0, 58fr); gap: 14px; align-items: stretch; padding: 10px; border-radius: 24px; }
+  .fb-review-home .fb-review-media { height: 100%; }
+  .fb-review-home .fb-review-media img { height: 100%; min-height: 150px; max-height: none; aspect-ratio: auto; object-fit: cover; border-radius: 16px; }
+  .fb-review-home .fb-review-badge { left: 6px; top: 6px; padding: 3px; gap: 0; font-size: 0; }
+  .fb-review-home .fb-review-badge svg { width: 18px; height: 18px; }
+  .fb-review-home .fb-review-body { display: flex; flex-direction: column; justify-content: center; padding: 4px 4px 4px 0; }
+  .fb-review-home .fb-review-eyebrow { font-size: 11px; letter-spacing: .04em; }
+  .fb-review-home .fb-review-quote { font-size: 16px; line-height: 1.5; margin-top: 2px; }
+  .fb-review-home .fb-review-quote br { display: none; }
+  .fb-review-home .fb-review-quote::before { font-size: 30px; }
+  .fb-review-home .fb-review-actions { margin-top: 10px; gap: 6px 12px; }
+  .fb-review-home .fb-review-actions .btn { min-height: 38px; padding: 0 14px; font-size: 13px; gap: 8px; }
+  .fb-review-home .fb-review-actions .btn .arrow { width: 18px; }
+  .fb-review-home .fb-review-link { font-size: 12.5px; }
+}
