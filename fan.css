@@ -4,8 +4,8 @@
 .page-fan { --fan-pink: #fbe6e8; --fan-pink-600: #f4cdd2; --fan-rose: #d9607a; }
 
 /* ---------- Hero ---------- */
+.fan-eyebrow { display: inline-block; font-weight: 700; font-size: 13px; letter-spacing: .08em; color: var(--fan-rose); margin-bottom: 12px; }
 .fan-hero-inner { text-align: center; margin-top: clamp(32px, 5vw, 72px); }
-.fan-eyebrow { display: inline-block; font-family: var(--font-en); font-weight: 700; font-size: 12.5px; letter-spacing: .08em; color: var(--fan-rose); margin-bottom: 12px; }
 .fan-hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
 
 .fan-sub { font-size: 14.5px; color: var(--ink-2); margin-top: 14px; text-wrap: balance; }
