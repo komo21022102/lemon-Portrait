@@ -392,7 +392,7 @@
       if (!state.n) picked.add('只要插畫電子檔');
       $$('input[name="goods"]', f).forEach((c) => { c.checked = picked.has(c.value); });
       $$('input[name="tee_type"]', f).forEach((c) => { c.checked = teeTypes.has(c.value); });
-      f.elements.qty.value = state.teeN ? `T 恤共 ${state.teeN} 件（尺寸請在上方選）${state.rush ? '，需衣服急件' : ''}` : '';
+      f.elements.qty.value = state.teeN ? `T 恤共 ${state.teeN} 件（成人／兒童件數請在上方選，尺寸私訊告知）${state.rush ? '，需衣服急件' : ''}` : '';
       f.dispatchEvent(new Event('change'));
       if (state.bg && !f.elements.note.value.includes('特殊場景')) f.elements.note.value = ('想加特殊場景／背景。' + f.elements.note.value).trim();
       if ($('#orderBox')) $('#orderBox').open = true;
@@ -745,10 +745,10 @@
       if (goods.includes('實木相框') && n('q_frame')) qtyParts.push(`實木相框×${n('q_frame')}`);
       if (goods.includes('紀念 T 恤')) {
         const types = $$('input[name="tee_type"]:checked', orderForm).map((c) => c.value);
-        const sizes = (pre, label) => $$(`input[name^="${pre}"]`, orderForm).filter((i) => +i.value > 0).map((i) => `${i.name.slice(pre.length)}×${i.value}`).join('、');
-        const a = sizes('tee_a_', '成人'), k = sizes('tee_k_', '兒童');
-        const tee = [types.length ? types.join('／') : '', a ? `成人 ${a}` : '', k ? `兒童 ${k}` : ''].filter(Boolean).join('；');
-        qtyParts.push(`T 恤（${tee || '尺寸未填'}）`);
+        const a = n('tee_adult'), k = n('tee_kid');
+        const count = [a ? `成人×${a}` : '', k ? `兒童×${k}` : ''].filter(Boolean).join('、');
+        const tee = [types.length ? types.join('／') : '', count || '件數未填', '尺寸私訊告知'].filter(Boolean).join('；');
+        qtyParts.push(`T 恤（${tee}）`);
       }
       if (v('qty')) qtyParts.push(v('qty'));
       const data = {

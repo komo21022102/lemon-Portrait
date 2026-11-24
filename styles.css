@@ -1782,3 +1782,9 @@ ul, ol { list-style: none; }
 .ge-fan a:hover { background: #f8d6db; transform: translateY(-2px); }
 .ge-fan i { font-style: normal; }
 .qa-link { color: var(--navy); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* 預填表單 T 恤：只填成人／兒童件數，尺寸私訊告知 */
+.of-tee-qty { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; }
+.of-tee-qty .of-qty { background: #fff; border-radius: 12px; padding: 6px 8px 6px 14px; }
+.of-sub-note { margin-left: 8px; font-size: 12px; font-weight: 700; color: #b84a63; background: #fbe6e8; border-radius: 99px; padding: 2px 10px; }
+@media (max-width: 560px) { .of-tee-qty { grid-template-columns: 1fr; } }
